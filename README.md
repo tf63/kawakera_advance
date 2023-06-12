@@ -16,6 +16,14 @@
 | - | - |
 | / | ホーム画面 |
 
+### .env生成
+.env.exampleをコピー
+django secret keyの生成
+```
+    >>> from django.core.management.utils import get_random_secret_key
+    >>> get_random_secret_key()
+```
+
 ### Docker
 コンテナの起動
 ```
