@@ -27,17 +27,17 @@ django secret keyの生成
 ### Docker
 コンテナの起動
 ```
-  docker compose up -d
+    docker compose up -d
 ```
 
 コンテナの削除
 ```
-  docker compose down
+    docker compose down
 ```
 
 コンテナのリビルド
 ```
-  docker compose up -d --build
+    docker compose up -d --build
 ```
 
 ### Django (Backend)
@@ -55,7 +55,7 @@ fixtureの読み込み
 fixtureファイルの作成
 - fixtureファイルはテーブルの中身をそのまま置き換える
 ```
-	docker compose exec django python make_data.py
+    docker compose exec django python make_data.py
 ```
 
 superuserの作成
@@ -92,15 +92,6 @@ superuserの作成
 **TypeScriptライブラリ**
 - react-router-dom
 - axios
-
-### Github コミットメッセージなど
-- feat: 新しい機能の追加や改善
-- test - テストの追加や修正
-- fix - バグ修正
-- refactor - コードのリファクタリング
-- docs - ドキュメントの追加や修正
-- style - コードスタイルの修正（スペース、インデントなど
-- chore - その他の雑務や構成の変更
 
 ### 参考
 React (TypeScript) チュートリアル
