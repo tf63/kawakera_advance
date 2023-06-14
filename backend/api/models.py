@@ -22,3 +22,10 @@ class Record(models.Model):
 
     def __str__(self):
         return f"Record {self.id}"
+    
+    
+class Animal(models.Model):
+    name = models.CharField(max_length=100, default="")
+    
+    def __str__(self):
+        return f"{self.name}"
