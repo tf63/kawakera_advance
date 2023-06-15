@@ -180,6 +180,7 @@ h1 {
   text-shadow: 1px 1px #eee;
 }
 
+/* 
 .target_item {
   list-style-type: none;
 }
@@ -218,4 +219,41 @@ h1 {
   100% {
     opacity: 1;
   }
+} */
+
+.grid-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* display: grid; */
+  /* グリッドの列数を設定 */
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  /* 要素の重なりを防ぐために追加 */
+  /* grid-auto-flow: dense; */
+  /* グリッド間の余白を設定 */
+  /* gap: 5px; */
+}
+
+.square {
+  padding: 2em;
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  background: #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+
+  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15);
+}
+
+.square img {
+  max-width: 100%;
+  max-height: 100%;
 }
