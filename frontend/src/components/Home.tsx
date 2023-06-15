@@ -2,28 +2,34 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 
+type Animal = {
+    id: number
+    name: string
+}
+
 const Home = () => {
-    const [name, setName] = useState([])
+    const [animals, setAnimals] = useState<Animal[]>([{ id: 0, name: 'animal' }])
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios("http://localhost:8000/api/animal/")
+            const response = await axios('http://localhost:8000/api/animal/')
             const data = await response.data
-            console.log(data[0])
-            setName(data[0].name)
+            console.log(data)
+            setAnimals(data)
         }
 
         fetchData()
     }, [])
 
-    useEffect(() => {
-        console.log(name)
-    }, name)
     return (
         <div>
-            <div className="card">
-                {name}
-            </div>
+            {animals.map((item, index) => {
+                return (
+                    <div className="card" key={index}>
+                        {item.name}
+                    </div>
+                )
+            })}
         </div>
     )
 }
