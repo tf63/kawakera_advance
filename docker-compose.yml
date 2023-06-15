@@ -46,7 +46,7 @@ services:
       - ./frontend:/app
     ports:
       - 5173:5173
-    command: sh -c "yarn & yarn dev"
+    # command: sh -c "yarn dev"
 
 volumes:
   postgres_data:
