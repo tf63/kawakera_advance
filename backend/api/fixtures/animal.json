@@ -1,0 +1,9 @@
+[
+    {
+        "model": "api.animal",
+        "pk": 1,
+        "fields": {
+            "name": "dog"
+        }
+    }
+]
