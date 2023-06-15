@@ -111,12 +111,22 @@ body {
   border-radius: 200px;
 }
 
-.card-box {
+nav {
+  margin: 30px 0px
+}
 
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
-    -6px -6px 10px rgba(255, 255, 255, .5),
-    6px 6px 8px rgba(255, 255, 255, .075),
-    6px 6px 10px rgba(0, 0, 0, .15);
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav li {
+  margin: 0px 30px 0px 0px;
+  text-decoration: none;
+}
+
+nav .link {
+  text-decoration: none;
 }
 
 /*
