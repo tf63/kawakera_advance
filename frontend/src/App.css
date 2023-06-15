@@ -1,60 +1,26 @@
 body {
-  background: linear-gradient(296.6deg, #BAFFDE 4.36%, #E9FFBB 94.25%);
+  background: #efefef;
+  /* background: linear-gradient(296.6deg, #BAFFDE 4.36%, #E9FFBB 94.25%); */
 }
 
-.content {
-  position: relative;
-  z-index: 0;
-}
-
-.navigation {
-  background-color: #efefef;
-  padding: 10px 10px 0px 0px;
-  display: flex;
-  align-items: flex-end;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  width: 100%;
-  height: 80px;
-}
-
-.navigation h1 {
+.card {
+  padding: 2em;
+  margin: 60px 10px;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
   color: #888888;
-  font-size: 2em;
-  margin: 20px 20px auto;
+  font-size: 1rem;
   letter-spacing: .2rem;
   text-align: left;
   text-shadow: 1px 1px #eee;
-}
-
-.navigation ul {
-  list-style: none;
-  margin: 0px auto 5px auto;
-  padding-right: 40px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.navigation li {
-  margin: 0 30px;
-}
-
-.navigation a {
-  color: #888888;
-  letter-spacing: .2rem;
-  text-shadow: 1px 1px #eee;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-Result Skip Results Iframe EDIT ON body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  background: #efefef;
+  outline: none;
+  cursor: pointer;
+  transition: .2s ease-in-out;
+  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15);
 }
 
 .card-green {
@@ -93,25 +59,12 @@ Result Skip Results Iframe EDIT ON body {
   box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
-.card {
-  padding: 2em;
-  margin: 60px 10px;
-  background: #efefef;
-  border: none;
-  border-radius: .5rem;
-  color: #888888;
-  font-size: 1rem;
-  letter-spacing: .2rem;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
-  outline: none;
-  cursor: pointer;
-  transition: .2s ease-in-out;
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
-    -6px -6px 10px rgba(255, 255, 255, .5),
-    6px 6px 8px rgba(255, 255, 255, .075),
-    6px 6px 10px rgba(0, 0, 0, .15);
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .btn:hover {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
@@ -119,7 +72,6 @@ Result Skip Results Iframe EDIT ON body {
     2px 2px 2px rgba(255, 255, 255, .05),
     2px 2px 4px rgba(0, 0, 0, .1);
 }
-
 
 .btn:active {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
@@ -132,81 +84,42 @@ Result Skip Results Iframe EDIT ON body {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.top-container {
+.grid-box {
+  margin-top: 100px;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: flex-end;
 }
 
-/* スコア */
-#correct,
-#incorrect {
-  font-size: 1em;
-  font-weight: bold;
-  color: #888888;
+.square {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
 }
 
-h1 {
-  color: #888888;
-  font-size: 3em;
-  margin: 20px 20px auto;
-  max-width: 600px;
-  font-weight: normal;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+.square img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
-/* 段落テキスト */
-.text {
-  color: #888888;
-  font-size: 1.5em;
-  margin: auto 20px 0px auto;
-  padding-bottom: 10px;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+.post-button {
+  margin: 30px;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
 }
 
-.text-line {
-  color: #888888;
-  font-size: 1.5em;
-  margin: 20px 20px auto;
-  max-width: 600px;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+.card-box {
+
+  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15);
 }
 
-/* 
-.target_item {
-  list-style-type: none;
-}
-
-.typed {
-  display: inline-block;
-  color: #afafaf;
-}
-
-.untyped {
-  display: inline-block;
-  color: #888888;
-}
-
-.target_block {
-  letter-spacing: .1rem;
-}
-
-.caret {
-  display: inline-block;
-  width: 0;
-  height: 1.2em;
-  border-right: 0.15em solid #333;
-  animation: caret 0.8s infinite;
-}
-
+/*
 @keyframes caret {
   0% {
     opacity: 1;

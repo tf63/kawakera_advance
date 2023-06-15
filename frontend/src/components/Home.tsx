@@ -24,7 +24,7 @@ type GridProps = {
 
 const SquareComponent: React.FC<SquareProps> = ({ image }) => {
     return (
-        <div className="square">
+        <div className="card square container-center">
             <img src={`http://localhost:8000${image}`} alt="Square Image" />
         </div>
     )
@@ -32,10 +32,26 @@ const SquareComponent: React.FC<SquareProps> = ({ image }) => {
 
 const GridComponent: React.FC<GridProps> = ({ items }) => {
     return (
-        <div className="grid-container">
-            {items.map((item, index) => (
-                <SquareComponent key={index} image={item.image} />
-            ))}
+        <div className="container-center">
+            <div className="grid-box">
+                {items.map((item, index) => (
+                    <SquareComponent key={index} image={item.image} />
+                ))}
+            </div>
+        </div>
+    )
+}
+
+const PostButton = () => {
+    return <div className="post-button container-center card">投稿ボタン</div>
+}
+
+const RecentComponent: React.FC<GridProps> = ({ items }) => {
+    return (
+        <div className="container-center">
+            <div className="card-box">
+                <img src={`http://localhost:8000${items[1].image}`} alt="Square Image" />
+            </div>
         </div>
     )
 }
@@ -56,30 +72,17 @@ const Home = () => {
         fetchData()
     }, [])
 
-    // useEffect(() => {
-    //     setItems
-    // }, animals)
+    if (animals.length == 0) {
+        return <div>Loading...</div>
+    }
 
-    // const items: Item[] = [
-    //     { id: 1, image: devtanuki },
-    //     { id: 2, image: devtanuki },
-    //     { id: 3, image: devtanuki },
-    //     { id: 4, image: devtanuki },
-    //     { id: 5, image: devtanuki },
-    //     { id: 6, image: devtanuki },
-    //     { id: 7, image: devtanuki }
-    // ]
     return (
         <div>
+            <div className="container-center">
+                <PostButton />
+                <RecentComponent items={animals} />
+            </div>
             <GridComponent items={animals} />
-            {animals.map((item, index) => {
-                return (
-                    <div className="card" key={index}>
-                        {item.name}
-                        <img src={devtanuki} alt="devtanuki" />
-                    </div>
-                )
-            })}
         </div>
     )
 }

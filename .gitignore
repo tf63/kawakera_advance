@@ -4,8 +4,7 @@ out/
 .env
 .env.prod
 node_modules/
-media/
-
+prod/
 # React
 # ---------------------------------------------
 # Logs
