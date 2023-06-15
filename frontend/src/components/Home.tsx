@@ -43,13 +43,13 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
 }
 
 const PostButton = () => {
-    return <div className="post-button container-center card">投稿ボタン</div>
+    return <div className="post-button container-center card circle">投稿ボタン</div>
 }
 
 const RecentComponent: React.FC<GridProps> = ({ items }) => {
     return (
         <div className="container-center">
-            <div className="card-box">
+            <div className="card">
                 <img src={`http://localhost:8000${items[1].image}`} alt="Square Image" />
             </div>
         </div>
