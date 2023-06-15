@@ -5,5 +5,68 @@
         "fields": {
             "name": "dog"
         }
+    },
+    {
+        "model": "api.animal",
+        "pk": 2,
+        "fields": {
+            "name": "cat"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 3,
+        "fields": {
+            "name": "racoon"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 4,
+        "fields": {
+            "name": "rabbit"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 5,
+        "fields": {
+            "name": "bird"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 6,
+        "fields": {
+            "name": "tiger"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 7,
+        "fields": {
+            "name": "zebra"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 8,
+        "fields": {
+            "name": "bear"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 9,
+        "fields": {
+            "name": "horse"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 10,
+        "fields": {
+            "name": "fox"
+        }
     }
 ]
