@@ -25,7 +25,7 @@ from django.contrib.postgres.fields import ArrayField
     
 class Animal(models.Model):
     name = models.CharField(max_length=100, default="")
-    image = models.ImageField(upload_to="animals/")
+    image = models.ImageField(upload_to="tests/animals/")
     
     def __str__(self):
         return f"{self.name}"

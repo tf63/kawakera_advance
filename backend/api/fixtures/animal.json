@@ -4,7 +4,7 @@
         "pk": 1,
         "fields": {
             "name": "dog",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -12,7 +12,7 @@
         "pk": 2,
         "fields": {
             "name": "cat",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -20,7 +20,7 @@
         "pk": 3,
         "fields": {
             "name": "racoon",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -28,7 +28,7 @@
         "pk": 4,
         "fields": {
             "name": "rabbit",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -36,7 +36,7 @@
         "pk": 5,
         "fields": {
             "name": "bird",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -44,7 +44,7 @@
         "pk": 6,
         "fields": {
             "name": "tiger",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -52,7 +52,7 @@
         "pk": 7,
         "fields": {
             "name": "zebra",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -60,7 +60,7 @@
         "pk": 8,
         "fields": {
             "name": "bear",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -68,7 +68,7 @@
         "pk": 9,
         "fields": {
             "name": "horse",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     },
     {
@@ -76,7 +76,7 @@
         "pk": 10,
         "fields": {
             "name": "fox",
-            "image": "animals/devtanuki.png"
+            "image": "tests/animals/devtanuki.png"
         }
     }
 ]

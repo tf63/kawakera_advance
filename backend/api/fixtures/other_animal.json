@@ -3,7 +3,8 @@
         "model": "api.animal",
         "pk": 99,
         "fields": {
-            "name": "other dog"
+            "name": "other dog",
+            "image": "tests/animals/devtanuki.png"
         }
     }
 ]
