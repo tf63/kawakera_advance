@@ -6,7 +6,7 @@ from string import ascii_lowercase
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Animal
+from .models import Category, Individual
 from .serializers import CategorySerializer, IndividualSerializer
 
 # def index(request):
@@ -14,21 +14,24 @@ from .serializers import CategorySerializer, IndividualSerializer
 class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
-
-        serializer = CategorySerializer(data=data)
-        if serializer.is_valid():
+        serializer_category = CategorySerializer(data=data)
+        # serializer_individual = IndividualSerializer(data=data)
+        
+        if serializer_category.is_valid():
             # Save the record
-            record = serializer.save()
+            record_category = serializer_category.save()
+            # record_individual = serializer_individual.save()
+            # return Response(serializer_category.data)
             return Response({"message": "Record created successfully."})
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class CategoryAPIView(APIView):
     def get(self, request):
         try:
             # idの降順で最新の30件を取得
-            queryset = Animal.objects.order_by("-id")[:30]
-            serializer = AnimalSerializer(queryset, many=True)
+            queryset = Category.objects.order_by("-id")[:30]
+            serializer = CategorySerializer(queryset, many=True)
 
             return Response(serializer.data)
         except Exception as e:
