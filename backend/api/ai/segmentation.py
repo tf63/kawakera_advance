@@ -54,6 +54,7 @@ def create_segmentation(data):
         # 得られたマスクとひとまとまりにする
         mask = np.bitwise_or(mask, mask_array.astype(np.uint8))
 
+    # maskが真っ黒なら全部表示させる
     if np.max(mask) == 0:
         mask = np.ones(original_array.shape[:2])
 
@@ -70,14 +71,19 @@ def create_segmentation(data):
 
 if __name__ == "__main__":
     # animalの指定
-    animal = "dal"
-    filename = f"static/media/tests/animals/{animal}.jpg"
+    animal = "lion"
+    # 拡張子
+    ends = ["jpg", "jpeg", "png"]
+    # ファイルがあればopenしてdataに
+    for end in ends:
+        filename = f"static/media/tests/animals/{animal}.{end}"
+        if os.path.isfile(filename):
+            with open(filename, "rb") as f:
+                data = f.read()
+            break
+    # print(data, type(data))
 
-    # ファイルの読み込み
-    with open(filename, "rb") as f:
-        data = f.read()
-    print(data, type(data))
-
+    # segmentation
     output = create_segmentation(data)
 
     # セグメンテーションimageを保存する
