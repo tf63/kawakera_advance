@@ -192,3 +192,14 @@ nav .link {
 .flex{
   display: flex;
 }
+
+img{
+  max-width: 100%;
+}
+
+/* タブレット以下の画面幅でのcss */
+@media screen and (max-width: 1280px) {
+  .column2{
+    display: block;
+  }
+}
