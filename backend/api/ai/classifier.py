@@ -2,6 +2,7 @@
 # classify to 1000 ImageNet classes
 import requests
 import os
+import base64
 
 API_URL = "https://api-inference.huggingface.co/models/google/vit-base-patch16-224"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
@@ -40,7 +41,9 @@ if __name__ == "__main__":
                 data = f.read()
             break
 
+    # Base64デコード
+    data64 = base64.b64encode(data)
     # classification
-    score, label = image_classification(filename)
+    score, label = image_classification(data64)
 
     print(score, label)
