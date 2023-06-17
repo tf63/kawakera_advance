@@ -15,16 +15,26 @@ class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
         serializer_category = CategorySerializer(data=data)
-        # serializer_individual = IndividualSerializer(data=data)
         
         if serializer_category.is_valid():
             # Save the record
-            record_category = serializer_category.save()
-            # record_individual = serializer_individual.save()
-            # return Response(serializer_category.data)
-            return Response({"message": "Record created successfully."})
+            record_category = serializer_category.save()            
         else:
             return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        data_indvidual = {
+                                "individual":15, 
+                                "score": 90
+                                }
+        serializer_individual = IndividualSerializer(data=data_indvidual)
+        
+        if serializer_individual.is_valid():
+            record_individual = serializer_individual.save()
+        # return Response(serializer_category.data)
+            return Response({"message": "Record created successfully."})
+        else:
+            return Response(serializer_individual.errors, status=status.HTTP_400_BAD_REQUEST)
+        
         
 class CategoryAPIView(APIView):
     def get(self, request):
