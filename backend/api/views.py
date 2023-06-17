@@ -22,9 +22,11 @@ class ImageAPIView(APIView):
         else:
             return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
         
+        record = Category.objects.get(label="dog")
+        
         data_indvidual = {
-                                "individual":15, 
-                                "score": 90
+                                "individual":record.pk,
+                                "score": 100
                                 }
         serializer_individual = IndividualSerializer(data=data_indvidual)
         
