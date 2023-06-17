@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import devtanuki from '../../public/devtanuki.png'
 
 type AnimalType = {
@@ -14,70 +15,74 @@ type Item = {
     name: string
 }
 
-type SquareProps = {
-    image: string
-}
-
-type GridProps = {
-    items: Item[]
-}
-
-// type Feature = {
-//     hp: string
-//     atk: string
-//     def: string
-//     spatk: string
-//     spdef: string
-//     spd:string
+// const SquareComponent: React.FC<SquareProps> = ({ image }) => {
+//     return (
+//         <div className="square">
+//             <img src={`http://localhost:8000${image}`} alt="Square Image" />
+//         </div>
+//     )
 // }
 
-const SquareComponent: React.FC<SquareProps> = ({ image }) => {
-    return (
-        <div className="square">
-            <img src={`http://localhost:8000${image}`} alt="Square Image" />
-        </div>
-    )
-}
+// const GridComponent: React.FC<GridProps> = ({ items }) => {
+//     return (
+//         <div className="grid-container">
+//             {items.map((item, index) => (
+//                 <SquareComponent key={index} image={item.image} />
+//             ))}
+//         </div>
+//     )
+// }
 
-const GridComponent: React.FC<GridProps> = ({ items }) => {
-    return (
-        <div className="grid-container">
-            {items.map((item, index) => (
-                <SquareComponent key={index} image={item.image} />
-            ))}
-        </div>
-    )
+type Feature = {
+    hp: string
+    atk: string
+    def: string
+    spatk: string
+    spdef: string
+    spd: string
 }
 
 const Detail = () => {
+    const { id } = useParams()
+
     // const [animals, setAnimals] = useState<Item[]>([])
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios('http://localhost:8000/api/animal/')
-            const data = await response.data
-            console.log(data)
-            setAnimals(data)
-        }
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await axios('http://localhost:8000/api/animal/')
+    //         const data = await response.data
+    //         console.log(data)
+    //         setAnimals(data)
+    //     }
 
-        fetchData()
-    }, [])
+    //     fetchData()
+    // }, [])
 
-    // const [features,setFeatures] = useState<Feature[]>([{ hp: '並', atk: '並', def:'並' ,spatk:'並', spdef:'並', spd:'並',}])
-    // const [animal, setAnimal] = useState<Item[]>([{ id: 0, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'animal' }])
+    const [animal, setAnimal] = useState<Item>({
+        id: 222,
+        image: 'http://localhost:8000/media/tests/animals/devtanuki.png',
+        name: 'ねこ'
+    })
 
+    const [featureData, setFeatureData] = useState<Feature>({
+        hp: '並hp',
+        atk: '並atk',
+        def: '並def',
+        spatk: '並spatk',
+        spdef: '並spdef',
+        spd: '並spd'
+    })
 
-    const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
+    // const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
     return (
         <div>
             <div className="card column2">
                 <div>
-                    <img src={sample_animal.image}></img>
+                    <img src={animal.image}></img>
                 </div>
                 <div className="card">
-                    <p>No.{sample_animal.id}</p>
-                    
-                    <h2>{sample_animal.name}</h2>
+                    <p>No.{animal.id}</p>
+                    <h2>{animal.name}</h2>
                     <p>不明</p>
                 </div>
             </div>
@@ -90,37 +95,29 @@ const Detail = () => {
                     <p>特性：ハドロンエンジン</p>
                 </div>
                 <div className="card detail_feature">
-                    {/* {features.map((feature)=>{
-                        return (
-                            <div className="flex">
-                                <p>HP</p>
-                                <p>並</p>
-                            </div>
-                        )
-                    })} */}
                     <div className="flex">
                         <p>HP</p>
-                        <p>並</p>
+                        <p>{featureData.hp}</p>
                     </div>
                     <div className="flex">
                         <p>こうげき</p>
-                        <p>並</p>
+                        <p>{featureData.atk}</p>
                     </div>
                     <div className="flex">
                         <p>ぼうぎょ</p>
-                        <p>並</p>
+                        <p>{featureData.def}</p>
                     </div>
                     <div className="flex">
                         <p>とくこう</p>
-                        <p>並</p>
+                        <p>{featureData.spatk}</p>
                     </div>
                     <div className="flex">
                         <p>とくぼう</p>
-                        <p>並</p>
+                        <p>{featureData.spdef}</p>
                     </div>
                     <div className="flex">
                         <p>すばやさ</p>
-                        <p>並</p>
+                        <p>{featureData.spd}</p>
                     </div>
                 </div>
             </div>
