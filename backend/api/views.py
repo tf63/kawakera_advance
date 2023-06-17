@@ -14,19 +14,21 @@ from .serializers import CategorySerializer, IndividualSerializer
 class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
-        serializer_category = CategorySerializer(data=data)
         
-        if serializer_category.is_valid():
+        data_category = data
+        exists = Category.objects.filter(label="dog").exists()
+        if not exists:
+            serializer_category = CategorySerializer(data=data_category)
+            if serializer_category.is_valid():
             # Save the record
-            record_category = serializer_category.save()            
-        else:
-            return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+                record_category = serializer_category.save()            
+            else:
+                return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
+            
         record = Category.objects.get(label="dog")
-        
         data_indvidual = {
                                 "individual":record.pk,
-                                "score": 100
+                                "score": 110
                                 }
         serializer_individual = IndividualSerializer(data=data_indvidual)
         
