@@ -21,7 +21,27 @@ from django.contrib.postgres.fields import ArrayField
 
 #     def __str__(self):
 #         return f"Record {self.id}"
+
+class Category(models.Model):
+    label = models.CharField(max_length=100, default="")
+    hp = models.PositiveBigIntegerField()
+    attack = models.PositiveBigIntegerField()
+    defence = models.PositiveBigIntegerField()
+    speed = models.PositiveBigIntegerField()
+    magic_attack = models.PositiveBigIntegerField()
+    magic_defence = models.PositiveBigIntegerField()
     
+    def __str__(self):
+        return f"{self.label}"
+
+class Individual(models.Model):
+    individual = models.ForeignKey(Category, on_delete=models.CASCADE)
+    image = models.ImageField()
+    score = models.PositiveBigIntegerField()
+    
+    def __str__(self):
+        return f"{self.score}"
+
     
 class Animal(models.Model):
     name = models.CharField(max_length=100, default="")

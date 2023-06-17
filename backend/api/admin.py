@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Animal
+from .models import Category, Individual
 
 # Register your models here.
-admin.site.register(Animal)
+admin.site.register(Category)
+admin.site.register(Individual)
+
+
