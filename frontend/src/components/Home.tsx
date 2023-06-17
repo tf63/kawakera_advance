@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import devtanuki from '../../public/devtanuki.png'
+import ImageUploadForm from './ImageInput'
 
 type AnimalType = {
     id: number
@@ -78,6 +79,7 @@ const Home = () => {
 
     return (
         <div>
+            <ImageUploadForm />
             <div className="container-center">
                 <PostButton />
                 <RecentComponent items={animals} />
