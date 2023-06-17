@@ -36,16 +36,16 @@ class Category(models.Model):
 
 class Individual(models.Model):
     individual = models.ForeignKey(Category, on_delete=models.CASCADE)
-    # image = models.ImageField()
-    score = models.PositiveBigIntegerField()
+    image = models.ImageField(upload_to="static/media")
+    score = models.PositiveBigIntegerField(default=0)
     
     def __str__(self):
         return f"{self.score}"
 
     
 class Animal(models.Model):
-    name = models.CharField(max_length=100, default="")
-    image = models.ImageField(upload_to="tests/animals/")
+    name = models.CharField(max_length=100, default='default_image.jpg')
+    image = models.ImageField(upload_to="tests/animals/", default='dog.jpg')
     
     def __str__(self):
         return f"{self.name}"

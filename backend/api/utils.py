@@ -1,5 +1,8 @@
 import json
 import os
+import base64
+
+from django.core.files.base import ContentFile
 
 
 def get_words_tabs(text):
@@ -36,3 +39,17 @@ def update_fixture(fields, filename, modelname):
     # JSONファイルへの保存
     with open(filepath, "w") as file:
         json.dump(data, file, indent=4)
+
+
+def convert_to_file(data_base64):
+    """
+    base64の文字列をファイルに変換してseriarizerに渡せる形に変換する関数
+    
+    input: base64で表現された画像
+    output: 画像ファイル
+    """
+    
+    format, imgstr = data_base64.split(';base64,')
+    ext = format.split('/')[-1]
+    image_file = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+    return image_file

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from random import choice
 from string import ascii_lowercase
+import json
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -9,11 +10,14 @@ from rest_framework.response import Response
 from .models import Category, Individual
 from .serializers import CategorySerializer, IndividualSerializer
 
+from .utils import convert_to_file
+
 # def index(request):
 #     return render(request, "index.html")
 class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
+        image = data["image"]
         
         data_category = data
         exists = Category.objects.filter(label="dog").exists()
@@ -26,9 +30,12 @@ class ImageAPIView(APIView):
                 return Response(serializer_category.errors, status=status.HTTP_400_BAD_REQUEST)
             
         record = Category.objects.get(label="dog")
+        
+        image_file = convert_to_file(image)
         data_indvidual = {
                                 "individual":record.pk,
-                                "score": 110
+                                "score": 110,
+                                "image": image_file,
                                 }
         serializer_individual = IndividualSerializer(data=data_indvidual)
         
