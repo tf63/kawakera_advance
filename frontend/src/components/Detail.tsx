@@ -22,6 +22,15 @@ type GridProps = {
     items: Item[]
 }
 
+// type Feature = {
+//     hp: string
+//     atk: string
+//     def: string
+//     spatk: string
+//     spdef: string
+//     spd:string
+// }
+
 const SquareComponent: React.FC<SquareProps> = ({ image }) => {
     return (
         <div className="square">
@@ -41,7 +50,7 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
 }
 
 const Detail = () => {
-    const [animals, setAnimals] = useState<Item[]>([])
+    // const [animals, setAnimals] = useState<Item[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -54,15 +63,21 @@ const Detail = () => {
         fetchData()
     }, [])
 
+    // const [features,setFeatures] = useState<Feature[]>([{ hp: '並', atk: '並', def:'並' ,spatk:'並', spdef:'並', spd:'並',}])
+    // const [animal, setAnimal] = useState<Item[]>([{ id: 0, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'animal' }])
+
+
+    const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
     return (
         <div>
             <div className="card column2">
                 <div>
-                    <img src="http://localhost:8000/media/tests/animals/devtanuki.png"></img>
+                    <img src={sample_animal.image}></img>
                 </div>
                 <div className="card">
-                    <p>No.1008</p>
-                    <h2>ミライドン</h2>
+                    <p>No.{sample_animal.id}</p>
+                    
+                    <h2>{sample_animal.name}</h2>
                     <p>不明</p>
                 </div>
             </div>
@@ -75,20 +90,38 @@ const Detail = () => {
                     <p>特性：ハドロンエンジン</p>
                 </div>
                 <div className="card detail_feature">
+                    {/* {features.map((feature)=>{
+                        return (
+                            <div className="flex">
+                                <p>HP</p>
+                                <p>並</p>
+                            </div>
+                        )
+                    })} */}
                     <div className="flex">
                         <p>HP</p>
                         <p>並</p>
                     </div>
-                    <ul>
-                        <li>
-                            <span>HP</span>普通
-                        </li>
-                        <li>こうげき</li>
-                        <li>ぼうぎょ</li>
-                        <li>とくこう</li>
-                        <li>とくぼう</li>
-                        <li>すばやさ</li>
-                    </ul>
+                    <div className="flex">
+                        <p>こうげき</p>
+                        <p>並</p>
+                    </div>
+                    <div className="flex">
+                        <p>ぼうぎょ</p>
+                        <p>並</p>
+                    </div>
+                    <div className="flex">
+                        <p>とくこう</p>
+                        <p>並</p>
+                    </div>
+                    <div className="flex">
+                        <p>とくぼう</p>
+                        <p>並</p>
+                    </div>
+                    <div className="flex">
+                        <p>すばやさ</p>
+                        <p>並</p>
+                    </div>
                 </div>
             </div>
             <div className="card">
