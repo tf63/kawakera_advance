@@ -2,6 +2,13 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import devtanuki from '../../public/devtanuki.png'
+import devrabbit from '../../public/devrabbit.png'
+import devdog from '../../public/devdog.png'
+import devhamu from '../../public/devhamu.png'
+import devpenpen from '../../public/devpenpen.png'
+
+import ImageUploadForm from './ImageInput'
+import ImageSlider from './ImageSlider'
 
 type AnimalType = {
     id: number
@@ -35,7 +42,18 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
         <div className="container-center">
             <div className="grid-box">
                 {items.map((item, index) => (
-                    <SquareComponent key={index} image={item.image} />
+                    <div className="card square">
+                        <div className="container-center">
+                            <img
+                                src={`http://localhost:8000${item.image}`}
+                                style={{ width: '180px' }}
+                                alt="Square Image"
+                            />
+                        </div>
+                        <div className="container-center">
+                            <p>{item.name}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>
@@ -56,11 +74,15 @@ const RecentComponent: React.FC<GridProps> = ({ items }) => {
     )
 }
 
+const Line = () => {
+    return <div className="line"></div>
+}
+
 const Home = () => {
     const [animals, setAnimals] = useState<Item[]>([])
     // const [animals, setAnimals] = useState<Item[]>([{ id: 0, image: undefined, name: 'animal' }])
     // const [items, setItems] = useState<Item[]>([])
-
+    const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios('http://localhost:8000/api/animal/')
@@ -79,8 +101,13 @@ const Home = () => {
     return (
         <div>
             <div className="container-center">
-                <PostButton />
-                <RecentComponent items={animals} />
+                <h1>Animal GO</h1>
+            </div>
+            <ImageUploadForm />
+            <ImageSlider images={test_slide_images} />
+            <div className="container-center">
+                <div>でぶモン図鑑</div>
+                <div className="line"> </div>
             </div>
             <GridComponent items={animals} />
         </div>

@@ -12,10 +12,11 @@
   outline: none;
   cursor: pointer;
   transition: .2s ease-in-out;
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
     -6px -6px 10px rgba(255, 255, 255, .5),
     6px 6px 8px rgba(255, 255, 255, .075),
-    6px 6px 10px rgba(0, 0, 0, .15);
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
 .card-green {
@@ -59,7 +60,6 @@
   justify-content: center;
   align-items: center;
 }
-
 
 .btn:hover {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
@@ -154,22 +154,6 @@ nav .link {
   /* gap: 5px; */
 }
 
-.square {
-  padding: 2em;
-  margin: 20px;
-  width: 200px;
-  height: 200px;
-  background: #efefef;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20px;
-
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
-    -6px -6px 10px rgba(255, 255, 255, .5),
-    6px 6px 8px rgba(255, 255, 255, .075),
-    6px 6px 10px rgba(0, 0, 0, .15);
-}
 
 .square img {
   max-width: 100%;
@@ -313,4 +297,21 @@ button {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* slide images */
+
+/* line */
+.line {
+
+  box-sizing: border-box;
+
+  width: 931px;
+  height: 7px;
+  left: 283px;
+  top: 828px;
+
+  background: #F1F1F1;
+  box-shadow: inset 4px 4px 10px rgba(136, 136, 136, 0.3);
+  border-radius: 3px;
 }
