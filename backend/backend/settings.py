@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,9 +25,12 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv("DEBUG") == 1:
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,10 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
 
+    # 3rd party
     'rest_framework',
     'corsheaders',
+
+    # Local
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -57,8 +62,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
-
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost'
+)
 # CORS_ORIGIN_WHITELIST = [
 #     'http://localhost:5173',
 #     'http://127.0.0.1:5173',
@@ -151,9 +157,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = "/media/"
 
-# 静的ファイルへのパス
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

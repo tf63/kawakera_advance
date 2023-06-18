@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: containers/django/Dockerfile
+    tty: true
+    volumes:
+      - ./backend:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+    env_file:
+      - .env.prod
+    # entrypoint: containers/django/entrypoint.sh
+
+  postgres:
+    image: postgres:15.2
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    env_file:
+      - .env.prod
+    # options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    ports:
+      - 8888:80
+    volumes:
+      - pgadmin4_data_prod:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    env_file:
+      - .env.prod
+    
+  react:
+    build:
+      context: .
+      dockerfile: containers/react/Dockerfile
+    tty: true
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 5173:5173
+    # command: sh -c "yarn dev"
+
+  web:
+    # コンテナ名をwebに指定
+    container_name: web
+    # NginxのDockerfileをビルドする
+    build:
+      # ビルドコンテキストはカレントディレクトリ
+      context: .
+      dockerfile: containers/nginx/Dockerfile
+    # ボリュームを指定
+    # ローカルの/staticをコンテナの/staticにマウントする
+    volumes:
+      - ./backend/static:/static
+    # ローカルの80番ボートをコンテナの80番ポートとつなぐ
+    ports:
+      - "80:80"
+    # 先にappを起動してからwebを起動する
+    depends_on:
+      - django
+      - react
+volumes:
+  postgres_data_prod:
+  pgadmin4_data_prod:

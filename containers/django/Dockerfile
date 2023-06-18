@@ -9,9 +9,6 @@ WORKDIR /app
 COPY ./containers/django/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# RUN apt-get update && apt-get install -y nodejs npm
-# RUN npm install -g n && n latest
-
 # ユーザー名を指定
 ARG USERNAME=user
 ARG GROUPNAME=user
@@ -38,3 +35,5 @@ RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+
+EXPOSE 8000

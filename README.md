@@ -89,9 +89,16 @@ superuserの作成
     docker compose exec react yarn dev
 ```
 
+本番環境のdocker-compose
+
+```
+    docker compose -f docker-compose.prod.yml up -d
+```
+
 **TypeScriptライブラリ**
 - react-router-dom
 - axios
+- react-slick
 
 ### 参考
 React (TypeScript) チュートリアル
