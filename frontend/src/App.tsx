@@ -12,9 +12,12 @@ import BoxAnimation from './components/Animation/Box'
 import ThrowAnimation from './components/Animation/Throw'
 import SlotMachine from './components/Animation/Slot'
 
+import ScrollTop from './components/ScrollTop'
+
 function App() {
     return (
         <Router>
+            <ScrollTop />
             {/* <Navbar /> */}
             <Routes>
                 {/* Nav */}
