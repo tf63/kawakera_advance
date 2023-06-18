@@ -6,8 +6,8 @@ from string import ascii_lowercase
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Category, Individual
-from .serializers import CategorySerializer, IndividualSerializer
+from .models import Category, Individual, Animal
+from .serializers import CategorySerializer, IndividualSerializer, AnimalSerializer
 
 from .utils import convert_to_file
 import base64
@@ -170,3 +170,28 @@ class CategoryAPIView(APIView):
         #     return Response(
         #         {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
         #     )
+
+
+class AnimalAPIView(APIView):
+    def get(self, request):
+        try:
+            # idの降順で最新の30件を取得
+            queryset = Animal.objects.order_by("-id")[:30]
+            serializer = AnimalSerializer(queryset, many=True)
+
+            return Response(serializer.data)
+        except Exception as e:
+            return Response(
+                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+
+    def post(self, request):
+        data = request.data
+
+        serializer = AnimalSerializer(data=data)
+        if serializer.is_valid():
+            # Save the record
+            record = serializer.save()
+            return Response({"message": "Record created successfully."})
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
