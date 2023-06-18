@@ -5,6 +5,8 @@ out/
 .env.prod
 node_modules/
 prod/
+staticfiles/
+
 # React
 # ---------------------------------------------
 # Logs

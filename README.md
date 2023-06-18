@@ -42,7 +42,7 @@ django secret keyの生成
 
 ### Django (Backend)
 
-プロジェクトの作成
+プロジェクトの作成 (Dockerfileでentrypointを読み込んでるせいで失敗するかも)
 ```
     docker compose exec django django-admin startproject <project_name>
 ```
@@ -65,7 +65,7 @@ superuserの作成
 
 ### React
 
-プロジェクトの作成
+プロジェクトの作成 (docker runでreact単体に対して実行したほうが良いかも)
 
 ```
     docker compose exec react yarn create vite . --template=react-ts

@@ -12,4 +12,3 @@ elif [ $DEBUG = 0 ]; then
     # gunicornを起動させる時はプロジェクト名を指定します
     gunicorn backend.wsgi:application --bind 0.0.0.0:8000
 fi
- 
