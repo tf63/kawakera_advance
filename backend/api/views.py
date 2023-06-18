@@ -11,8 +11,9 @@ from .serializers import CategorySerializer, IndividualSerializer
 
 from .utils import convert_to_file
 import base64
-from .ai.segmentation import create_segmentation
-from .ai.classifier import image_classification
+
+# from .ai.segmentation import create_segmentation
+# from .ai.classifier import image_classification
 
 # from .ai.segmentation import create_segmentation
 # from .ai.chat import chat
@@ -39,13 +40,12 @@ class ImageAPIView(APIView):
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
         exists = Category.objects.filter(label=label).exists()
         if not exists:
-            data_category = {}
+            data_category = {"label": label}
             # ChatGPTに動物名を渡してステータス，生態を取得
             # information = chat(label)
             # data_category ← information
             # ダミー
-            data_category = {
-                "label": label,
+            information = {
                 "hp": 50,
                 "attack": 50,
                 "defence": 50,
@@ -53,6 +53,9 @@ class ImageAPIView(APIView):
                 "magic_attack": 50,
                 "magic_defence": 50,
             }
+
+            data_category.update(information)
+
             serializer_category = CategorySerializer(data=data_category)
             if serializer_category.is_valid():
                 serializer_category.save()
@@ -61,14 +64,22 @@ class ImageAPIView(APIView):
                     serializer_category.errors, status=status.HTTP_400_BAD_REQUEST
                 )
 
-        record = Category.objects.get(label=label)
+        category = Category.objects.get(label=label)
         image_file = convert_to_file(image)
-        data_indvidual = {"category": record.pk, "score": score, "image": image_file}
+        data_indvidual = {"category": category.pk, "score": score, "image": image_file}
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
+        serializer_category = CategorySerializer(category)
         if serializer_individual.is_valid():
             serializer_individual.save()
-            return Response({"message": "Record created successfully."})
+            # return Response({"message": "Record created successfully."})
+            return Response(
+                {
+                    "message": "Record created successfully.",
+                    "category": serializer_category.data,
+                    "individual": serializer_individual.data,
+                }
+            )
         else:
             return Response(
                 serializer_individual.errors, status=status.HTTP_400_BAD_REQUEST
