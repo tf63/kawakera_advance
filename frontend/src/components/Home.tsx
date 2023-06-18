@@ -42,7 +42,18 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
         <div className="container-center">
             <div className="grid-box">
                 {items.map((item, index) => (
-                    <SquareComponent key={index} image={item.image} />
+                    <div className="card square">
+                        <div className="container-center">
+                            <img
+                                src={`http://localhost:8000${item.image}`}
+                                style={{ width: '180px' }}
+                                alt="Square Image"
+                            />
+                        </div>
+                        <div className="container-center">
+                            <p>{item.name}</p>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

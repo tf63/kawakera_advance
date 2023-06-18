@@ -23,15 +23,21 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
     }
 
     return (
-        <div className="card" style={{ width: '500px' }}>
-            <Slider {...sliderSettings}>
-                {images.map((image, index) => (
-                    <div key={index}>
-                        <img src={image} alt={`Image ${index}`} />
-                        <h3 className="container-center">devmon {index}</h3>
-                    </div>
-                ))}
-            </Slider>
+        <div className="container-center">
+            <div className="card slider" style={{ width: '1500px' }}>
+                <Slider {...sliderSettings}>
+                    {images.map((image, index) => (
+                        <div key={index}>
+                            <div className="container-center">
+                                <img src={image} alt={`Image ${index}`} />
+                            </div>
+                            <div className="container-center">
+                                <p>devmon {index}</p>
+                            </div>
+                        </div>
+                    ))}
+                </Slider>
+            </div>
         </div>
     )
 }
