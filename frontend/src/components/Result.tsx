@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import devtanuki from '../../public/devtanuki.png'
 
 type AnimalType = {
@@ -75,8 +75,11 @@ const Result = () => {
 
     // const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
     return (
-        <div>
-            <div className="card column2 result">
+        <div className="wrapper">
+            <div className="result_complete">
+                <h1>分類完了!!</h1>
+            </div>
+            <div className="column2 result">
                 <div className="result_img">
                     <img src={animal.image}></img>
                 </div>
@@ -103,6 +106,11 @@ const Result = () => {
                         <p>-description--description--description--description--description--description-</p>
                     </div>
                 </div>
+            </div>
+            <div className="link_to_home">
+                <Link className="link" to={'/'}>
+                    Homeに戻る
+                </Link>
             </div>
         </div>
     )

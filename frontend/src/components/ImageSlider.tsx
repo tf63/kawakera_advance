@@ -2,6 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { Link } from 'react-router-dom'
 
 interface ImageSliderProps {
     images: string[]
@@ -24,7 +25,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
 
     return (
         <div className="container-center">
-            <div className="card slider" style={{ width: '1500px' }}>
+            <Link to={'detail/1'} className="card slider" style={{ width: '100%' }}>
                 <Slider {...sliderSettings}>
                     {images.map((image, index) => (
                         <div key={index}>
@@ -37,7 +38,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
                         </div>
                     ))}
                 </Slider>
-            </div>
+            </Link>
         </div>
     )
 }

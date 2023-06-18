@@ -9,6 +9,7 @@ import devpenpen from '../../public/devpenpen.png'
 
 import ImageUploadForm from './ImageInput'
 import ImageSlider from './ImageSlider'
+import { Link } from 'react-router-dom'
 
 type AnimalType = {
     id: number
@@ -42,7 +43,7 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
         <div className="container-center">
             <div className="grid-box">
                 {items.map((item, index) => (
-                    <div className="card square">
+                    <Link to={'/detail/1'} className="card square">
                         <div className="container-center">
                             <img
                                 src={`http://localhost:8000${item.image}`}
@@ -53,7 +54,7 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
                         <div className="container-center">
                             <p>{item.name}</p>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
         </div>
@@ -99,14 +100,18 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className="wrapper home">
             <div className="container-center">
                 <h1>Animal GO</h1>
             </div>
             <ImageUploadForm />
+            <div className="toppage_midashi">
+                <p>最近の投稿</p>
+                <div className="line"> </div>
+            </div>
             <ImageSlider images={test_slide_images} />
-            <div className="container-center">
-                <div>でぶモン図鑑</div>
+            <div className="toppage_midashi">
+                <p>動物図鑑</p>
                 <div className="line"> </div>
             </div>
             <GridComponent items={animals} />
