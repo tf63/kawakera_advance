@@ -11,6 +11,8 @@ from .serializers import CategorySerializer, IndividualSerializer
 
 from .utils import convert_to_file
 import base64
+from .ai.segmentation import create_segmentation
+from .ai.classifier import image_classification
 
 # from .ai.segmentation import create_segmentation
 # from .ai.chat import chat
@@ -26,10 +28,13 @@ class ImageAPIView(APIView):
         image = data["image"]
         
         # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
-        # score, label = classifier(image) 
+        # score, label = image_classification(image) 
         # image = create_segmentation(image)
+        
+        score = 90
         label = "dog"
-        image = image
+        image = data["image"]
+
         
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
         exists = Category.objects.filter(label=label).exists()
@@ -47,9 +52,9 @@ class ImageAPIView(APIView):
         record = Category.objects.get(label=label)
         image_file = convert_to_file(image)
         data_indvidual = {
-                                "individual":record.pk,
-                                "score": 110,
-                                "image": image_file,
+                                "category":record.pk,
+                                "score": score,
+                                "image": image_file
                                 }
         serializer_individual = IndividualSerializer(data=data_indvidual)
         
