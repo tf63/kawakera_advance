@@ -5,6 +5,10 @@ Pillow
 tqdm
 flake8
 black
+numpy
+requests
+openai
+deepl
 djangorestframework
 django-cors-headers
 # django-allauth
