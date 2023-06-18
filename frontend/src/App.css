@@ -192,6 +192,45 @@ img {
   max-width: 100%;
 }
 
+/* detail page cssここから*/
+.detail_img{
+  text-align: center;
+}
+/* detail page cssここまで*/
+
+/* resutl page css */
+.result .card div{
+  width: 90%;
+}
+
+.result.card{
+  padding-top: 1.5em !important;
+  padding-bottom: 1.5em;
+}
+
+.result_name{
+  display: flex;
+  align-items: center;
+}
+
+.result_name p{
+  margin-right: 10px;
+}
+
+.card.result_name{
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+
+.result_img img{
+  width: 80%;
+}
+
+.result_img {
+  text-align: center;
+}
+/* resutl page cssここまで */
+
 /* タブレット以下の画面幅でのcss */
 @media screen and (max-width: 1280px) {
   .column2 {
