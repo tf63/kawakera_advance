@@ -35,7 +35,7 @@ class Category(models.Model):
         return f"{self.label}"
 
 class Individual(models.Model):
-    individual = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="static/media")
     score = models.PositiveBigIntegerField(default=0)
     

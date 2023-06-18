@@ -5,7 +5,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'label', 'hp', 'attack', 'defence', 'speed', 'magic_attack', 'magic_defence')
     
 class IndividualAdmin(admin.ModelAdmin):
-    list_display = ('id', 'individual', 'image', 'score')
+    list_display = ('id', 'category', 'image', 'score')
 
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
