@@ -7,16 +7,24 @@ import Detail from './components/Detail'
 import Result from './components/Result'
 import './App.css'
 import Navbar from './components/Navbar'
+import BallAnimation from './components/Animation/Rolling'
+import BoxAnimation from './components/Animation/Box'
+import ThrowAnimation from './components/Animation/Throw'
+import SlotMachine from './components/Animation/Slot'
 
 function App() {
     return (
         <Router>
-            <Navbar />
+            {/* <Navbar /> */}
             <Routes>
                 {/* Nav */}
                 <Route path="/" element={<Home />} />
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/result" element={<Result />} />
+                <Route path="/rolling" element={<BallAnimation />} />
+                <Route path="/box" element={<BoxAnimation />} />
+                <Route path="/throw" element={<ThrowAnimation />} />
+                <Route path="/slot" element={<SlotMachine />} />
             </Routes>
         </Router>
     )
