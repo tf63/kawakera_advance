@@ -60,7 +60,6 @@
   align-items: center;
 }
 
-
 .btn:hover {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
     -2px -2px 4px rgba(255, 255, 255, .4),
@@ -275,3 +274,10 @@ button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+/* slide images */
+/* .slick-track div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

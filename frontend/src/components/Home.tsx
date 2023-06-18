@@ -2,7 +2,13 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import devtanuki from '../../public/devtanuki.png'
+import devrabbit from '../../public/devrabbit.png'
+import devdog from '../../public/devdog.png'
+import devhamu from '../../public/devhamu.png'
+import devpenpen from '../../public/devpenpen.png'
+
 import ImageUploadForm from './ImageInput'
+import ImageSlider from './ImageSlider'
 
 type AnimalType = {
     id: number
@@ -61,7 +67,7 @@ const Home = () => {
     const [animals, setAnimals] = useState<Item[]>([])
     // const [animals, setAnimals] = useState<Item[]>([{ id: 0, image: undefined, name: 'animal' }])
     // const [items, setItems] = useState<Item[]>([])
-
+    const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
     useEffect(() => {
         const fetchData = async () => {
             const response = await axios('http://localhost:8000/api/animal/')
@@ -79,11 +85,11 @@ const Home = () => {
 
     return (
         <div>
-            <ImageUploadForm />
             <div className="container-center">
-                <PostButton />
-                <RecentComponent items={animals} />
+                <h1>Animal GO</h1>
             </div>
+            <ImageUploadForm />
+            <ImageSlider images={test_slide_images} />
             <GridComponent items={animals} />
         </div>
     )
