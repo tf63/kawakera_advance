@@ -42,7 +42,7 @@ type Feature = {
     spd: string
 }
 
-const Detail = () => {
+const Result = () => {
     const { id } = useParams()
 
     // const [animals, setAnimals] = useState<Item[]>([])
@@ -77,63 +77,35 @@ const Detail = () => {
     return (
         <div className="wrapper">
             <div className="result_complete">
-                <h1>動物詳細</h1>
+                <h1>分類完了!!</h1>
             </div>
-            <div className="card column2">
-                <div className="detail_img">
+            <div className="column2 result">
+                <div className="result_img">
                     <img src={animal.image}></img>
                 </div>
                 <div className="card">
-                    <p>No.{animal.id}</p>
-                    <h2>{animal.name}</h2>
-                    <p>不明</p>
-                </div>
-            </div>
-            <div className="column2">
-                <div className="card">
-                    <p>分類：パラドックスポケモン</p>
-                    <p>電気・ドラゴン</p>
-                    <p>高さ3.5m</p>
-                    <p>重さ240.0kg </p>
-                    <p>特性：ハドロンエンジン</p>
-                </div>
-                <div className="card detail_feature">
-                    <div className="flex">
-                        <p>HP</p>
-                        <p>{featureData.hp}</p>
+                    <div className="card result_name">
+                        <p>No.{animal.id}</p>
+                        <h2>{animal.name}</h2>
                     </div>
-                    <div className="flex">
-                        <p>こうげき</p>
-                        <p>{featureData.atk}</p>
+                    <div className="card">
+                        <div className="flex">
+                            <p>type:</p>
+                            <p>normal</p>
+                        </div>
+                        <div className="flex">
+                            <p>height:</p>
+                            <p>2.1m</p>
+                        </div>
+                        <div className="flex">
+                            <p>weight:</p>
+                            <p>460.0kg</p>
+                        </div>
                     </div>
-                    <div className="flex">
-                        <p>ぼうぎょ</p>
-                        <p>{featureData.def}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくこう</p>
-                        <p>{featureData.spatk}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくぼう</p>
-                        <p>{featureData.spdef}</p>
-                    </div>
-                    <div className="flex">
-                        <p>すばやさ</p>
-                        <p>{featureData.spd}</p>
+                    <div className="card">
+                        <p>-description--description--description--description--description--description-</p>
                     </div>
                 </div>
-            </div>
-            <div className="card">
-                <p>説明文説明文説明文説明文</p>
-            </div>
-            <div className="card">
-                <h2>進化</h2>
-                <p>進化しない</p>
-            </div>
-            <div className="card">
-                <h2>すがた</h2>
-                <p>なし</p>
             </div>
             <div className="link_to_home">
                 <Link className="link" to={'/'}>
@@ -144,4 +116,4 @@ const Detail = () => {
     )
 }
 
-export default Detail
+export default Result
