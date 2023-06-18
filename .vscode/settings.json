@@ -18,5 +18,4 @@
     // ファイル保存時にLintを実行するかどうか
     "python.linting.lintOnSave": true,
     // Pythonコードの整形に何を使用するか
-    "python.formatting.provider": "none",
 }
