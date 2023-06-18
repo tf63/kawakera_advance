@@ -74,6 +74,10 @@ const RecentComponent: React.FC<GridProps> = ({ items }) => {
     )
 }
 
+const Line = () => {
+    return <div className="line"></div>
+}
+
 const Home = () => {
     const [animals, setAnimals] = useState<Item[]>([])
     // const [animals, setAnimals] = useState<Item[]>([{ id: 0, image: undefined, name: 'animal' }])
@@ -101,6 +105,10 @@ const Home = () => {
             </div>
             <ImageUploadForm />
             <ImageSlider images={test_slide_images} />
+            <div className="container-center">
+                <div>でぶモン図鑑</div>
+                <div className="line"> </div>
+            </div>
             <GridComponent items={animals} />
         </div>
     )
