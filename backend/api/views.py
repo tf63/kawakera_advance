@@ -78,48 +78,65 @@ class ImageAPIView(APIView):
 class CategoryAPIView(APIView):
     def get(self, request):
         response_data = []
+        try:
+            label = request.GET.get("label")
+            # カテゴリ情報
+            category = Category.objects.all()
+            individuals = Individual.objects.all()
 
-        # カテゴリ情報
-        categories = Category.objects.all()
-        serializer_category = CategorySerializer(categories, many=True)
-        response_data.append({"categories": serializer_category.data})
+            if label:
+                category = category.filter(label=label)
+                # print(category[0].hp)
+                individuals = individuals.filter(category_id=category.first().id)
 
-        # 全カテゴリーのトップスコアの画像
-        top_images = {}
-        for category in categories:
-            try:
-                individual = category.individual_set.order_by("-score", "id").first()
-            except individual.DoesNotExist:
-                continue
-            if individual and individual.image:
-                serializer_individual = IndividualSerializer(individual)
-                # base64_image = base64.b16encode(image_data).decode("utf-8")
-                top_images[category.id] = {
-                    "label": category.label,
-                    "image": serializer_individual.data["image"],
-                }
-        response_data.append({"top_images": top_images})
+            serializer_category = CategorySerializer(category, many=True)
+            serializer_individual = IndividualSerializer(individuals, many=True)
 
-        # 最近
-        latest_individuals = Individual.objects.order_by("-id")[:5]
-        serializer_individual = IndividualSerializer(latest_individuals, many=True)
-        response_data.append({"latest_individuals": serializer_individual.data})
+            response_data.append({"category": serializer_category.data})
+            response_data.append({"individuals": serializer_individual.data})
 
-        # 特定のidを持つカテゴリのレコード
-        # ---------------------------------------------------------------------------
-        id = 15
-        # ---------------------------------------------------------------------------
-        animals = {}
-        individuals = Individual.objects.filter(category_id=id).order_by("-score")
-        for individual in individuals:
-            serializer_individual = IndividualSerializer(individual)
-            animals[individual.id] = {
-                "image": serializer_individual.data["image"],
-                "score": serializer_individual.data["score"],
-            }
-        response_data.append({"individuals": animals})
+            # # 全カテゴリーのトップスコアの画像
+            # top_images = {}
+            # for category in categories:
+            #     try:
+            #         individual = category.individual_set.order_by(
+            #             "-score", "id"
+            #         ).first()
+            #     except individual.DoesNotExist:
+            #         continue
+            #     if individual and individual.image:
+            #         serializer_individual = IndividualSerializer(individual)
+            #         # base64_image = base64.b16encode(image_data).decode("utf-8")
+            #         top_images[category.id] = {
+            #             "label": category.label,
+            #             "image": serializer_individual.data["image"],
+            #         }
+            # response_data.append({"top_images": top_images})
 
-        return Response(response_data)
+            # # 最近
+            # latest_individuals = Individual.objects.order_by("-id")[:5]
+            # serializer_individual = IndividualSerializer(latest_individuals, many=True)
+            # response_data.append({"latest_individuals": serializer_individual.data})
+
+            # # 特定のidを持つカテゴリのレコード
+            # # ---------------------------------------------------------------------------
+            # id = 15
+            # # ---------------------------------------------------------------------------
+            # animals = {}
+            # individuals = Individual.objects.filter(category_id=id).order_by("-score")
+            # for individual in individuals:
+            #     serializer_individual = IndividualSerializer(individual)
+            #     animals[individual.id] = {
+            #         "image": serializer_individual.data["image"],
+            #         "score": serializer_individual.data["score"],
+            #     }
+            # response_data.append({"individuals": animals})
+
+            return Response(response_data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(
+                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
         # ---------------------------------------------------------------------------
 
         # try:
