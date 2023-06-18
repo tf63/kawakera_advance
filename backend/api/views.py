@@ -24,7 +24,6 @@ from .ai.classifier import image_classification
 class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
-
         # 画像の読み込み
         image = data["image"]
 
@@ -32,8 +31,9 @@ class ImageAPIView(APIView):
         # score, label = image_classification(image)
         # image = create_segmentation(image)
 
-        score = 90
-        label = "dog"
+        # ダミー
+        score = 70
+        label = "bird"
         image = data["image"]
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
@@ -43,6 +43,16 @@ class ImageAPIView(APIView):
             # ChatGPTに動物名を渡してステータス，生態を取得
             # information = chat(label)
             # data_category ← information
+            # ダミー
+            data_category = {
+                "label": label,
+                "hp": 50,
+                "attack": 50,
+                "defence": 50,
+                "speed": 50,
+                "magic_attack": 50,
+                "magic_defence": 50,
+            }
             serializer_category = CategorySerializer(data=data_category)
             if serializer_category.is_valid():
                 serializer_category.save()
