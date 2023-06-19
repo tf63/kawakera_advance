@@ -25,6 +25,8 @@ from django.contrib.postgres.fields import ArrayField
 
 class Category(models.Model):
     label = models.CharField(max_length=100, default="")
+    trivia = models.TextField(default="")
+    ecology = models.TextField(default="")
     hp = models.PositiveBigIntegerField()
     attack = models.PositiveBigIntegerField()
     defence = models.PositiveBigIntegerField()
