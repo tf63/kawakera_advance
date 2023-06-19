@@ -1,79 +1,44 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import devtanuki from '../../public/devtanuki.png'
-
-type AnimalType = {
-    id: number
-    name: string
-}
-
-type Item = {
-    id: number
-    image: string
-    name: string
-}
-
-// const SquareComponent: React.FC<SquareProps> = ({ image }) => {
-//     return (
-//         <div className="square">
-//             <img src={`http://localhost:8000${image}`} alt="Square Image" />
-//         </div>
-//     )
-// }
-
-// const GridComponent: React.FC<GridProps> = ({ items }) => {
-//     return (
-//         <div className="grid-container">
-//             {items.map((item, index) => (
-//                 <SquareComponent key={index} image={item.image} />
-//             ))}
-//         </div>
-//     )
-// }
-
-type Feature = {
-    hp: string
-    atk: string
-    def: string
-    spatk: string
-    spdef: string
-    spd: string
-}
+import { CategoryDetail, Individual } from '../types/types'
+import { CategoryDetailAPI } from '../interfaces/interfaces'
+import { API_ENDPOINTS } from '../api'
 
 const Detail = () => {
     const { id } = useParams()
+    // const id = 1
 
-    // const [animals, setAnimals] = useState<Item[]>([])
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await axios('http://localhost:8000/api/animal/')
-    //         const data = await response.data
-    //         console.log(data)
-    //         setAnimals(data)
-    //     }
-
-    //     fetchData()
-    // }, [])
-
-    const [animal, setAnimal] = useState<Item>({
-        id: 222,
-        image: 'http://localhost:8080/media/tests/animals/devtanuki.png',
-        name: 'ねこ'
+    const [categoryDetail, setCategoryDetail] = useState<CategoryDetail>({
+        id: 0,
+        label: '',
+        hp: 0,
+        attack: 0,
+        defence: 0,
+        speed: 0,
+        magic_attack: 0,
+        magic_defence: 0
     })
 
-    const [featureData, setFeatureData] = useState<Feature>({
-        hp: '並hp',
-        atk: '並atk',
-        def: '並def',
-        spatk: '並spatk',
-        spdef: '並spdef',
-        spd: '並spd'
-    })
+    const [individuals, setIndividuals] = useState<Individual[]>([])
 
-    // const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios(`${API_ENDPOINTS.CATEGORY}?id=${id}`)
+            const data: CategoryDetailAPI = await response.data
+            console.log(data)
+            setCategoryDetail(data.category)
+            setIndividuals(data.individuals)
+        }
+
+        fetchData()
+    }, [])
+
+    if (individuals.length == 0) {
+        return <div className="card">Loading...</div>
+    }
+
     return (
         <div className="wrapper">
             <div className="result_complete">
@@ -81,11 +46,11 @@ const Detail = () => {
             </div>
             <div className="card column2">
                 <div className="detail_img">
-                    <img src={animal.image}></img>
+                    <img src={`${API_ENDPOINTS.BASE}${individuals[0].image}`}></img>
                 </div>
                 <div className="card">
-                    <p>No.{animal.id}</p>
-                    <h2>{animal.name}</h2>
+                    <p>No.{categoryDetail.id}</p>
+                    <h2>{categoryDetail.label}</h2>
                     <p>不明</p>
                 </div>
             </div>
@@ -100,27 +65,27 @@ const Detail = () => {
                 <div className="card detail_feature">
                     <div className="flex">
                         <p>HP</p>
-                        <p>{featureData.hp}</p>
+                        <p>{categoryDetail.hp}</p>
                     </div>
                     <div className="flex">
                         <p>こうげき</p>
-                        <p>{featureData.atk}</p>
+                        <p>{categoryDetail.attack}</p>
                     </div>
                     <div className="flex">
                         <p>ぼうぎょ</p>
-                        <p>{featureData.def}</p>
+                        <p>{categoryDetail.defence}</p>
                     </div>
                     <div className="flex">
                         <p>とくこう</p>
-                        <p>{featureData.spatk}</p>
+                        <p>{categoryDetail.magic_attack}</p>
                     </div>
                     <div className="flex">
                         <p>とくぼう</p>
-                        <p>{featureData.spdef}</p>
+                        <p>{categoryDetail.magic_defence}</p>
                     </div>
                     <div className="flex">
                         <p>すばやさ</p>
-                        <p>{featureData.spd}</p>
+                        <p>{categoryDetail.speed}</p>
                     </div>
                 </div>
             </div>

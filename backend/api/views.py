@@ -107,7 +107,7 @@ class CategoryAPIView(APIView):
                 serializer_category = CategorySerializer(categories, many=True)
                 serializer_individual = IndividualSerializer(individuals, many=True)
 
-                response_data["category"] = serializer_category.data
+                response_data["category"] = serializer_category.data[0]
                 response_data["individuals"] = serializer_individual.data
             # ラベルが指定されていなかった場合
             else:

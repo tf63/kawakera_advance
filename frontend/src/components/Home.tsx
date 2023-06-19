@@ -1,58 +1,37 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React from 'react'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import devtanuki from '../../public/devtanuki.png'
 import devrabbit from '../../public/devrabbit.png'
 import devdog from '../../public/devdog.png'
 import devhamu from '../../public/devhamu.png'
 import devpenpen from '../../public/devpenpen.png'
 
+import { API_ENDPOINTS } from '../api'
 import ImageUploadForm from './ImageInput'
 import ImageSlider from './ImageSlider'
-import { Link } from 'react-router-dom'
 
-type AnimalType = {
-    id: number
-    name: string
-}
+import { Category, Individual } from '../types/types'
+import { CategoryAPI, GridProps } from '../interfaces/interfaces'
 
-type Item = {
-    id: number
-    image: string
-    name: string
-}
-
-type SquareProps = {
-    image: string
-}
-
-type GridProps = {
-    items: Item[]
-}
-
-const SquareComponent: React.FC<SquareProps> = ({ image }) => {
-    return (
-        <div className="card square container-center">
-            <img src={`http://localhost:8080${image}`} alt="Square Image" />
-        </div>
-    )
-}
-
-const GridComponent: React.FC<GridProps> = ({ items }) => {
+const GridComponent: React.FC<GridProps> = ({ categories }) => {
     return (
         <div className="container-center">
             <div className="grid-box">
-                {items.map((item, index) => (
+                {/* container-centerを2つならべて使ってるのは汚い気がする */}
+                {categories.map((category, index) => (
                     <Link to={'/detail/1'} className="card square" key={index}>
                         <div className="container-center">
                             <img
-                                src={`http://localhost:8080${item.image}`}
+                                src={`${API_ENDPOINTS.BASE}${category.image}`}
                                 style={{ width: '180px' }}
-                                alt="Square Image"
+                                alt={category.label}
                             />
                         </div>
                         <div className="container-center">
-                            <p>{item.name}</p>
+                            <p>{category.label}</p>
                         </div>
                     </Link>
                 ))}
@@ -61,42 +40,26 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
     )
 }
 
-const PostButton = () => {
-    return <div className="post-button container-center card circle">投稿ボタン</div>
-}
-
-const RecentComponent: React.FC<GridProps> = ({ items }) => {
-    return (
-        <div className="container-center">
-            <div className="card">
-                <img src={`http://localhost:8000${items[1].image}`} alt="Square Image" />
-            </div>
-        </div>
-    )
-}
-
-const Line = () => {
-    return <div className="line"></div>
-}
-
 const Home = () => {
-    const [animals, setAnimals] = useState<Item[]>([])
-    // const [animals, setAnimals] = useState<Item[]>([{ id: 0, image: undefined, name: 'animal' }])
-    // const [items, setItems] = useState<Item[]>([])
-    const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
+    const [categories, setCategories] = useState<Category[]>([])
+    const [recentIndividuals, setRecentIndividuals] = useState<Individual[]>([])
+
+    // const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
+
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios('http://localhost:8080/api/animal/')
-            const data = await response.data
+            const response = await axios(API_ENDPOINTS.CATEGORY)
+            const data: CategoryAPI = await response.data
             console.log(data)
-            setAnimals(data)
+            setCategories(data.top_images)
+            setRecentIndividuals(data.latest_individuals)
         }
 
         fetchData()
     }, [])
 
-    if (animals.length == 0) {
-        return <div>Loading...</div>
+    if (categories.length == 0) {
+        return <div className="card">Loading...</div>
     }
 
     return (
@@ -109,12 +72,12 @@ const Home = () => {
                 <p>最近の投稿</p>
                 <div className="line"> </div>
             </div>
-            <ImageSlider images={test_slide_images} />
+            <ImageSlider individuals={recentIndividuals} />
             <div className="toppage_midashi">
                 <p>動物図鑑</p>
                 <div className="line"> </div>
             </div>
-            <GridComponent items={animals} />
+            <GridComponent categories={categories} />
         </div>
     )
 }
