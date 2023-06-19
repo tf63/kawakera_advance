@@ -23,22 +23,24 @@ const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
 
     return (
         <div className="container-center">
-            <Link to={'detail/1'} className="card slider" style={{ width: '100%' }}>
+            <div className="card slider" style={{ width: '100%' }}>
                 <Slider {...sliderSettings}>
                     {individuals.map((individual, index) => (
-                        <div key={index}>
-                            <div className="container-center">
-                                <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
+                        <Link to={`detail/${individual.id}`}>
+                            <div key={index}>
+                                <div className="container-center">
+                                    <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
+                                </div>
+                                <div className="container-center">
+                                    <p className="link">
+                                        devmon {individual.id}: ({individual.score})
+                                    </p>
+                                </div>
                             </div>
-                            <div className="container-center">
-                                <p>
-                                    devmon {individual.id}: ({individual.score})
-                                </p>
-                            </div>
-                        </div>
+                        </Link>
                     ))}
                 </Slider>
-            </Link>
+            </div>
         </div>
     )
 }
