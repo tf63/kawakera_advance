@@ -19,7 +19,29 @@
   box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
-.home .card{
+.box {
+  padding: 2em;
+  margin: 30px 10px;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
+  color: #888888;
+  font-size: 1rem;
+  letter-spacing: .2rem;
+  text-align: left;
+  text-shadow: 1px 1px #eee;
+  outline: none;
+  /* cursor: pointer; */
+  transition: .2s ease-in-out;
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: inset -4px -4px 10px #FFFFFF, inset 4px 4px 10px rgba(102, 102, 102, 0.3);
+}
+
+
+.home .card {
   cursor: pointer;
 }
 
@@ -181,56 +203,58 @@ img {
 }
 
 /* detail page cssここから*/
-.detail_img{
+.detail_img {
   text-align: center;
 }
+
 /* detail page cssここまで*/
 
 /* resutl page css */
-.result_complete{
+.result_complete {
   display: flex;
   justify-content: center;
 }
 
-.result_complete h1{
+.result_complete h1 {
   font-size: 42px;
   font-weight: bold;
 }
 
-.result{
+.result {
   margin-top: 20px;
 }
 
-.result .card div{
+.result .card div {
   width: 90%;
 }
 
-.result.card{
+.result.card {
   padding-top: 1.5em !important;
   padding-bottom: 1.5em;
 }
 
-.result_name{
+.result_name {
   display: flex;
   align-items: center;
 }
 
-.result_name p{
+.result_name p {
   margin-right: 10px;
 }
 
-.card.result_name{
+.card.result_name {
   padding-top: 0.1em;
   padding-bottom: 0.1em;
 }
 
-.result_img img{
+.result_img img {
   width: 80%;
 }
 
 .result_img {
   text-align: center;
 }
+
 /* resutl page cssここまで */
 
 /* タブレット以下の画面幅でのcss */
@@ -332,7 +356,7 @@ button:disabled {
   margin-top: 0;
 }
 
-.card.slider{
+.card.slider {
   padding-right: 0;
   padding-left: 0;
 }
@@ -347,36 +371,36 @@ button:disabled {
 }
 
 /* top page */
-.toppage_midashi{
+.toppage_midashi {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.toppage_midashi p{
+.toppage_midashi p {
   min-width: 160px;
   font-size: 32px;
   margin: 0px 10px;
 }
 
-.toppage_midashi .line{
+.toppage_midashi .line {
   margin: 0px 10px;
 }
 
-.wrapper{
+.wrapper {
   width: 90%;
   max-width: 1800px;
   margin: auto;
 }
 
 /* link_to_home */
-.link_to_home{
+.link_to_home {
   text-align: right;
   margin-bottom: 25px;
 }
 
-.link_to_home .link{
+.link_to_home .link {
   margin-right: 70px;
   font-size: 20px;
   text-decoration: underline;
