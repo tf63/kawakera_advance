@@ -1,5 +1,6 @@
 import openai
 import os
+import json
 
 # OpenAIのAPIキーを取得
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -10,7 +11,7 @@ openai.api_key = OPENAI_API_KEY
 
 # Chatを行うためのクラス作成
 class Chatgpt:
-    def __init__(self, system_setting, temperature=0.7):
+    def __init__(self, system_setting, temperature=1):
         self.system = {"role": "system", "content": system_setting}
         self.input_list = [self.system]
         self.logs = []
@@ -32,225 +33,42 @@ class Chatgpt:
 # 動物名から豆知識と食べ物，生態地域，豆知識を生成
 def chat_knowledge(animal_name):
     system_setting = """\
-        ####Settings###
-        You are a scholar who knows a lot about animals. You have a wealth of knowledge about what animals eat, where they live, and trivia about them.
+        ### setting ###
+        You are a scholar who knows much about animals and a Pokémon lover.  You have a wealth of knowledge about what animals eat, where they live, and trivia about them. You are tempted to compare animals to Pokémon.
 
-        ######Status###.
-        You are about to be asked a question by a curious user about what animals eat, where they live, and trivia about animals.
+        ### status ###
+        You receive the name of the animal from the user. You are to respond with the animal's food, place of residence, trivia, one or two types you think apply to it, and predict the base status. You are to respond with the animal's food, place of residence, trivia, the type, and the base status in JSON format {"ecology":"what animals eat, and where animals live", "trivia":"animal's trivia", "type": "the animal's type you think",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""} or {"type": "the first animal's type you think, the second animal's type you think",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "Speed":""}.
 
-        ######Requirement###.
-        Please answer the user's questions.
+        ### Requirements ###
+        Please answer the user's questions. You must output your answer in JSON format so the value is in Japanese.
 
-        Here are some examples
+        Here are some examples.
 
         Example 1
-        user: Tell me what zebras eat.
-        assistant: Zebras feed primarily on grasses, leaves, twigs, tree bark, and fruit. Because they live in grasslands and savannas, they subsist primarily on grasses. Occasionally, they chew on branches and bark to replenish their nutritional needs. Fruits vary depending on the time of year, but they prefer to eat mangoes, apples, and bananas.
-        user:Tell mr where the zebras live.
-        assistant:Zebras are found in the grasslands and savanna regions of Africa. Specifically, the Masai Mara and Serengeti in East Africa, Kruger National Park in South Africa, and Etosha National Park in Namibia are known as typical habitats.
-        user: Tell us some interesting trivia about zebras.
-        assistant: Zebras are believed to be the fastest runners compared to other herbivores living in the same savanna. Zebras have distinctive black and white stripes on their body surface, and the shape and size of the stripes are known to vary from individual to individual. Some believe that the stripes on zebras have the effect of keeping mosquitoes, flies, and other biting insects away. Zebras live in herds and are known to reciprocate each other's behavior within the herd. It is also believed that when on alert, the entire herd may change direction at once. Zebras are herbivores, feeding primarily on grasses and leaves. Zebras are found over a wide area of the African continent, although their populations are declining in some areas.
+        user:cat
+        assistant:{"ecology":"猫は世界中に広く分布し、個人宅飼いや野良猫として生活しています。主に肉食で、小型哺乳類や鳥類を食べます。", "trivia":"猫は一日の14〜16時間を寝て過ごしています。また、猫は舐めることで毛づくろいをし、体を清潔に保ちます。", "type":"ノーマル", "hp":"82", "attack":"55", "defense":37", "magic_attack":"39", "magic_defense:"76", "speed":"95"}.
 
         Example 2
-        user: Tell me what lions eat.
-        assistant: They eat bamboo shoots and bamboo shoots as well as bamboo shoots and bamboo grass. It has been recorded that it sometimes catches and eats small animals such as insects.
-        user:Tell mr where the lions live.
-        assistant:Lions are found on the African continent and parts of India. On the African continent, they inhabit a wide range south of the Sahara Desert. Typical habitats include the Serengeti and Masai Mara in East Africa, Kruger National Park in South Africa, and the Okavango Delta in Botswana. In India, they are found in Gujarat, Rajasthan, Madhya Pradesh, Uttar Pradesh, and Himachal Pradesh. However, the Indian lion is globally listed as an endangered species and is currently protected in the Girard Lion Sanctuary in Gujarat.
-        user: Tell us some interesting trivia about lions.
-        assistant: The male lion's mane is known to vary in size and density depending on the individual's health and genetic factors. Lion males are larger and stronger because they are primarily engaged in hunting, but females play an important role in the actual hunting. Most lions are nocturnal and rest during the day. Lions spend roughly nearly 18 hours a day sleeping. The African species of lion is one of the largest cats, while the Indian species is somewhat smaller than the African species. Despite their large size, lions can run at speeds of over 60 kilometers per hour. Compared to other animals, including humans, lions have relatively short body hair, which allows them to better regulate their body temperature during the summer months.
+        user:crocodile
+        assistant:{"ecology":"ワニは世界の熱帯地方に広く分布しており、河川や湖沼などの、淡水や汽水域に生息しています。幼体は昆虫、小魚等を食べて育ちます。成体は肉食で、サワガニやカメ、水鳥等を食べます。", "trivia":"ワニは魚を捕まえるときに、口を大きく開けて威嚇する行動をとります。この時の口の大きさは、実際の飲み込める大きさの3倍もあるとされています。また、ワニは空気を貯めることができるため、30分以上も水中に潜ることができます。", "type":"じめん,あく", "hp":"95", "attack":"125", "defense":"100", "magic_attack":"55", "magic_defense:"75", "speed":"45"}
 
         Example 3
-        user: Tell me what giraffes eat.
-        assistant: Giraffes are herbivores that feed primarily on tree leaves. Giraffes have very long necks that have evolved to reach the leaves of tall trees. Giraffes also occasionally eat tree bark, branches, and fruit. Although giraffes are herbivores, they will sometimes eat the bones of dead animals to replenish their bones and horns as needed.
-        user:Tell mr where the giraffes live.
-        assistant:Giraffes inhabit a wide range of habitats across the African continent. They inhabit a wide range of habitats, from tropical rainforests to savannas, where there are suitable forests and savanna grasslands.
-        user: Tell us some interesting trivia about giraffes.
-        assistant: Giraffes have seven neck bones, the same number as human neck bones, but each bone is more than 45 cm long on average. Giraffes are among the tallest land animals in existence, and can reach a height of 5 to 6 meters as adults. Utilizing their long necks and legs, giraffes can run at speeds of over 60 kilometers per hour. Giraffes are known to sleep for only 30 minutes to an hour at a time, requiring long periods of sleep to avoid nocturnal predator attacks. Compared to other animals sharing the same grasslands, giraffes are relatively calm and sociable, as they face fewer threats from large predators.
-        """
-    chatgpt = Chatgpt(system_setting)
-    question_food = f"Tell us what {animal_name} eat."
-    chatgpt.input_message(question_food)
-    food = chatgpt.input_list[-1]["content"]
-    question_area = f"Tell us where the {animal_name} live."
-    chatgpt.input_message(question_area)
-    area = chatgpt.input_list[-1]["content"]
-    # question_trivia = f"Tell me some trivia about {animal_name}"
-    question_trivia = f"""
-    tell me some interesting tidbits about {animal_name}. Please output only bullet points as the output needs to be concise. The output should be bulleted and each sentence should end with an '\r\n'.
-    Here are some examples
-    - Pandas have a unique thumb-like structure on their front paws that helps them grasp bamboo.'\r\n'
-    - They have a special digestive system that allows them to break down cellulose in bamboo.'\r\n'
-    - Despite their large size and strength, pandas are very good tree climbers.
-    - Pandas are known for their distinctive black and white markings, which help them blend in with their surroundings.'\r\n'
-    - They are classified as a vulnerable species due to habitat loss and low birth rates.
-    - Pandas have a very low reproductive rate, with females only giving birth to one cub every two to three years.'\r\n'
-    - They have a special adaptation in their throat that allows them to vocalize in a way that helps them communicate with other pandas over long distances.'\r\n'
-    - Pandas are considered to be a symbol of peace and friendship in Chinese culture.'\r\n'
+        user:elephant
+        assistant:{"ecology":"象はアフリカ象、インド象に分かれ、アフリカやアジアに生息しています。日本では草食獣と思われますが、実際には鼻を使って木の皮、根、芽、果実等を食べます。", "trivia":"象の鼻は、とても力強く、木を引き抜いたり、川を渡りながら泳ぐことができます。象は非常に社交的で、親密な仲間とは、鼻を触れあわせたり、耳をたたいたり、尻尾を振ったりしてコミュニケーションをとります。", "type":"じめん", "hp":"150", "attack":"120", "defense":"120", "magic_attack":"50", "magic_defense:"60", "speed":"50"}
+
+        Example 4
+        user:lion
+        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "special_attack":"60", "special_defense":"80", "speed":"120"}
     """
-    chatgpt.input_message(question_trivia)
-    trivia = chatgpt.input_list[-1]["content"]
-    knowledge = {
-        "name": animal_name,
-        "food": food,
-        "area": area,
-        "mame": trivia,
-    }
-    return knowledge
-
-
-# # contextからなんの動物か推論する
-# def chat_inference(context):
-#     """
-#     _summary_ : contextからなんの動物かを推論する関数
-
-#     Parameters
-#     --------------------------------
-#     context : string
-#         画像を表現するテキスト
-
-#     Returns
-#     --------------------------------
-#     output : string
-#         テキストから推論した動物名
-
-#     """
-
-#     # Chatgptにシステム設定のためのプロンプト
-#     system_setting = """\
-#         ####Settings###
-#         You are a scholar who knows animals.
-
-#         ####Situation###
-#         You receive a text from a user that describes an image of an animal
-
-#         ####Request###
-#         Please use the following format in your response
-#         [name]: "animal name"
-#         Please determine the animal most likely to be in the image based on the text you received from the user, step by step.
-#         Please output the name of the animal you have determined according to the format.
-
-#         Here are some examples
-
-#         Example 1
-#         user:a medium-sized dog breed with a short, white coat covered in black spots
-#         assistant: [name] Dalmatian
-
-#         Example 2
-#         user: a black and white dog standing on top of a grass covered field, a picture by Toyen
-#         assistant: [name] Shiba Inu
-
-#         ###Note###
-#         The answer absolutly must output only the animal name
-#         """
-#     # Chatgptクラスのインスタンス
-#     chatgpt = Chatgpt(system_setting)
-#     chatgpt.input_message(context)
-#     animal_name = chatgpt.input_list[-1]["content"]
-#     animal_name = animal_name[8:]
-#     return animal_name
-
-
-# # 動物名から食べるものを生成
-# def chat_food(animal_name):
-#     system_setting = """\
-#         ####Settings###
-#         You are a scholar who knows animals.
-
-#         ####Situation###.
-#         A question from a user who is curious about animals about what the animals eat
-
-#         ####Request###.
-#         Please answer the user's question.
-#         Here are some examples
-
-#         Example 1
-#         user: Tell us where the lion live.
-#         assistant: Eats large mammals such as zebras, wild boars, gnus, antelopes, etc.
-
-#         Example 2
-#         user: Tell us where the giant panda live.
-#         assistant: They eat bamboo shoots as well as bamboo shoots and bamboo shoots. It has been recorded that they sometimes catch and eat small animals such as insects.
-#         """
-#     chatgpt = Chatgpt(system_setting)
-#     question = "Tell us where the {animal_name} live."
-#     chatgpt.input_message(question)
-#     food = chatgpt.input_list[-1]["content"]
-#     return food
-
-
-# # 動物名から生態地域を生成
-# def chat_area(animal_name):
-#     system_setting = """\
-#         ####Settings###
-#         You are a scholar who knows animals.
-
-#         ####Situation###.
-#         A question from a user who is curious about animals about what the animals eat
-
-#         ####Request###.
-#         Please answer the user's question.
-#         Here are some examples
-
-#         Example 1
-#         user: Tell us what lion eat.
-#         assistant: Eats large mammals such as zebras, wild boars, gnus, antelopes, etc.
-
-#         Example 2
-#         user: Tell us what giant panda eat.
-#         assistant: They eat bamboo shoots as well as bamboo shoots and bamboo shoots. It has been recorded that they sometimes catch and eat small animals such as insects.
-#         """
-#     chatgpt = Chatgpt(system_setting)
-#     question = "Tell us what {animal_name} eat."
-#     chatgpt.input_message(question)
-#     area = chatgpt.input_list[-1]["content"]
-#     return area
-
-
-# # 動物名から豆知識を生成
-# def chat_trivia(animal_name):
-#     system_setting = """\
-#         ####Settings###
-#         You are a scholar who knows animals.
-
-#         ####Situation###.
-#         A user is curious about animals and asks you about animal trivia
-
-#         ####Requirement###
-#         Please answer the user's question.
-#         Here are some examples
-
-#         Example 1
-#         user: Tell me some trivia about lions.
-#         assistant: Lions spend most of the day sleeping. Lions originally spend 15 to 20 hours a day sleeping or lying down to relax. The success rate of temporary hunting is 20% to 30%. Hunting is not done every day, but every few days. In zoos, fasting days are set aside in accordance with wild ecology, and food is given every few days.
-
-#         Example 2
-#         user: Tell me some trivia about giant pandas.
-#         assistant: Pandas are actually carnivores, and are classified in the Carnivora family. While herbivores have long intestines that are more than 20 times their body length,
-#         the panda's intestines are about 4 times its body length. From this point of view, pandas are carnivores. Pandas spend much of the day eating, but only 20% of
-#         the bamboo and bamboo grass they eat can be digested. Their eyes are surprisingly sharp and scary. They eat all day long.
-#         """
-#     chatgpt = Chatgpt(system_setting)
-#     question = "Tell me some trivia about {animal_name}"
-#     chatgpt.input_message(question)
-#     trivia = chatgpt.input_list[-1]["content"]
-#     return trivia
-
-
-# # contextを受け取って動物を推論し生態と豆知識を返す関数(OpenAIからエラーが帰ってくる．多分アクセス過多)
-# def chat(context):
-#     animal_name = chat_inference(context)
-#     food = chat_food(animal_name)
-#     area = chat_area(animal_name)
-#     trivia = chat_trivia(animal_name)
-#     knowledge = {
-#         "name": animal_name,
-#         "food": food,
-#         "area": area,
-#         "trivia": trivia,
-#     }
-#     return knowledge
+    chatgpt = Chatgpt(system_setting)
+    chatgpt.input_message(animal_name)
+    knowledge = chatgpt.input_list[-1]["content"]
+    output = json.loads(knowledge)
+    return output
 
 
 if __name__ == "__main__":
-    output = chat_knowledge("dalmatian")
+    animal = "eagle"
+    output = chat_knowledge(animal)
     print(output)
+    print(type(output))
