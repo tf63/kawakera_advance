@@ -8,8 +8,8 @@ services:
     tty: true
     volumes:
       - ./backend:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/mediafiles
+      # - backend/staticfiles:/app/staticfiles
+      # - backend/mediafiles:/app/mediafiles
     ports:
       - 8000:8000
     depends_on:
@@ -60,6 +60,8 @@ services:
     networks:
       - frontend_network
     # command: sh -c "yarn dev"
+    environment:
+      - DEBUG=0
 
   nginx_backend:
     container_name: nginx_backend
@@ -71,7 +73,8 @@ services:
     # ボリュームを指定
     # ローカルの/staticをコンテナの/staticにマウントする
     volumes:
-      - static_volume:/static
+      - ./backend/staticfiles:/app/staticfiles
+      - ./backend/mediafiles:/app/mediafiles
       # - media_volume:/media
     # ローカルの8080番ボートをコンテナの80番ポートとつなぐ
     ports:
@@ -105,7 +108,5 @@ networks:
     driver: bridge
 
 volumes:
-  static_volume:
-  media_volume:
   postgres_data_prod:
   pgadmin4_data_prod:

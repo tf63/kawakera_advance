@@ -60,7 +60,7 @@ const Detail = () => {
 
     const [animal, setAnimal] = useState<Item>({
         id: 222,
-        image: 'http://localhost:8000/media/tests/animals/devtanuki.png',
+        image: 'http://localhost:8080/media/tests/animals/devtanuki.png',
         name: 'ねこ'
     })
 

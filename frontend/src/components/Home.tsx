@@ -33,7 +33,7 @@ type GridProps = {
 const SquareComponent: React.FC<SquareProps> = ({ image }) => {
     return (
         <div className="card square container-center">
-            <img src={`http://localhost:8000${image}`} alt="Square Image" />
+            <img src={`http://localhost:8080${image}`} alt="Square Image" />
         </div>
     )
 }
@@ -43,10 +43,10 @@ const GridComponent: React.FC<GridProps> = ({ items }) => {
         <div className="container-center">
             <div className="grid-box">
                 {items.map((item, index) => (
-                    <Link to={'/detail/1'} className="card square">
+                    <Link to={'/detail/1'} className="card square" key={index}>
                         <div className="container-center">
                             <img
-                                src={`http://localhost:8000${item.image}`}
+                                src={`http://localhost:8080${item.image}`}
                                 style={{ width: '180px' }}
                                 alt="Square Image"
                             />
@@ -86,7 +86,7 @@ const Home = () => {
     const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios('http://localhost:8000/api/animal/')
+            const response = await axios('http://localhost:8080/api/animal/')
             const data = await response.data
             console.log(data)
             setAnimals(data)
