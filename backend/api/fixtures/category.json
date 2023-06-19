@@ -1,0 +1,112 @@
+[
+    {
+        "model": "api.category",
+        "pk": 1,
+        "fields": {
+            "label": "たぬき",
+            "hp": 100,
+            "attack": 80,
+            "defence": 70,
+            "speed": 90,
+            "magic_attack": 60,
+            "magic_defence": 75
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 2,
+        "fields": {
+            "label": "うさぎ",
+            "hp": 120,
+            "attack": 70,
+            "defence": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defence": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 3,
+        "fields": {
+            "label": "いぬ",
+            "hp": 120,
+            "attack": 70,
+            "defence": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defence": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 4,
+        "fields": {
+            "label": "はむ",
+            "hp": 120,
+            "attack": 70,
+            "defence": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defence": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 5,
+        "fields": {
+            "label": "ぺんぺん",
+            "hp": 120,
+            "attack": 70,
+            "defence": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defence": 80
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "image": "tests/animals/devtanuki.png",
+            "score": 50
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 2,
+        "fields": {
+            "category": 2,
+            "image": "tests/animals/devrabbit.png",
+            "score": 80
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 3,
+        "fields": {
+            "category": 3,
+            "image": "tests/animals/devdog.png",
+            "score": 72
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 4,
+        "fields": {
+            "category": 4,
+            "image": "tests/animals/devhamu.png",
+            "score": 80
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 5,
+        "fields": {
+            "category": 5,
+            "image": "tests/animals/devpenpen.png",
+            "score": 95
+        }
+    }
+]

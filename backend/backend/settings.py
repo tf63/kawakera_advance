@@ -18,7 +18,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -26,10 +25,13 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv("DEBUG") == "1":
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -40,10 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api',
 
+    # 3rd party
     'rest_framework',
     'corsheaders',
+
+    # Local
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -57,12 +62,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = True
+if DEBUG:
+    CORS_ORIGIN_WHITELIST = [
+        'http://localhost:5173',
+        'http://127.0.0.1:5173',
+    ]
+else:
+    CORS_ORIGIN_WHITELIST = [
+        'http://localhost'
+    ]
 
-# CORS_ORIGIN_WHITELIST = [
-#     'http://localhost:5173',
-#     'http://127.0.0.1:5173',
-# ]
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -149,8 +158,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "static/media")
+MEDIA_ROOT = os.path.join(BASE_DIR, "mediafiles")
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

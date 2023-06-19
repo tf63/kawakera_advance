@@ -12,10 +12,10 @@ def image_classification(filename):
     """_summary_
 
     Args:
-        filename (_type_): _description_
+        filename : 画像のファイルパス
 
     Returns:
-        _type_: _description_
+        output : json object <- image_classification labels, score
     """
     with open(filename, "rb") as f:
         data = f.read()

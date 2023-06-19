@@ -1,6 +1,6 @@
 # Animal GO (Advance)
 
-<!-- ![](https://github.com/tf63/type_django/actions/workflows/django.yml/badge.svg) -->
+![](https://github.com/tf63/kawakera_advance/actions/workflows/django.yml/badge.svg)
 <img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=flat"><img src="https://img.shields.io/badge/-React-555.svg?logo=react&style=flat"><img src="https://img.shields.io/badge/-Docker-EEE.svg?logo=docker&style=flat"><img src="https://img.shields.io/badge/-Amazon%20AWS-232F3E.svg?logo=amazon-aws&style=flat">
 ![](https://img.shields.io/github/repo-size/tf63/kawakera_advance)
 ![](https://img.shields.io/github/languages/code-size/tf63/kawakera_advance)
@@ -42,7 +42,7 @@ django secret keyの生成
 
 ### Django (Backend)
 
-プロジェクトの作成
+プロジェクトの作成 (Dockerfileでentrypointを読み込んでるせいで失敗するかも)
 ```
     docker compose exec django django-admin startproject <project_name>
 ```
@@ -65,7 +65,7 @@ superuserの作成
 
 ### React
 
-プロジェクトの作成
+プロジェクトの作成 (docker runでreact単体に対して実行したほうが良いかも)
 
 ```
     docker compose exec react yarn create vite . --template=react-ts
@@ -89,9 +89,16 @@ superuserの作成
     docker compose exec react yarn dev
 ```
 
+本番環境のdocker-compose
+
+```
+    docker compose -f docker-compose.prod.yml up -d
+```
+
 **TypeScriptライブラリ**
 - react-router-dom
 - axios
+- react-slick
 
 ### 参考
 React (TypeScript) チュートリアル

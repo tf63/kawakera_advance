@@ -1,65 +1,54 @@
-body {
-  padding-top: 80px;
-}
-
-.content {
-  position: relative;
-  z-index: 0;
-}
-
-.navigation {
-  background-color: #efefef;
-  padding: 10px 10px 0px 0px;
-  display: flex;
-  align-items: flex-end;
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  width: 100%;
-  height: 80px;
-}
-
-.navigation h1 {
+.card {
+  padding: 2em;
+  margin: 30px 10px;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
   color: #888888;
-  font-size: 2em;
-  margin: 20px 20px auto;
+  font-size: 1rem;
   letter-spacing: .2rem;
   text-align: left;
   text-shadow: 1px 1px #eee;
+  outline: none;
+  /* cursor: pointer; */
+  transition: .2s ease-in-out;
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
-.navigation ul {
-  list-style: none;
-  margin: 0px auto 5px auto;
-  padding-right: 40px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.navigation li {
-  margin: 0 30px;
-}
-
-.navigation a {
-  color: #888888;
-  letter-spacing: .2rem;
-  text-shadow: 1px 1px #eee;
-  font-size: 16px;
-  text-decoration: none;
-}
-
-Result Skip Results Iframe EDIT ON body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
+.box {
+  padding: 2em;
+  margin: 30px 10px;
   background: #efefef;
+  border: none;
+  border-radius: .5rem;
+  color: #888888;
+  font-size: 1rem;
+  letter-spacing: .2rem;
+  text-align: left;
+  text-shadow: 1px 1px #eee;
+  outline: none;
+  /* cursor: pointer; */
+  transition: .2s ease-in-out;
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: inset -4px -4px 10px #FFFFFF, inset 4px 4px 10px rgba(102, 102, 102, 0.3);
+}
+
+
+.home .card {
+  cursor: pointer;
 }
 
 .card-green {
+  max-width: 300px;
+  margin: 60px auto;
   padding: 2em;
-  margin: 60px 10px;
   background: linear-gradient(296.6deg, #BAFFDE 4.36%, #E9FFBB 94.25%);
   border: none;
   border-radius: .5rem;
@@ -93,24 +82,10 @@ Result Skip Results Iframe EDIT ON body {
   box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
-.card {
-  padding: 2em;
-  margin: 60px 10px;
-  background: #efefef;
-  border: none;
-  border-radius: .5rem;
-  color: #888888;
-  font-size: 1rem;
-  letter-spacing: .2rem;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
-  outline: none;
-  cursor: pointer;
-  transition: .2s ease-in-out;
-  box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
-    -6px -6px 10px rgba(255, 255, 255, .5),
-    6px 6px 8px rgba(255, 255, 255, .075),
-    6px 6px 10px rgba(0, 0, 0, .15);
+.container-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn:hover {
@@ -119,7 +94,6 @@ Result Skip Results Iframe EDIT ON body {
     2px 2px 2px rgba(255, 255, 255, .05),
     2px 2px 4px rgba(0, 0, 0, .1);
 }
-
 
 .btn:active {
   box-shadow: -2px -2px 6px rgba(255, 255, 255, .6),
@@ -132,80 +106,51 @@ Result Skip Results Iframe EDIT ON body {
   text-decoration: none;
 }
 
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.top-container {
+.grid-box {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: flex-end;
 }
 
-/* スコア */
-#correct,
-#incorrect {
-  font-size: 1em;
-  font-weight: bold;
-  color: #888888;
+.square {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
 }
 
-h1 {
-  color: #888888;
-  font-size: 3em;
-  margin: 20px 20px auto;
-  max-width: 600px;
-  font-weight: normal;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+.square img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
-/* 段落テキスト */
-.text {
-  color: #888888;
-  font-size: 1.5em;
-  margin: auto 20px 0px auto;
-  padding-bottom: 10px;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+.post-button {
+  margin-right: 100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
 }
 
-.text-line {
-  color: #888888;
-  font-size: 1.5em;
-  margin: 20px 20px auto;
-  max-width: 600px;
-  text-align: left;
-  text-shadow: 1px 1px #eee;
+nav {
+  margin: 30px 0px
 }
 
-.target_item {
-  list-style-type: none;
+nav ul {
+  list-style: none;
+  display: flex;
 }
 
-.typed {
-  display: inline-block;
-  color: #afafaf;
+nav li {
+  margin: 0px 30px 0px 0px;
+  text-decoration: none;
 }
 
-.untyped {
-  display: inline-block;
-  color: #888888;
+nav .link {
+  text-decoration: none;
 }
 
-.target_block {
-  letter-spacing: .1rem;
-}
-
-.caret {
-  display: inline-block;
-  width: 0;
-  height: 1.2em;
-  border-right: 0.15em solid #333;
-  animation: caret 0.8s infinite;
-}
-
+/*
 @keyframes caret {
   0% {
     opacity: 1;
@@ -218,4 +163,245 @@ h1 {
   100% {
     opacity: 1;
   }
+} */
+
+.grid-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* display: grid; */
+  /* グリッドの列数を設定 */
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  /* 要素の重なりを防ぐために追加 */
+  /* grid-auto-flow: dense; */
+  /* グリッド間の余白を設定 */
+  /* gap: 5px; */
+}
+
+
+.square img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.column2 {
+  display: flex;
+}
+
+.column2 div {
+  width: 50%;
+}
+
+.flex {
+  display: flex;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* detail page cssここから*/
+.detail_img {
+  text-align: center;
+}
+
+/* detail page cssここまで*/
+
+/* resutl page css */
+.result_complete {
+  display: flex;
+  justify-content: center;
+}
+
+.result_complete h1 {
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.result .card div {
+  width: 90%;
+}
+
+.result.card {
+  padding-top: 1.5em !important;
+  padding-bottom: 1.5em;
+}
+
+.result_name {
+  display: flex;
+  align-items: center;
+}
+
+.result_name p {
+  margin-right: 10px;
+}
+
+.card.result_name {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
+}
+
+.result_img img {
+  width: 80%;
+}
+
+.result_img {
+  text-align: center;
+}
+
+/* resutl page cssここまで */
+
+/* タブレット以下の画面幅でのcss */
+@media screen and (max-width: 1280px) {
+  .column2 {
+    display: block;
+  }
+}
+
+/* tutorial */
+.slot-machine {
+  text-align: center;
+}
+
+.slot {
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.slot-inner {
+  width: 120px;
+  height: 200px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  position: relative;
+}
+
+.slot-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.slot-option.selected {
+  opacity: 1;
+}
+
+.slot-inner.spinning {
+  animation: spin 2s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-600px);
+  }
+
+  51% {
+    transform: translateY(600px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+button {
+  margin-top: 20px;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* slide images */
+
+.slick-prev::before, .slick-next::before {
+  font-size: 70px;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-prev, .slick-next {
+  width: 70px;
+  height: 70px;
+  margin-top: 0;
+}
+
+.card.slider {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+/* line */
+.line {
+  box-sizing: border-box;
+  width: 100%;
+  height: 3px;
+  background: #F1F1F1;
+  box-shadow: inset 4px 4px 10px rgba(136, 136, 136, 0.3);
+}
+
+/* top page */
+.toppage_midashi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.toppage_midashi p {
+  min-width: 160px;
+  font-size: 32px;
+  margin: 0px 10px;
+}
+
+.toppage_midashi .line {
+  margin: 0px 10px;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1800px;
+  margin: auto;
+}
+
+/* link_to_home */
+.link_to_home {
+  text-align: right;
+  margin-bottom: 25px;
+}
+
+.link_to_home .link {
+  margin-right: 70px;
+  font-size: 20px;
+  text-decoration: underline;
 }

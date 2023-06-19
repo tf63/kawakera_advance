@@ -4,8 +4,8 @@ from . import views
 app_name = "api"
 
 urlpatterns = [
-    path("problem/", views.ProblemAPIView.as_view(), name="problem"),
-    path("record/", views.RecordAPIView.as_view(), name="record"),
     path("animal/", views.AnimalAPIView.as_view(), name="animal"),
-    path("", views.index, name="index"),
+    path("image/", views.ImageAPIView.as_view(), name="image"),
+    path("category/", views.CategoryAPIView.as_view(), name="category"),
+    # path("", views.index, name="index"),
 ]
