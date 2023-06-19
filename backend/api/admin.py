@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Individual
+from .models import Category, Individual, Animal
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'label', 'hp', 'attack', 'defence', 'speed', 'magic_attack', 'magic_defence')
@@ -10,5 +10,6 @@ class IndividualAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Individual, IndividualAdmin)
+admin.site.register(Animal)
 
 

@@ -46,8 +46,6 @@ services:
       - ./frontend:/app
     ports:
       - 5173:5173
-    environment:
-      - DEBUG=1
     # command: sh -c "yarn dev"
 
 volumes:
