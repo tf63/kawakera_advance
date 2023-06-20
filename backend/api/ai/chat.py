@@ -32,6 +32,14 @@ class Chatgpt:
 
 # 動物名から豆知識と食べ物，生態地域，豆知識を生成
 def chat_knowledge(animal_name):
+    """_summary_
+
+    Args:
+        animal_name: string
+
+    Returns:
+        dict: {"ecology":"", "trivia":"", "type": "",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""}
+    """
     system_setting = """\
         ### setting ###
         You are a scholar who knows much about animals and a Pokémon lover.  You have a wealth of knowledge about what animals eat, where they live, and trivia about them. You are tempted to compare animals to Pokémon.
