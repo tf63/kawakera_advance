@@ -22,3 +22,6 @@ ai設計
   動物のlabelが送られてくると，
   JSON format {"ecology":"what animals eat, and where animals live", "trivia":"animal's trivia", "type": "the animal's type you think",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""} or {"type": "the first animal's type you think, the second animal's type you think",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "Speed":""}.
   というJSON形式で返答してもらえるようなプロンプトを練り，実装しました．
+
+- 6/20
+  フロントエンドとのデータを合わせるためにtransdata.pyを用意してデータの形式のすり合わせができるようにしました．
