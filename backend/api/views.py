@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from random import choice
 from string import ascii_lowercase
+from os.path import dirname, abspath
+import sys
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -11,6 +13,11 @@ from .serializers import CategorySerializer, IndividualSerializer, AnimalSeriali
 
 from .utils import convert_to_file
 import base64
+
+parent_dir = dirname(abspath(__file__))
+if parent_dir not in sys.path:
+    sys.path.append(parent_dir)
+from ai import *
 
 # from .ai.segmentation import create_segmentation
 # from .ai.classifier import image_classification
@@ -26,10 +33,10 @@ class ImageAPIView(APIView):
     def post(self, request):
         data = request.data
 
-        # 画像の読み込み
-        image = data["image"]
-
-        # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
+        # image = data
+        # 画像をnumpyからバイナリに変換する
+        # image = np2binary(data)
+        # # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
         # score, label = image_classification(image)
         # image = create_segmentation(image)
 
@@ -40,9 +47,10 @@ class ImageAPIView(APIView):
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
         exists = Category.objects.filter(label=label).exists()
         if not exists:
+            #
             data_category = {"label": label}
             # ChatGPTに動物名を渡してステータス，生態を取得
-            # information = chat(label)
+            # information = chat_knowledge(label)
             # data_category ← information
             # ダミー
             information = {
@@ -55,7 +63,6 @@ class ImageAPIView(APIView):
                 "magic_attack": 50,
                 "magic_defence": 50,
             }
-
             data_category.update(information)
 
             serializer_category = CategorySerializer(data=data_category)
