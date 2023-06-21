@@ -3,6 +3,7 @@
 import requests
 import os
 import base64
+
 from transdata import np2binary, binary2np
 
 API_URL = "https://api-inference.huggingface.co/models/google/vit-base-patch16-224"
@@ -14,13 +15,16 @@ def image_classification(data):
     """_summary_
 
     Args:
-        data : numpy array of image
+        data : binary data
+
 
     Returns:
         score, label : integer(検出値を100かけしてint型に), string(一番予測値の大きいクラスラベル)
     """
     # numpy to binary
-    data = np2binary(data)
+
+    # data = np2binary(data)
+
     # huggingfaceに送る
     response = requests.post(API_URL, headers=headers, data=data)
     response_json = response.json()

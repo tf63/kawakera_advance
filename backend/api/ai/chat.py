@@ -66,7 +66,7 @@ def chat_knowledge(animal_name):
 
         Example 4
         user:lion
-        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "special_attack":"60", "special_defense":"80", "speed":"120"}
+        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "magic_attack":"60", "magic_defense":"80", "speed":"120"}
     """
     chatgpt = Chatgpt(system_setting)
     chatgpt.input_message(animal_name)
