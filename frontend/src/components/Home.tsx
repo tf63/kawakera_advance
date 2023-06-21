@@ -22,7 +22,7 @@ const GridComponent: React.FC<GridProps> = ({ categories }) => {
             <div className="grid-box">
                 {/* container-centerを2つならべて使ってるのは汚い気がする */}
                 {categories.map((category, index) => (
-                    <Link to={'/detail/1'} className="card square" key={index}>
+                    <Link to={`/detail/${category.id}`} className="card square" key={index}>
                         <div className="container-center">
                             <img
                                 src={`${API_ENDPOINTS.BASE}${category.image}`}

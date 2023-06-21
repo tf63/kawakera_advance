@@ -48,14 +48,14 @@ const Detail = () => {
                 <div className="detail_img">
                     <img src={`${API_ENDPOINTS.BASE}${individuals[0].image}`}></img>
                 </div>
-                <div className="card">
+                <div className="detail_info1">
                     <p>No.{categoryDetail.id}</p>
                     <h2>{categoryDetail.label}</h2>
                     <p>不明</p>
                 </div>
             </div>
             <div className="column2">
-                <div className="card">
+                <div className="card detail_info2">
                     <p>分類：パラドックスポケモン</p>
                     <p>電気・ドラゴン</p>
                     <p>高さ3.5m</p>
