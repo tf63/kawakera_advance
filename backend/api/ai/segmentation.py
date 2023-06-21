@@ -4,7 +4,7 @@ import io
 import numpy as np
 import requests
 import os
-
+from transdata import *
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/detr-resnet-50-panoptic"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
@@ -15,23 +15,28 @@ def create_segmentation(data):
     """_summary_
 
     imput:
-        data : base64
+        data : binary data
 
     Returns:
         PIL image object
     """
 
+    # original imageの読み込み
+    original_image = binary2image(data)
+    original_image.save("mediafiles/tests/animals/test_dal.png")
+
+    original_array = np.array(original_image)
+    print(original_array.shape, type(original_array))
+
     # hugging face requests
     response = requests.post(API_URL, headers=headers, data=data)
-
-    # original imageの読み込み
-    original_image = Image.open(filename)
-    original_array = np.array(original_image, dtype=np.uint8)
+    print(response.status_code)
 
     # "LABEL_"のものを除外する
     output = [
         entry for entry in response.json() if not entry["label"].startswith("LABEL_")
     ]
+    print(output)
 
     # maskの生成
     mask = np.zeros(original_array.shape[:2], dtype=np.uint8)
@@ -71,20 +76,19 @@ def create_segmentation(data):
 
 if __name__ == "__main__":
     # animalの指定
-    animal = "lion"
+    animal = "dal"
     # 拡張子
     ends = ["jpg", "jpeg", "png"]
     # ファイルがあればopenしてdataに
     for end in ends:
-        filename = f"static/media/tests/animals/{animal}.{end}"
+        filename = f"mediafiles/tests/animals/{animal}.{end}"
         if os.path.isfile(filename):
             with open(filename, "rb") as f:
                 data = f.read()
             break
-    # print(data, type(data))
 
     # segmentation
     output = create_segmentation(data)
 
     # セグメンテーションimageを保存する
-    output.save(f"static/media/tests/animals/segmentation_{animal}.png")
+    output.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
