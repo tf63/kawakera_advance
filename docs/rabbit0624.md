@@ -34,3 +34,6 @@ class ImageAPIView(APIView):
         else:
             return Response(serializer_individual.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
+
+### ImageAPIviewの変更
+- aiパッケージからモジュールをimportし使えるようにした
