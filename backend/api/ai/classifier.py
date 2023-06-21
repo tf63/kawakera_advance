@@ -3,21 +3,24 @@
 import requests
 import os
 import base64
+from transdata import np2binary, binary2np
 
 API_URL = "https://api-inference.huggingface.co/models/google/vit-base-patch16-224"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
 headers = {"Authorization": f"Bearer {HUGGINGFACE_API_KEY}"}
 
 
-def image_classification(filename):
+def image_classification(data):
     """_summary_
 
     Args:
-        data : 画像のbase64データ
+        data : numpy array of image
 
     Returns:
         score, label : integer(検出値を100かけしてint型に), string(一番予測値の大きいクラスラベル)
     """
+    # numpy to binary
+    data = np2binary(data)
     # huggingfaceに送る
     response = requests.post(API_URL, headers=headers, data=data)
     response_json = response.json()
@@ -35,15 +38,15 @@ if __name__ == "__main__":
     animal = "lion"
     ends = ["jpg", "jpeg", "png"]
     for end in ends:
-        filename = f"static/media/tests/animals/{animal}.{end}"
+        filename = f"mediafiles/tests/animals/{animal}.{end}"
         if os.path.isfile(filename):
             with open(filename, "rb") as f:
                 data = f.read()
             break
 
-        # Base64デコード
-    data64 = base64.b64encode(data)
+    # trans numpy
+    data = binary2np(data)
     # classification
-    score, label = image_classification(data64)
+    score, label = image_classification(data)
 
     print(score, label)
