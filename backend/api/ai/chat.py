@@ -71,7 +71,15 @@ def chat_knowledge(animal_name):
     chatgpt = Chatgpt(system_setting)
     chatgpt.input_message(animal_name)
     knowledge = chatgpt.input_list[-1]["content"]
+    print(knowledge)
     output = json.loads(knowledge)
+    print(output)
+    output["hp"] = int(output["hp"])
+    output["attack"] = int(output["attack"])
+    output["defense"] = int(output["defense"])
+    output["magic_attack"] = int(output["magic_attack"])
+    output["magic_defense"] = int(output["magic_defense"])
+    output["speed"] = int(output["speed"])
     return output
 
 

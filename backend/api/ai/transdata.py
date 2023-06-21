@@ -21,3 +21,10 @@ def np2image(arr):
 def binary2image(data):
     image = Image.open(io.BytesIO(data))
     return image
+
+
+def image2binary(image):
+    buffer = io.BytesIO()
+    image.save(buffer, format="PNG")
+    binary_data = buffer.getvalue()
+    return binary_data

@@ -4,12 +4,14 @@ from random import choice
 from string import ascii_lowercase
 from os.path import dirname, abspath
 import sys
+from PIL import Image
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Category, Individual, Animal
 from .serializers import CategorySerializer, IndividualSerializer, AnimalSerializer
+from django.core.files.base import ContentFile
 
 from .utils import convert_to_file
 import base64
@@ -26,23 +28,44 @@ from ai import *
 # from .ai.chat import chat
 
 # def index(request):
-#     return render(request, "index.html")
+#     return render(request, "index.html")S
 
 
 class ImageAPIView(APIView):
     def post(self, request):
-        data = request.data
+        # data = request.data
+        # image_file = data["image"]
+        image_file = request.FILES["image"]
+        binary_data = image_file.read()
+        # image = binary2image(binary_data)
+        # image_file = image.convert("RGB")
+        print(type(image_file))
+        # image_file = request.FILE["image"]
+        # print(data)
+        # image = binary2image(data["image"])
 
+        # print(type(image))
         # image = data
         # 画像をnumpyからバイナリに変換する
         # image = np2binary(data)
         # # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
-        # score, label = image_classification(image)
-        # image = create_segmentation(image)
+        score, label = image_classification(binary_data)
+        print(score, label)
+        image_file = create_segmentation(binary_data)
 
-        score = 90
-        label = "dog"
-        image = data["image"]
+        max_width = 600
+        max_height = 600
+        width, height = image_file.size
+        resize_ratio = min(max_width / width, max_height / height)
+        new_width = int(width * resize_ratio)
+        new_height = int(height * resize_ratio)
+        image_file = image_file.resize((new_width, new_height))
+        image_file = image2binary(image_file)
+        print(type(image_file))
+
+        # score = 90
+        # label = "dog"
+        # image = data["image"]
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
         exists = Category.objects.filter(label=label).exists()
@@ -50,31 +73,35 @@ class ImageAPIView(APIView):
             #
             data_category = {"label": label}
             # ChatGPTに動物名を渡してステータス，生態を取得
-            # information = chat_knowledge(label)
+            information = chat_knowledge(label)
+            print(information)
             # data_category ← information
             # ダミー
-            information = {
-                "trivia": "人よりも大きい犬がいる",
-                "echology": "人に飼われていることが多い",
-                "hp": 50,
-                "attack": 50,
-                "defence": 50,
-                "speed": 50,
-                "magic_attack": 50,
-                "magic_defence": 50,
-            }
+            # information = {
+            #     "trivia": "人よりも大きい犬がいる",
+            #     "echology": "人に飼われていることが多い",
+            #     "hp": 50,
+            #     "attack": 50,
+            #     "defence": 50,
+            #     "speed": 50,
+            #     "magic_attack": 50,
+            #     "magic_defence": 50,
+            # }
             data_category.update(information)
+            print(data_category)
 
             serializer_category = CategorySerializer(data=data_category)
             if serializer_category.is_valid():
                 serializer_category.save()
             else:
+                print("unchi")
                 return Response(
                     serializer_category.errors, status=status.HTTP_400_BAD_REQUEST
                 )
 
         category = Category.objects.get(label=label)
-        image_file = convert_to_file(image)
+        image_file = ContentFile(image_file, name="temp." + "png")
+        # image_file = convert_to_file(image)
         data_indvidual = {"category": category.pk, "score": score, "image": image_file}
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
@@ -90,6 +117,7 @@ class ImageAPIView(APIView):
                 }
             )
         else:
+            print("pokochin")
             return Response(
                 serializer_individual.errors, status=status.HTTP_400_BAD_REQUEST
             )

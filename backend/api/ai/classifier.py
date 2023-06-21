@@ -4,7 +4,7 @@ import requests
 import os
 import base64
 
-from transdata import np2binary, binary2np
+from .transdata import np2binary, binary2np
 
 API_URL = "https://api-inference.huggingface.co/models/google/vit-base-patch16-224"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
