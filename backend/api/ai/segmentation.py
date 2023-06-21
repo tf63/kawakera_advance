@@ -4,7 +4,9 @@ import io
 import numpy as np
 import requests
 import os
+
 from transdata import *
+
 
 API_URL = "https://api-inference.huggingface.co/models/facebook/detr-resnet-50-panoptic"
 HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
@@ -15,11 +17,14 @@ def create_segmentation(data):
     """_summary_
 
     imput:
+
         data : binary data
+
 
     Returns:
         PIL image object
     """
+
 
     # original imageの読み込み
     original_image = binary2image(data)
@@ -27,8 +32,10 @@ def create_segmentation(data):
 
     original_array = np.array(original_image)
 
+
     # hugging face requests
     response = requests.post(API_URL, headers=headers, data=data)
+    print(response.json())
 
     if response.status == 200:
         # "LABEL_"のものを除外する
@@ -78,7 +85,9 @@ def create_segmentation(data):
 
 if __name__ == "__main__":
     # animalの指定
+
     animal = "dal"
+
     # 拡張子
     ends = ["jpg", "jpeg", "png"]
     # ファイルがあればopenしてdataに
@@ -89,8 +98,14 @@ if __name__ == "__main__":
                 data = f.read()
             break
 
+    # print(data, type(data))
+    data = binary2np(data)
+
+
     # segmentation
     output = create_segmentation(data)
 
     # セグメンテーションimageを保存する
+
     output.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
+
