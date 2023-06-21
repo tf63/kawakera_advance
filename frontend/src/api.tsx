@@ -6,5 +6,6 @@ const API_BASE_URL = 'http://localhost:8000'
 export const API_ENDPOINTS = {
     BASE: API_BASE_URL,
     ANIMAL: `${API_BASE_URL}/api/animal/`,
-    CATEGORY: `${API_BASE_URL}/api/category/`
+    CATEGORY: `${API_BASE_URL}/api/category/`,
+    IMAGE: `${API_BASE_URL}/api/image/`
 }

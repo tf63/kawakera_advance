@@ -1,7 +1,10 @@
 import React, { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { API_ENDPOINTS } from '../api'
 
 const ImageUploadForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
+    const navigate = useNavigate()
 
     const handleButtonClick = () => {
         if (fileInputRef.current) {
@@ -9,8 +12,28 @@ const ImageUploadForm = () => {
         }
     }
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0]
+        if (file) {
+            console.log('file input!', file)
+            // ここで画像ファイルの処理を行います
+
+            try {
+                const response = await fetch(API_ENDPOINTS.IMAGE, {
+                    method: 'POST',
+                    body: file
+                })
+                console.log(response)
+
+                // // 結果ページへの遷移
+                // navigate('/result')
+            } catch (error) {
+                // エラーハンドリング
+                alert('エラー')
+            }
+
+            // API_ENDPOINTS.IMAGE
+        }
         // 画像ファイルの処理
     }
 
