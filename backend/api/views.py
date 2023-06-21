@@ -46,6 +46,8 @@ class ImageAPIView(APIView):
             # data_category ← information
             # ダミー
             information = {
+                "trivia": "人よりも大きい犬がいる",
+                "echology": "人に飼われていることが多い",
                 "hp": 50,
                 "attack": 50,
                 "defence": 50,

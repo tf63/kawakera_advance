@@ -4,6 +4,9 @@
         "pk": 1,
         "fields": {
             "label": "たぬき",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
             "hp": 100,
             "attack": 80,
             "defence": 70,
@@ -17,6 +20,9 @@
         "pk": 2,
         "fields": {
             "label": "うさぎ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
             "hp": 120,
             "attack": 70,
             "defence": 85,
@@ -30,6 +36,9 @@
         "pk": 3,
         "fields": {
             "label": "いぬ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
             "hp": 120,
             "attack": 70,
             "defence": 85,
@@ -43,6 +52,9 @@
         "pk": 4,
         "fields": {
             "label": "はむ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
             "hp": 120,
             "attack": 70,
             "defence": 85,
@@ -56,6 +68,9 @@
         "pk": 5,
         "fields": {
             "label": "ぺんぺん",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
             "hp": 120,
             "attack": 70,
             "defence": 85,

@@ -31,6 +31,9 @@ class Category(models.Model):
     speed = models.PositiveBigIntegerField()
     magic_attack = models.PositiveBigIntegerField()
     magic_defence = models.PositiveBigIntegerField()
+    type = models.CharField(max_length=100, default="")
+    trivia = models.TextField()
+    ecology = models.TextField()
 
     def __str__(self):
         return f"{self.label}"
