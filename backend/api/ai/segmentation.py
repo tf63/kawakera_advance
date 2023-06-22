@@ -27,8 +27,9 @@ def create_segmentation(data):
 
     # original imageの読み込み
     original_image = binary2image(data)
-    original_image.save("mediafiles/tests/animals/test_dal.png")
+    # original_image.save("mediafiles/tests/animals/test_da3l.png")
 
+    # 画像をnumpyに変換
     original_array = np.array(original_image)
 
     # hugging face requests
@@ -105,5 +106,4 @@ if __name__ == "__main__":
     output = create_segmentation(data)
 
     # セグメンテーションimageを保存する
-
     output.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
