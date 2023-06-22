@@ -164,6 +164,15 @@ class CategoryAPIView(APIView):
                 serializer_individual = IndividualSerializer(
                     latest_individuals, many=True
                 )
+                latest_list = serializer_individual.data  # list
+                for latest_individual in latest_list:
+                    latest_individual["label"] = (
+                        Category.objects.all()
+                        .filter(id=latest_individual["category"])
+                        .first()
+                        .label
+                    )
+
                 response_data["latest_individuals"] = serializer_individual.data
 
             return Response(response_data, status=status.HTTP_200_OK)

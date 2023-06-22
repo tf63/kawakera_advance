@@ -9,6 +9,7 @@ export type Individual = {
     image: string
     score: number
     category: number
+    label: string
 }
 
 export type CategoryDetail = {
