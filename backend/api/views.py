@@ -53,8 +53,8 @@ class ImageAPIView(APIView):
         print(score, label)
         image_file = create_segmentation(binary_data)
 
-        max_width = 600
-        max_height = 600
+        max_width = 500
+        max_height = 500
         width, height = image_file.size
         resize_ratio = min(max_width / width, max_height / height)
         new_width = int(width * resize_ratio)
