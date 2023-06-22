@@ -1,7 +1,0 @@
-.rspec
-log
-tmp
-db/*.sqlite3
-db/*.sqlite3-journal
-vendor/assets
-node_modules
