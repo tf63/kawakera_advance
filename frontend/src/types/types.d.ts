@@ -16,8 +16,8 @@ export type CategoryDetail = {
     label: string
     hp: number
     attack: number
-    defence: number
+    defense: number
     speed: number
     magic_attack: number
-    magic_defence: number
+    magic_defense: number
 }
