@@ -27,13 +27,13 @@ class Category(models.Model):
     label = models.CharField(max_length=100, default="")
     hp = models.PositiveBigIntegerField()
     attack = models.PositiveBigIntegerField()
-    defence = models.PositiveBigIntegerField()
+    defense = models.PositiveBigIntegerField()
     speed = models.PositiveBigIntegerField()
     magic_attack = models.PositiveBigIntegerField()
-    magic_defence = models.PositiveBigIntegerField()
+    magic_defense = models.PositiveBigIntegerField()
     type = models.CharField(max_length=100, default="")
-    trivia = models.TextField()
-    ecology = models.TextField()
+    trivia = models.TextField(default="")
+    ecology = models.TextField(default="")
 
     def __str__(self):
         return f"{self.label}"
