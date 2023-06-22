@@ -12,9 +12,11 @@ from rest_framework.response import Response
 from .models import Category, Individual, Animal
 from .serializers import CategorySerializer, IndividualSerializer, AnimalSerializer
 from django.core.files.base import ContentFile
+from django.db.models import Max
 
 from .utils import convert_to_file
 import base64
+import random
 
 parent_dir = dirname(abspath(__file__))
 if parent_dir not in sys.path:
@@ -206,6 +208,31 @@ class CategoryAPIView(APIView):
         #     return Response(
         #         {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
         #     )
+
+
+class TriviaAPIView(APIView):
+    def get(self, request):
+        response_data = {}
+        ten_animals = []
+        try:
+            # 保存されているカテゴリidの最大値
+            max_id = Category.objects.aggregate(Max("id"))["id__max"]
+            # 1からmax_idのうちからランダムに10個取ってくる
+            ten_ids = random.sample(range(1, max_id), 10)
+
+            categories = Category.objects.all()
+            for id in ten_ids:
+                label_trivia = {}
+                label_trivia["label"] = categories.filter(id=id).first().label
+                label_trivia["trivia"] = categories.filter(id=id).first().trivia
+                ten_animals.append(label_trivia)
+
+            response_data["trivia"] = ten_animals
+            return Response(response_data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(
+                {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 class AnimalAPIView(APIView):
