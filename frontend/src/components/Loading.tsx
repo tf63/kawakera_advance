@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
-import { ImageAPI } from '../interfaces/interfaces'
+import { ImageAPI, TriviaAPI } from '../interfaces/interfaces'
+import { Trivia } from '../types/types'
 import axios from 'axios'
 
 const Loading = () => {
@@ -10,6 +11,24 @@ const Loading = () => {
     const file = location.state?.file
 
     const [loading, setLoading] = useState(true)
+
+    const [triviaList, setTriviaList] = useState<Trivia[]>([])
+
+    // トリビアの取得
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios(API_ENDPOINTS.TRIVIA)
+                const data: TriviaAPI = response.data
+                console.log(`data: ${data}`)
+                setTriviaList(data.trivia)
+            } catch (error) {
+                console.error('Failed to fetch trivia:', error)
+            }
+        }
+
+        fetchData()
+    }, [])
 
     useEffect(() => {
         const processData = async () => {
@@ -43,11 +62,29 @@ const Loading = () => {
         processData()
     }, [file, navigate])
 
-    if (loading) {
+    useEffect(() => {
+        console.log(triviaList)
+    }, [triviaList])
+
+    if (triviaList.length < 5) {
         return <h1>Loading...</h1>
-    } else {
-        return null
     }
+
+    if (!loading) {
+        return <h1>Complete</h1>
+    }
+
+    return (
+        <div>
+            {triviaList.map((trivia, index) => {
+                return (
+                    <div className="card" key={index}>
+                        {trivia.trivia}
+                    </div>
+                )
+            })}
+        </div>
+    )
 }
 
 export default Loading

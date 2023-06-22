@@ -33,3 +33,10 @@ export type Status = {
     magic_defense: number
     speed: number
 }
+
+export type Trivia = {
+    label: string
+    trivia: string
+}
+
+export type TriviaList = Trivia[]
