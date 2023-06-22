@@ -64,9 +64,6 @@ const Home = () => {
 
     return (
         <div className="wrapper home">
-            <div className="container-center">
-                <h1>Animal GO</h1>
-            </div>
             <ImageUploadForm />
             <div className="toppage_midashi">
                 <p>最近の投稿</p>

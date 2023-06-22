@@ -74,12 +74,33 @@ def chat_knowledge(animal_name):
     print(knowledge)
     output = json.loads(knowledge)
     print(output)
-    output["hp"] = int(output["hp"])
-    output["attack"] = int(output["attack"])
-    output["defense"] = int(output["defense"])
-    output["magic_attack"] = int(output["magic_attack"])
-    output["magic_defense"] = int(output["magic_defense"])
-    output["speed"] = int(output["speed"])
+    items_int = ["hp", "attack", "defense", "magic_attack", "magic_defense", "speed"]
+
+    # for item in items_str:
+    #     try:
+    #         output[item] = int(output[item])
+    #     except (ValueError, KeyError):
+    #         output[item] = 1
+
+    for item in items_int:
+        try:
+            output[item] = int(output[item])
+        except (ValueError, KeyError):
+            output[item] = 1
+
+    # output["hp"] = int(output["hp"])
+    # output["attack"] = int(output["attack"])
+    # output["defense"] = int(output["defense"])
+    # output["magic_attack"] = int(output["magic_attack"])
+    # output["magic_defense"] = int(output["magic_defense"])
+    # output["speed"] = int(output["speed"])
+    # output["hp"] = int(output["hp"])
+    # output["attack"] = int(output["attack"])
+    # output["defense"] = int(output["defense"])
+    # output["magic_attack"] = int(output["magic_attack"])
+    # output["magic_defense"] = int(output["magic_defense"])
+    # output["speed"] = int(output["speed"])
+
     return output
 
 

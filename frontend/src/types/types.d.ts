@@ -16,10 +16,20 @@ export type CategoryDetail = {
     label: string
     hp: number
     attack: number
-    defence: number
+    defense: number
     speed: number
     magic_attack: number
-    magic_defence: number
-    type:string
-    trivia:string
+    magic_defense: number
+    type:　string
+    trivia:　string
+    ecology: string
+}
+
+export type Status = {
+    hp: number
+    attack: number
+    defense: number
+    magic_attack: number
+    magic_defense: number
+    speed: number
 }
