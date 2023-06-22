@@ -7,5 +7,6 @@ export const API_ENDPOINTS = {
     BASE: API_BASE_URL,
     ANIMAL: `${API_BASE_URL}/api/animal/`,
     CATEGORY: `${API_BASE_URL}/api/category/`,
-    IMAGE: `${API_BASE_URL}/api/image/`
+    IMAGE: `${API_BASE_URL}/api/image/`,
+    TRIVIA: `${API_BASE_URL}/api/trivia/`
 }

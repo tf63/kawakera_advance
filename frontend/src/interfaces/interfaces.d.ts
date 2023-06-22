@@ -1,5 +1,5 @@
 // interface ISize {}
-import { Category, CategoryDetail, Individual } from '../types/types'
+import { Category, CategoryDetail, Individual, Trivia } from '../types/types'
 
 export interface CategoryAPI {
     top_images: Category[]
@@ -22,4 +22,8 @@ export interface SliderProps {
 export interface ImageAPI {
     category: CategoryDetail
     individual: Individual
+}
+
+export interface TriviaAPI {
+    trivia: Trivia[]
 }
