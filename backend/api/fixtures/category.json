@@ -9,10 +9,10 @@
             "type": "This is type",
             "hp": 100,
             "attack": 80,
-            "defence": 70,
+            "defense": 70,
             "speed": 90,
             "magic_attack": 60,
-            "magic_defence": 75
+            "magic_defense": 75
         }
     },
     {
@@ -25,10 +25,10 @@
             "type": "This is type",
             "hp": 120,
             "attack": 70,
-            "defence": 85,
+            "defense": 85,
             "speed": 80,
             "magic_attack": 65,
-            "magic_defence": 80
+            "magic_defense": 80
         }
     },
     {
@@ -41,10 +41,10 @@
             "type": "This is type",
             "hp": 120,
             "attack": 70,
-            "defence": 85,
+            "defense": 85,
             "speed": 80,
             "magic_attack": 65,
-            "magic_defence": 80
+            "magic_defense": 80
         }
     },
     {
@@ -57,10 +57,10 @@
             "type": "This is type",
             "hp": 120,
             "attack": 70,
-            "defence": 85,
+            "defense": 85,
             "speed": 80,
             "magic_attack": 65,
-            "magic_defence": 80
+            "magic_defense": 80
         }
     },
     {
@@ -73,10 +73,138 @@
             "type": "This is type",
             "hp": 120,
             "attack": 70,
-            "defence": 85,
+            "defense": 85,
             "speed": 80,
             "magic_attack": 65,
-            "magic_defence": 80
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 6,
+        "fields": {
+            "label": "ゴリラ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 7,
+        "fields": {
+            "label": "あざらし",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 8,
+        "fields": {
+            "label": "さる",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 9,
+        "fields": {
+            "label": "ハリネズミ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 10,
+        "fields": {
+            "label": "カエル",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 11,
+        "fields": {
+            "label": "やぎ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 12,
+        "fields": {
+            "label": "ひつじ",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 13,
+        "fields": {
+            "label": "キリン",
+            "trivia": "This is trivia",
+            "ecology": "This is category",
+            "type": "This is type",
+            "hp": 120,
+            "attack": 70,
+            "defense": 85,
+            "speed": 80,
+            "magic_attack": 65,
+            "magic_defense": 80
         }
     },
     {
@@ -121,6 +249,78 @@
         "fields": {
             "category": 5,
             "image": "tests/animals/devpenpen.png",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 6,
+        "fields": {
+            "category": 6,
+            "image": "tests/animals/gorira.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 7,
+        "fields": {
+            "category": 7,
+            "image": "tests/animals/azarashi.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 8,
+        "fields": {
+            "category": 8,
+            "image": "tests/animals/saru.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 9,
+        "fields": {
+            "category": 9,
+            "image": "tests/animals/harinezumi.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 10,
+        "fields": {
+            "category": 10,
+            "image": "tests/animals/frog.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 11,
+        "fields": {
+            "category": 11,
+            "image": "tests/animals/goat.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 12,
+        "fields": {
+            "category": 12,
+            "image": "tests/animals/sheep.jpeg",
+            "score": 95
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 13,
+        "fields": {
+            "category": 13,
+            "image": "tests/animals/giraf.jpeg",
             "score": 95
         }
     }

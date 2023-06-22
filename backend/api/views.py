@@ -94,7 +94,6 @@ class ImageAPIView(APIView):
             if serializer_category.is_valid():
                 serializer_category.save()
             else:
-                print("unchi")
                 return Response(
                     serializer_category.errors, status=status.HTTP_400_BAD_REQUEST
                 )
@@ -114,10 +113,10 @@ class ImageAPIView(APIView):
                     "message": "Record created successfully.",
                     "category": serializer_category.data,
                     "individual": serializer_individual.data,
-                }
+                },
+                status=status.HTTP_200_OK,
             )
         else:
-            print("pokochin")
             return Response(
                 serializer_individual.errors, status=status.HTTP_400_BAD_REQUEST
             )
