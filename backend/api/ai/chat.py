@@ -92,19 +92,6 @@ def chat_knowledge(animal_name):
             output[item] = 1
             json_ok = False
 
-    # output["hp"] = int(output["hp"])
-    # output["attack"] = int(output["attack"])
-    # output["defense"] = int(output["defense"])
-    # output["magic_attack"] = int(output["magic_attack"])
-    # output["magic_defense"] = int(output["magic_defense"])
-    # output["speed"] = int(output["speed"])
-    # output["hp"] = int(output["hp"])
-    # output["attack"] = int(output["attack"])
-    # output["defense"] = int(output["defense"])
-    # output["magic_attack"] = int(output["magic_attack"])
-    # output["magic_defense"] = int(output["magic_defense"])
-    # output["speed"] = int(output["speed"])
-
     return json_ok, output
 
 
