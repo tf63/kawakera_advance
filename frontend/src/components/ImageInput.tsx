@@ -19,9 +19,12 @@ const ImageUploadForm = () => {
             // ここで画像ファイルの処理を行います
 
             try {
+                const formData = new FormData();
+                formData.append('image', file); // フォームデータに画像ファイルを追加する
+
                 const response = await fetch(API_ENDPOINTS.IMAGE, {
                     method: 'POST',
-                    body: file
+                    body: formData
                 })
                 console.log(response)
 

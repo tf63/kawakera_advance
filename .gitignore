@@ -193,4 +193,4 @@ cython_debug/
 #.idea/
 
 # input_images
-backend/static/media/input_images
+# backend/mediafiles
