@@ -14,7 +14,7 @@ from .serializers import CategorySerializer, IndividualSerializer, AnimalSeriali
 from django.core.files.base import ContentFile
 from django.db.models import Max
 
-from .utils import convert_to_file
+from .utils import convert_to_file, resize_image
 import base64
 import random
 
@@ -35,60 +35,26 @@ from ai import *
 
 class ImageAPIView(APIView):
     def post(self, request):
-        # data = request.data
-        # image_file = data["image"]
         image_file = request.FILES["image"]
         binary_data = image_file.read()
-        # image = binary2image(binary_data)
-        # image_file = image.convert("RGB")
-        print(type(image_file))
-        # image_file = request.FILE["image"]
-        # print(data)
-        # image = binary2image(data["image"])
 
-        # print(type(image))
-        # image = data
-        # 画像をnumpyからバイナリに変換する
-        # image = np2binary(data)
-        # # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
+        # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
         score, label = image_classification(binary_data)
-        print(score, label)
+        print("score, label = ", score, label)
+
+        # 画像をセグメントする
         image_file = create_segmentation(binary_data)
 
-        max_width = 500
-        max_height = 500
-        width, height = image_file.size
-        resize_ratio = min(max_width / width, max_height / height)
-        new_width = int(width * resize_ratio)
-        new_height = int(height * resize_ratio)
-        image_file = image_file.resize((new_width, new_height))
+        # 画像のリサイズ
+        image_file = resize_image(image_file, 512, 239)
         image_file = image2binary(image_file)
-        print(type(image_file))
-
-        # score = 90
-        # label = "dog"
-        # image = data["image"]
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
         exists = Category.objects.filter(label=label).exists()
         if not exists:
-            #
             data_category = {"label": label}
             # ChatGPTに動物名を渡してステータス，生態を取得
             information = chat_knowledge(label)
-            print(information)
-            # data_category ← information
-            # ダミー
-            # information = {
-            #     "trivia": "人よりも大きい犬がいる",
-            #     "echology": "人に飼われていることが多い",
-            #     "hp": 50,
-            #     "attack": 50,
-            #     "defence": 50,
-            #     "speed": 50,
-            #     "magic_attack": 50,
-            #     "magic_defence": 50,
-            # }
             data_category.update(information)
             print(data_category)
 
@@ -101,15 +67,13 @@ class ImageAPIView(APIView):
                 )
 
         category = Category.objects.get(label=label)
-        image_file = ContentFile(image_file, name="temp." + "png")
-        # image_file = convert_to_file(image)
+        image_file = ContentFile(image_file, name=f"{label}" + ".png")
         data_indvidual = {"category": category.pk, "score": score, "image": image_file}
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
         serializer_category = CategorySerializer(category)
         if serializer_individual.is_valid():
             serializer_individual.save()
-            # return Response({"message": "Record created successfully."})
             return Response(
                 {
                     "message": "Record created successfully.",
@@ -177,37 +141,11 @@ class CategoryAPIView(APIView):
                 )
                 response_data["latest_individuals"] = serializer_individual.data
 
-            # # 特定のidを持つカテゴリのレコード
-            # # ---------------------------------------------------------------------------
-            # id = 15
-            # # ---------------------------------------------------------------------------
-            # animals = {}
-            # individuals = Individual.objects.filter(category_id=id).order_by("-score")
-            # for individual in individuals:
-            #     serializer_individual = IndividualSerializer(individual)
-            #     animals[individual.id] = {
-            #         "image": serializer_individual.data["image"],
-            #         "score": serializer_individual.data["score"],
-            #     }
-            # response_data.append({"individuals": animals})
-
             return Response(response_data, status=status.HTTP_200_OK)
         except Exception as e:
             return Response(
                 {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
-        # ---------------------------------------------------------------------------
-
-        # try:
-        #     # idの降順で最新の30件を取得
-        #     queryset = Category.objects.order_by("-id")[:30]
-        #     serializer = CategorySerializer(queryset, many=True)
-
-        #     return Response(serializer.data)
-        # except Exception as e:
-        #     return Response(
-        #         {"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR
-        #     )
 
 
 class TriviaAPIView(APIView):
