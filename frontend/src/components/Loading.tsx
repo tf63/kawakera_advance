@@ -1,56 +1,53 @@
-import React, { useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
+import { ImageAPI } from '../interfaces/interfaces'
+import axios from 'axios'
 
 const Loading = () => {
-    const fileInputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
+    const location = useLocation()
+    const file = location.state?.file
 
-    const handleButtonClick = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.click()
-        }
-    }
+    const [loading, setLoading] = useState(true)
 
-    const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files && event.target.files[0]
-        if (file) {
-            console.log('file input!', file)
-            // ここで画像ファイルの処理を行います
+    useEffect(() => {
+        const processData = async () => {
+            if (file) {
+                try {
+                    const formData = new FormData()
+                    formData.append('image', file)
 
-            try {
-                const response = await fetch(API_ENDPOINTS.IMAGE, {
-                    method: 'POST',
-                    body: file
-                })
-                console.log(response)
+                    const response = await axios.post(API_ENDPOINTS.IMAGE, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
 
-                // // 結果ページへの遷移
-                // navigate('/result')
-            } catch (error) {
-                // エラーハンドリング
-                alert('エラー')
+                    const data: ImageAPI = response.data
+
+                    console.log('Response is ...')
+                    console.log(data)
+
+                    navigate('/result', { state: { data } }) // 結果ページへの遷移
+
+                    setLoading(false)
+                } catch (error) {
+                    // エラーハンドリング
+                    alert('エラー')
+                    navigate('/') // 結果ページへの遷移
+                }
             }
-
-            // API_ENDPOINTS.IMAGE
         }
-        // 画像ファイルの処理
-    }
 
-    return (
-        <div>
-            <div className="card-green" onClick={handleButtonClick}>
-                投稿ボタン
-            </div>
-            <input
-                type="file"
-                ref={fileInputRef}
-                onChange={handleImageChange}
-                accept="image/*"
-                style={{ display: 'none' }}
-            />
-        </div>
-    )
+        processData()
+    }, [file, navigate])
+
+    if (loading) {
+        return <h1>Loading...</h1>
+    } else {
+        return null
+    }
 }
 
 export default Loading
