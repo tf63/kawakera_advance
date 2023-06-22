@@ -21,20 +21,23 @@ def image_classification(data):
     Returns:
         score, label : integer(検出値を100かけしてint型に), string(一番予測値の大きいクラスラベル)
     """
-    # numpy to binary
-
-    # data = np2binary(data)
 
     # huggingfaceに送る
     response = requests.post(API_URL, headers=headers, data=data)
-    response_json = response.json()
-    # score(level)の算出
-    score = response_json[0]["score"] * 100
-    score = int(score)
-    # labelの吐き出し
-    label = response_json[0]["label"].split(",")[0].strip()
 
-    return score, label
+    status = response.status_code
+    if status == 200:
+        response_json = response.json()
+        # score(level)の算出
+        score = response_json[0]["score"] * 100
+        score = int(score)
+        # labelの吐き出し
+        label = response_json[0]["label"].split(",")[0].strip()
+    else:
+        score = 1
+        label = ""
+
+    return status, score, label
 
 
 if __name__ == "__main__":
