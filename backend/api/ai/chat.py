@@ -72,12 +72,26 @@ def chat_knowledge(animal_name):
     chatgpt.input_message(animal_name)
     knowledge = chatgpt.input_list[-1]["content"]
     print(knowledge)
-    output = json.loads(knowledge)
-    print(output)
+    # json decode
+    json_ok = True
+    try:
+        output = json.loads(knowledge)
+    except json.JSONDecodeError:
+        json_ok = False
+        output = {
+            "ecology": "",
+            "trivia": "",
+            "type": "",
+            "hp": 1,
+            "attack": 1,
+            "defense": 1,
+            "magic_attack": 1,
+            "magic_defense": 1,
+            "speed": 1,
+        }
     items_int = ["hp", "attack", "defense", "magic_attack", "magic_defense", "speed"]
     items_str = ["ecology", "trivia", "type"]
 
-    json_ok = True
     for item in items_str:
         try:
             output[item] = output[item]
