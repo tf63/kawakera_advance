@@ -35,7 +35,9 @@ def create_segmentation(data):
     # hugging face requests
     response = requests.post(API_URL, headers=headers, data=data)
 
-    if response.status_code == 200:
+    status = response.status_code
+
+    if status == 200:
         # "LABEL_"のものを除外する
         output = [
             entry
@@ -81,7 +83,7 @@ def create_segmentation(data):
     else:
         segmented_image = original_image
 
-    return segmented_image
+    return status, segmented_image
 
 
 if __name__ == "__main__":

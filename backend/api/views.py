@@ -39,11 +39,28 @@ class ImageAPIView(APIView):
         binary_data = image_file.read()
 
         # 画像を HuggingFace API に渡して動物名と切り抜き画像を取得
-        score, label = image_classification(binary_data)
+        status_classification, score, label = image_classification(binary_data)
+        print(f"classification_status: {status_classification}")
+        if status_classification != 200:
+            return Response(
+                {
+                    "message": "Image classification failed.",
+                },
+                status=status.HTTP_200_OK,
+            )
+
         print("score, label = ", score, label)
 
         # 画像をセグメントする
-        image_file = create_segmentation(binary_data)
+        status_segmentation, image_file = create_segmentation(binary_data)
+        print(f"segment_status: {status_segmentation}")
+        if status_segmentation != 200:
+            return Response(
+                {
+                    "message": "Segmentation failed.",
+                },
+                status=status.HTTP_200_OK,
+            )
 
         # 画像のリサイズ
         image_file = resize_image(image_file, 512, 239)
@@ -54,7 +71,15 @@ class ImageAPIView(APIView):
         if not exists:
             data_category = {"label": label}
             # ChatGPTに動物名を渡してステータス，生態を取得
-            information = chat_knowledge(label)
+            json_ok, information = chat_knowledge(label)
+            if not json_ok:
+                return Response(
+                    {
+                        "message": "JSON decode failed.",
+                    },
+                    status=status.HTTP_200_OK,
+                )
+
             data_category.update(information)
             print(data_category)
 
