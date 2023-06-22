@@ -1,7 +1,11 @@
 import React, { useRef } from 'react'
-
+import { useNavigate } from 'react-router-dom'
+import { API_ENDPOINTS } from '../api'
+import { ImageAPI } from '../interfaces/interfaces'
+import axios from 'axios'
 const ImageUploadForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
+    const navigate = useNavigate()
 
     const handleButtonClick = () => {
         if (fileInputRef.current) {
@@ -9,9 +13,11 @@ const ImageUploadForm = () => {
         }
     }
 
-    const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files && event.target.files[0]
-        // 画像ファイルの処理
+
+        // 結果ページへの遷移
+        navigate('/loading', { state: { file: file } })
     }
 
     return (

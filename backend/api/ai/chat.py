@@ -32,6 +32,14 @@ class Chatgpt:
 
 # 動物名から豆知識と食べ物，生態地域，豆知識を生成
 def chat_knowledge(animal_name):
+    """_summary_
+
+    Args:
+        animal_name: string
+
+    Returns:
+        dict: {"ecology":"", "trivia":"", "type": "",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""}
+    """
     system_setting = """\
         ### setting ###
         You are a scholar who knows much about animals and a Pokémon lover.  You have a wealth of knowledge about what animals eat, where they live, and trivia about them. You are tempted to compare animals to Pokémon.
@@ -58,13 +66,33 @@ def chat_knowledge(animal_name):
 
         Example 4
         user:lion
-        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "special_attack":"60", "special_defense":"80", "speed":"120"}
+        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "magic_attack":"60", "magic_defense":"80", "speed":"120"}
     """
     chatgpt = Chatgpt(system_setting)
     chatgpt.input_message(animal_name)
     knowledge = chatgpt.input_list[-1]["content"]
+    print(knowledge)
     output = json.loads(knowledge)
-    return output
+    print(output)
+    items_int = ["hp", "attack", "defense", "magic_attack", "magic_defense", "speed"]
+    items_str = ["ecology", "trivia", "type"]
+
+    json_ok = True
+    for item in items_str:
+        try:
+            output[item] = output[item]
+        except (ValueError, KeyError):
+            output[item] = ""
+            json_ok = False
+
+    for item in items_int:
+        try:
+            output[item] = int(output[item])
+        except (ValueError, KeyError):
+            output[item] = 1
+            json_ok = False
+
+    return json_ok, output
 
 
 if __name__ == "__main__":

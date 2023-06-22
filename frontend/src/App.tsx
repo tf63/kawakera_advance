@@ -11,23 +11,28 @@ import BallAnimation from './components/Animation/Rolling'
 import BoxAnimation from './components/Animation/Box'
 import ThrowAnimation from './components/Animation/Throw'
 import SlotMachine from './components/Animation/Slot'
+import Loading from './components/Loading'
 
 import ScrollTop from './components/ScrollTop'
+import TestSpace from './components/Tutorial/TestSpace'
 
 function App() {
     return (
         <Router>
             <ScrollTop />
+            <Navbar />
             {/* <Navbar /> */}
             <Routes>
                 {/* Nav */}
                 <Route path="/" element={<Home />} />
                 <Route path="/detail/:id" element={<Detail />} />
                 <Route path="/result" element={<Result />} />
+                <Route path="/testspace" element={<TestSpace />} />
                 <Route path="/rolling" element={<BallAnimation />} />
                 <Route path="/box" element={<BoxAnimation />} />
                 <Route path="/throw" element={<ThrowAnimation />} />
                 <Route path="/slot" element={<SlotMachine />} />
+                <Route path="/loading" element={<Loading />} />
             </Routes>
         </Router>
     )

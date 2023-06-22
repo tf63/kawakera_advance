@@ -1,79 +1,14 @@
-import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import devtanuki from '../../public/devtanuki.png'
-
-type AnimalType = {
-    id: number
-    name: string
-}
-
-type Item = {
-    id: number
-    image: string
-    name: string
-}
-
-// const SquareComponent: React.FC<SquareProps> = ({ image }) => {
-//     return (
-//         <div className="square">
-//             <img src={`http://localhost:8000${image}`} alt="Square Image" />
-//         </div>
-//     )
-// }
-
-// const GridComponent: React.FC<GridProps> = ({ items }) => {
-//     return (
-//         <div className="grid-container">
-//             {items.map((item, index) => (
-//                 <SquareComponent key={index} image={item.image} />
-//             ))}
-//         </div>
-//     )
-// }
-
-type Feature = {
-    hp: string
-    atk: string
-    def: string
-    spatk: string
-    spdef: string
-    spd: string
-}
+import { Link, useLocation } from 'react-router-dom'
+import { ImageAPI } from '../interfaces/interfaces'
+import { CategoryDetail, Individual } from '../types/types'
+import { API_ENDPOINTS } from '../api'
 
 const Result = () => {
-    const { id } = useParams()
+    const location = useLocation()
+    const resultData: ImageAPI = location.state.data
+    const categoryDetail: CategoryDetail = resultData.category
+    const individual: Individual = resultData.individual
 
-    // const [animals, setAnimals] = useState<Item[]>([])
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await axios('http://localhost:8000/api/animal/')
-    //         const data = await response.data
-    //         console.log(data)
-    //         setAnimals(data)
-    //     }
-
-    //     fetchData()
-    // }, [])
-
-    const [animal, setAnimal] = useState<Item>({
-        id: 222,
-        image: 'http://localhost:8000/media/tests/animals/devtanuki.png',
-        name: 'ねこ'
-    })
-
-    const [featureData, setFeatureData] = useState<Feature>({
-        hp: '並hp',
-        atk: '並atk',
-        def: '並def',
-        spatk: '並spatk',
-        spdef: '並spdef',
-        spd: '並spd'
-    })
-
-    // const sample_animal = { id: 1, image: 'http://localhost:8000/media/tests/animals/devtanuki.png', name: 'ミライドン'};
     return (
         <div className="wrapper">
             <div className="result_complete">
@@ -81,17 +16,17 @@ const Result = () => {
             </div>
             <div className="column2 result">
                 <div className="result_img">
-                    <img src={animal.image}></img>
+                    <img src={`${API_ENDPOINTS.BASE}${individual.image}`}></img>
                 </div>
                 <div className="card">
                     <div className="card result_name">
-                        <p>No.{animal.id}</p>
-                        <h2>{animal.name}</h2>
+                        <p>No.{categoryDetail.id}</p>
+                        <h2>{categoryDetail.label}</h2>
                     </div>
                     <div className="card">
                         <div className="flex">
                             <p>type:</p>
-                            <p>normal</p>
+                            <p>{categoryDetail.type}</p>
                         </div>
                         <div className="flex">
                             <p>height:</p>
@@ -103,7 +38,7 @@ const Result = () => {
                         </div>
                     </div>
                     <div className="card">
-                        <p>-description--description--description--description--description--description-</p>
+                        <p>{categoryDetail.trivia}</p>
                     </div>
                 </div>
             </div>

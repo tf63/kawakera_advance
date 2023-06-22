@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import devtanuki from '../../public/devtanuki.png'
-import { CategoryDetail, Individual } from '../types/types'
+import { CategoryDetail, Individual, Status } from '../types/types'
 import { CategoryDetailAPI } from '../interfaces/interfaces'
 import { API_ENDPOINTS } from '../api'
+import ProgressBar from './ProgressBar'
 
 const Detail = () => {
     const { id } = useParams()
@@ -15,11 +15,25 @@ const Detail = () => {
         label: '',
         hp: 0,
         attack: 0,
-        defence: 0,
+        defense: 0,
         speed: 0,
         magic_attack: 0,
-        magic_defence: 0
+        magic_defense: 0,
+        type: '',
+        trivia: '',
+        ecology: ''
     })
+
+    const [status, setStatus] = useState<Status>({
+        hp: 0,
+        attack: 0,
+        defense: 0,
+        magic_attack: 0,
+        magic_defense: 0,
+        speed: 0
+    })
+
+    const statusLabels = ['HP', 'こうげき', 'ぼうぎょ', 'とくこう', 'とくぼう', 'すばやさ']
 
     const [individuals, setIndividuals] = useState<Individual[]>([])
 
@@ -30,6 +44,15 @@ const Detail = () => {
             console.log(data)
             setCategoryDetail(data.category)
             setIndividuals(data.individuals)
+            setStatus((prevStatus) => ({
+                ...prevStatus,
+                hp: data.category.hp,
+                attack: data.category.attack,
+                defense: data.category.defense,
+                magic_attack: data.category.magic_attack,
+                magic_defense: data.category.magic_defense,
+                speed: data.category.speed
+            }))
         }
 
         fetchData()
@@ -41,68 +64,78 @@ const Detail = () => {
 
     return (
         <div className="wrapper">
-            <div className="result_complete">
-                <h1>動物詳細</h1>
+            <div className="toppage_midashi detail_box">
+                <p>とうろく</p>
+                <div className="line"></div>
             </div>
             <div className="card column2">
                 <div className="detail_img">
                     <img src={`${API_ENDPOINTS.BASE}${individuals[0].image}`}></img>
                 </div>
-                <div className="card">
+                <div className="detail_info1">
                     <p>No.{categoryDetail.id}</p>
                     <h2>{categoryDetail.label}</h2>
-                    <p>不明</p>
+
+                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>タイプ: {categoryDetail.type}</p>
                 </div>
             </div>
+            {/* <div className="card detail_feature">
+                {Object.values(status).map((statusValue, index) => {
+                    return (
+                        <div className="container-status" key={index} style={{ width: '100%' }}>
+                            <p>{statusLabels[index]}</p>
+                            <ProgressBar width={100} value={statusValue} />
+                            <p>{statusValue}</p>
+                        </div>
+                    )
+                })}
+            </div> */}
             <div className="column2">
-                <div className="card">
-                    <p>分類：パラドックスポケモン</p>
-                    <p>電気・ドラゴン</p>
-                    <p>高さ3.5m</p>
-                    <p>重さ240.0kg </p>
-                    <p>特性：ハドロンエンジン</p>
+                <div className="card detail_info2">
+                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>タイプ: {categoryDetail.type}</p>
+
+                    <p>{categoryDetail.ecology}</p>
                 </div>
                 <div className="card detail_feature">
-                    <div className="flex">
-                        <p>HP</p>
-                        <p>{categoryDetail.hp}</p>
-                    </div>
-                    <div className="flex">
-                        <p>こうげき</p>
-                        <p>{categoryDetail.attack}</p>
-                    </div>
-                    <div className="flex">
-                        <p>ぼうぎょ</p>
-                        <p>{categoryDetail.defence}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくこう</p>
-                        <p>{categoryDetail.magic_attack}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくぼう</p>
-                        <p>{categoryDetail.magic_defence}</p>
-                    </div>
-                    <div className="flex">
-                        <p>すばやさ</p>
-                        <p>{categoryDetail.speed}</p>
-                    </div>
+                    {Object.values(status).map((statusValue, index) => {
+                        return (
+                            <div className="container-status" key={index} style={{ width: '100%' }}>
+                                <p>{statusLabels[index]}</p>
+                                <ProgressBar width={100} value={statusValue} />
+                                <p>{statusValue}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className="card">
-                <p>説明文説明文説明文説明文</p>
+                <p>{categoryDetail.trivia}</p>
             </div>
-            <div className="card">
-                <h2>進化</h2>
-                <p>進化しない</p>
+            <div className="toppage_midashi detail_box">
+                <p>ボックス</p>
+                <div className="line"></div>
             </div>
-            <div className="card">
-                <h2>すがた</h2>
-                <p>なし</p>
+            <div>
+                {individuals.map((individual, index) => (
+                    <div className="card square" key={index}>
+                        <div className="container-center">
+                            <img
+                                src={`${API_ENDPOINTS.BASE}${individual.image}`}
+                                style={{ width: '180px' }}
+                                alt={individual.score.toString()}
+                            />
+                        </div>
+                        <div className="container-center">
+                            <p>Lv. {individual.score.toString()}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div className="link_to_home">
+            <div className="card-green">
                 <Link className="link" to={'/'}>
-                    Homeに戻る
+                    Home
                 </Link>
             </div>
         </div>
