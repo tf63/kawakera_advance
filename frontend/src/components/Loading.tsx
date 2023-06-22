@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
 
-const ImageUploadForm = () => {
+const Loading = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
 
@@ -19,17 +19,14 @@ const ImageUploadForm = () => {
             // ここで画像ファイルの処理を行います
 
             try {
-                const formData = new FormData()
-                formData.append('image', file) // フォームデータに画像ファイルを追加する
-
                 const response = await fetch(API_ENDPOINTS.IMAGE, {
                     method: 'POST',
-                    body: formData
+                    body: file
                 })
                 console.log(response)
 
-                // 結果ページへの遷移
-                navigate('/result', { state: { response: response } })
+                // // 結果ページへの遷移
+                // navigate('/result')
             } catch (error) {
                 // エラーハンドリング
                 alert('エラー')
@@ -56,4 +53,4 @@ const ImageUploadForm = () => {
     )
 }
 
-export default ImageUploadForm
+export default Loading

@@ -27,7 +27,7 @@ const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
                 <Slider {...sliderSettings}>
                     {individuals.map((individual, index) => (
                         <Link to={`detail/${individual.id}`}>
-                            <div key={index}>
+                            <div key={index} style={{ paddingTop: '30px' }}>
                                 <div className="container-center">
                                     <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
                                 </div>
