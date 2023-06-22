@@ -18,3 +18,8 @@ export interface GridProps {
 export interface SliderProps {
     individuals: Individual[]
 }
+
+export interface ImageAPI {
+    category: CategoryDetail
+    individual: Individual
+}

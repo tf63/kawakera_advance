@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
-
+import { ImageAPI } from '../interfaces/interfaces'
+import axios from 'axios'
 const ImageUploadForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
@@ -22,14 +23,22 @@ const ImageUploadForm = () => {
                 const formData = new FormData()
                 formData.append('image', file) // フォームデータに画像ファイルを追加する
 
-                const response = await fetch(API_ENDPOINTS.IMAGE, {
-                    method: 'POST',
-                    body: formData
+                // const response = await fetch(API_ENDPOINTS.IMAGE, {
+                //     method: 'POST',
+                //     body: formData
+                // })
+                const response = await axios.post(API_ENDPOINTS.IMAGE, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 })
-                console.log(response)
+                const data: ImageAPI = response.data
+
+                console.log('Response is ...')
+                console.log(data)
 
                 // 結果ページへの遷移
-                navigate('/result', { state: { response: response } })
+                navigate('/result', { state: { data: data } })
             } catch (error) {
                 // エラーハンドリング
                 alert('エラー')

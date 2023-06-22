@@ -20,4 +20,6 @@ export type CategoryDetail = {
     speed: number
     magic_attack: number
     magic_defence: number
+    type:string
+    trivia:string
 }
