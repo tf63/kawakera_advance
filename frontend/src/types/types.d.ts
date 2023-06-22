@@ -21,3 +21,12 @@ export type CategoryDetail = {
     magic_attack: number
     magic_defense: number
 }
+
+export type Status = {
+    hp: number
+    attack: number
+    defense: number
+    magic_attack: number
+    magic_defense: number
+    speed: number
+}

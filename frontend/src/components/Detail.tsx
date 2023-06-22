@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import devtanuki from '../../public/devtanuki.png'
-import { CategoryDetail, Individual } from '../types/types'
+import { CategoryDetail, Individual, Status } from '../types/types'
 import { CategoryDetailAPI } from '../interfaces/interfaces'
 import { API_ENDPOINTS } from '../api'
+import ProgressBar from './ProgressBar'
 
 const Detail = () => {
     const { id } = useParams()
@@ -15,11 +15,22 @@ const Detail = () => {
         label: '',
         hp: 0,
         attack: 0,
-        defence: 0,
+        defense: 0,
         speed: 0,
         magic_attack: 0,
-        magic_defence: 0
+        magic_defense: 0
     })
+
+    const [status, setStatus] = useState<Status>({
+        hp: 0,
+        attack: 0,
+        defense: 0,
+        magic_attack: 0,
+        magic_defense: 0,
+        speed: 0
+    })
+
+    const statusLabels = ['HP', 'こうげき', 'ぼうぎょ', 'とくこう', 'とくぼう', 'すばやさ']
 
     const [individuals, setIndividuals] = useState<Individual[]>([])
 
@@ -30,6 +41,15 @@ const Detail = () => {
             console.log(data)
             setCategoryDetail(data.category)
             setIndividuals(data.individuals)
+            setStatus((prevStatus) => ({
+                ...prevStatus,
+                hp: data.category.hp,
+                attack: data.category.attack,
+                defense: data.category.defense,
+                magic_attack: data.category.magic_attack,
+                magic_defense: data.category.magic_defense,
+                speed: data.category.speed
+            }))
         }
 
         fetchData()
@@ -63,30 +83,15 @@ const Detail = () => {
                     <p>特性：ハドロンエンジン</p>
                 </div>
                 <div className="card detail_feature">
-                    <div className="flex">
-                        <p>HP</p>
-                        <p>{categoryDetail.hp}</p>
-                    </div>
-                    <div className="flex">
-                        <p>こうげき</p>
-                        <p>{categoryDetail.attack}</p>
-                    </div>
-                    <div className="flex">
-                        <p>ぼうぎょ</p>
-                        <p>{categoryDetail.defence}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくこう</p>
-                        <p>{categoryDetail.magic_attack}</p>
-                    </div>
-                    <div className="flex">
-                        <p>とくぼう</p>
-                        <p>{categoryDetail.magic_defence}</p>
-                    </div>
-                    <div className="flex">
-                        <p>すばやさ</p>
-                        <p>{categoryDetail.speed}</p>
-                    </div>
+                    {Object.values(status).map((statusValue, index) => {
+                        return (
+                            <div className="container-status" key={index} style={{ width: '100%' }}>
+                                <p>{statusLabels[index]}</p>
+                                <ProgressBar width={100} value={statusValue} />
+                                <p>{statusValue}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
             <div className="card">
@@ -96,13 +101,29 @@ const Detail = () => {
                 <h2>進化</h2>
                 <p>進化しない</p>
             </div>
-            <div className="card">
-                <h2>すがた</h2>
-                <p>なし</p>
+            <div className="toppage_midashi">
+                <p>ボックス</p>
+                <div className="line"></div>
             </div>
-            <div className="link_to_home">
+            <div>
+                {individuals.map((individual, index) => (
+                    <div className="card square" key={index}>
+                        <div className="container-center">
+                            <img
+                                src={`${API_ENDPOINTS.BASE}${individual.image}`}
+                                style={{ width: '180px' }}
+                                alt={individual.score.toString()}
+                            />
+                        </div>
+                        <div className="container-center">
+                            <p>Lv. {individual.score.toString()}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className="card-green">
                 <Link className="link" to={'/'}>
-                    Homeに戻る
+                    Home
                 </Link>
             </div>
         </div>
