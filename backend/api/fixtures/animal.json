@@ -1,0 +1,82 @@
+[
+    {
+        "model": "api.animal",
+        "pk": 1,
+        "fields": {
+            "name": "dog",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 2,
+        "fields": {
+            "name": "cat",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 3,
+        "fields": {
+            "name": "racoon",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 4,
+        "fields": {
+            "name": "rabbit",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 5,
+        "fields": {
+            "name": "bird",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 6,
+        "fields": {
+            "name": "tiger",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 7,
+        "fields": {
+            "name": "zebra",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 8,
+        "fields": {
+            "name": "bear",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 9,
+        "fields": {
+            "name": "horse",
+            "image": "tests/animals/devtanuki.png"
+        }
+    },
+    {
+        "model": "api.animal",
+        "pk": 10,
+        "fields": {
+            "name": "fox",
+            "image": "tests/animals/devtanuki.png"
+        }
+    }
+]
