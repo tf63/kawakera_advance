@@ -20,6 +20,9 @@ export type CategoryDetail = {
     speed: number
     magic_attack: number
     magic_defense: number
+    type: string
+    trivia: string
+    ecology: string
 }
 
 export type Status = {

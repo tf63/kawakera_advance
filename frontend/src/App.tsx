@@ -19,6 +19,7 @@ function App() {
     return (
         <Router>
             <ScrollTop />
+            <Navbar />
             {/* <Navbar /> */}
             <Routes>
                 {/* Nav */}

@@ -18,7 +18,10 @@ const Detail = () => {
         defense: 0,
         speed: 0,
         magic_attack: 0,
-        magic_defense: 0
+        magic_defense: 0,
+        type: '',
+        trivia: '',
+        ecology: ''
     })
 
     const [status, setStatus] = useState<Status>({
@@ -61,8 +64,9 @@ const Detail = () => {
 
     return (
         <div className="wrapper">
-            <div className="result_complete">
-                <h1>動物詳細</h1>
+            <div className="toppage_midashi detail_box">
+                <p>とうろく</p>
+                <div className="line"></div>
             </div>
             <div className="card column2">
                 <div className="detail_img">
@@ -71,16 +75,28 @@ const Detail = () => {
                 <div className="detail_info1">
                     <p>No.{categoryDetail.id}</p>
                     <h2>{categoryDetail.label}</h2>
-                    <p>不明</p>
+
+                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>タイプ: {categoryDetail.type}</p>
                 </div>
             </div>
+            {/* <div className="card detail_feature">
+                {Object.values(status).map((statusValue, index) => {
+                    return (
+                        <div className="container-status" key={index} style={{ width: '100%' }}>
+                            <p>{statusLabels[index]}</p>
+                            <ProgressBar width={100} value={statusValue} />
+                            <p>{statusValue}</p>
+                        </div>
+                    )
+                })}
+            </div> */}
             <div className="column2">
                 <div className="card detail_info2">
-                    <p>分類：パラドックスポケモン</p>
-                    <p>電気・ドラゴン</p>
-                    <p>高さ3.5m</p>
-                    <p>重さ240.0kg </p>
-                    <p>特性：ハドロンエンジン</p>
+                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>タイプ: {categoryDetail.type}</p>
+
+                    <p>{categoryDetail.ecology}</p>
                 </div>
                 <div className="card detail_feature">
                     {Object.values(status).map((statusValue, index) => {
@@ -95,13 +111,9 @@ const Detail = () => {
                 </div>
             </div>
             <div className="card">
-                <p>説明文説明文説明文説明文</p>
+                <p>{categoryDetail.trivia}</p>
             </div>
-            <div className="card">
-                <h2>進化</h2>
-                <p>進化しない</p>
-            </div>
-            <div className="toppage_midashi">
+            <div className="toppage_midashi detail_box">
                 <p>ボックス</p>
                 <div className="line"></div>
             </div>

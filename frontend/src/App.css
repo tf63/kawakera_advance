@@ -189,10 +189,11 @@ nav .link {
 
 .column2 {
   display: flex;
+  justify-content: space-between;
 }
 
 .column2 div {
-  width: 50%;
+  width: 45%;
 }
 
 .flex {
@@ -402,7 +403,8 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .toppage_midashi p {
@@ -454,7 +456,7 @@ button:disabled {
   border-radius: 10px;
   transition: width 0.3s ease;
   background: linear-gradient(296.6deg, #BAFFDE 4.36%, #E9FFBB 94.25%);
-  box-shadow: inset -2px -2px 15px #FFFFFF, inset 4px 4px 10px rgba(102, 102, 102, 0.3);
+  box-shadow: -2px -2px 15px #FFFFFF, inset 4px 4px 5px rgba(102, 102, 102, 0.3);
 }
 
 .container-status {
@@ -471,4 +473,9 @@ button:disabled {
 
 .container-status p:last-child {
   margin-left: 20px;
+  margin-right: 20px;
+}
+
+.detail_box {
+  margin-top: 100px;
 }
