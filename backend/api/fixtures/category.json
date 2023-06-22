@@ -3,10 +3,10 @@
         "model": "api.category",
         "pk": 1,
         "fields": {
-            "label": "たぬき",
-            "trivia": "たぬきは、食べ物を洗ってから食べる独特な習性があります。彼らは水を使って餌を洗い、食べやすくするために泥や砂を落とします。",
-            "ecology": "たぬきは雑食であり、主に果実や昆虫を食べ、森林や農地に生息しています。生息数は地域によって異なります。",
-            "type": "ノーマル/くさ",
+            "label": "ねこ",
+            "trivia": "猫は素早く柔軟な身体を持ち、優れた視力と聴力を備えています。彼らは静かに近づき、驚くべき跳躍力を使って獲物に飛びかかることができます。さらに、猫の鋭い爪と歯は効果的な狩猟道具となります。",
+            "ecology": "猫は主に肉食性で、鳥や小型哺乳類などの生肉を食べ、人間の共存環境や野生の地域で生息し、世界中に数十億匹存在しています。",
+            "type": "ノーマル",
             "hp": 100,
             "attack": 80,
             "defense": 70,
@@ -35,9 +35,9 @@
         "model": "api.category",
         "pk": 3,
         "fields": {
-            "label": "いぬ",
-            "trivia": "犬は人間との共同生活の中で進化し、他の動物と比べて人間の表情を読む能力に優れています。彼らは微細な表情の変化を察知し、飼い主の感情を理解することができます。",
-            "ecology": "犬は雑食であり、飼われている場合には人間から与えられた餌を食べます。生息地は人間の生活圏に広く分布し、飼われている個体数は非常に多いです。",
+            "label": "ポメラニアン",
+            "trivia": "ポメラニアンは非常に知識欲旺盛で、学習能力が高いです。トリックやコマンドを覚えるのが得意であり、サーカス犬としての訓練やドッグスポーツでも活躍することがあります。",
+            "ecology": "ポメラニアンはオリジナルの野生の祖先である大型のトナカイ犬から進化したと言われています。彼らは活発で元気な性格であり、非常に賢くて警戒心が強いことでも知られています。ポメラニアンは家庭犬として非常に人気があり、小さな体格にもかかわらず、元気に走り回ることができます。",
             "type": "ノーマル",
             "hp": 120,
             "attack": 70,
@@ -258,7 +258,7 @@
         "pk": 6,
         "fields": {
             "category": 6,
-            "image": "tests/animals/gorira.jpeg",
+            "image": "tests/animals/gorila.png",
             "score": 95
         }
     },
@@ -267,7 +267,7 @@
         "pk": 7,
         "fields": {
             "category": 7,
-            "image": "tests/animals/azarashi.jpeg",
+            "image": "tests/animals/azarashi.png",
             "score": 95
         }
     },
@@ -276,7 +276,7 @@
         "pk": 8,
         "fields": {
             "category": 8,
-            "image": "tests/animals/saru.jpeg",
+            "image": "tests/animals/saru.png",
             "score": 95
         }
     },
@@ -285,7 +285,7 @@
         "pk": 9,
         "fields": {
             "category": 9,
-            "image": "tests/animals/harinezumi.jpeg",
+            "image": "tests/animals/harinezumi.png",
             "score": 95
         }
     },
@@ -294,7 +294,7 @@
         "pk": 10,
         "fields": {
             "category": 10,
-            "image": "tests/animals/frog.jpeg",
+            "image": "tests/animals/frog.png",
             "score": 95
         }
     },
@@ -303,7 +303,7 @@
         "pk": 11,
         "fields": {
             "category": 11,
-            "image": "tests/animals/goat.jpeg",
+            "image": "tests/animals/goat.png",
             "score": 95
         }
     },
@@ -312,7 +312,7 @@
         "pk": 12,
         "fields": {
             "category": 12,
-            "image": "tests/animals/sheep.jpeg",
+            "image": "tests/animals/sheep.png",
             "score": 95
         }
     },
@@ -321,7 +321,7 @@
         "pk": 13,
         "fields": {
             "category": 13,
-            "image": "tests/animals/giraf.jpeg",
+            "image": "tests/animals/giraf.png",
             "score": 95
         }
     }

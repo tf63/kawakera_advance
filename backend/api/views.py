@@ -63,7 +63,7 @@ class ImageAPIView(APIView):
             )
 
         # 画像のリサイズ
-        image_file = resize_image(image_file, 512, 239)
+        image_file = resize_image(image_file, 250, 239)
         image_file = image2binary(image_file)
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
