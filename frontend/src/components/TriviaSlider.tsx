@@ -20,23 +20,25 @@ const TriviaSlider: React.FC<TriviaSliderProps> = ({ trivias }) => {
     }
 
     return (
-        <div className="container-center" style={{ paddingBottom: '20px' }}>
-            <div className="card slider" style={{ width: '80%', paddingBottom: '30px' }}>
-                <p style={{ fontSize: '30px', textAlign: 'center' }}>あにモン豆知識</p>
-                <Slider {...sliderSettings}>
-                    {trivias.map((trivia, index) => (
-                        <div
-                            className="container-center trivia-container"
-                            style={{ paddingBottom: '20px' }}
-                            key={index}
-                        >
-                            <h3 className="text-center">{trivia.label_ja}</h3>
-                            <p className="loading_trivia" style={{ marginBottom: '25px' }}>
-                                {trivia.trivia}
-                            </p>
-                        </div>
-                    ))}
-                </Slider>
+        <div>
+            <div className="container-center" style={{ paddingBottom: '20px' }}>
+                <div className="card slider" style={{ width: '80%', paddingBottom: '30px' }}>
+                    {/* <p style={{ fontSize: '30px', textAlign: 'center' }}>あにモン豆知識</p> */}
+                    <Slider {...sliderSettings}>
+                        {trivias.map((trivia, index) => (
+                            <div
+                                className="container-center trivia-container"
+                                style={{ paddingBottom: '20px' }}
+                                key={index}
+                            >
+                                <h3 className="text-center">{trivia.label_ja}のまめちしき</h3>
+                                <p className="loading_trivia" style={{ marginBottom: '50px' }}>
+                                    {trivia.trivia}
+                                </p>
+                            </div>
+                        ))}
+                    </Slider>
+                </div>
             </div>
         </div>
     )
