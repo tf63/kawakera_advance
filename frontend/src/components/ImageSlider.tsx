@@ -3,10 +3,10 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Link } from 'react-router-dom'
-import { SliderProps } from '../interfaces/interfaces'
+import { ImageSliderProps } from '../interfaces/interfaces'
 import { API_ENDPOINTS } from '../api'
 
-const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({ individuals }) => {
     const sliderSettings = {
         dots: true,
         infinite: true,

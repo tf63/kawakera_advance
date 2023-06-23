@@ -30,18 +30,6 @@ const TriviaSlider: React.FC<TriviaSliderProps> = ({ trivias }) => {
                             <h3 className="text-center">{trivia.label}</h3>
                             <div>{trivia.trivia}</div>
                         </div>
-                        // <Link to={`detail/${individual.id}`} key={index} className="link">
-                        //     <div key={index} style={{ paddingTop: '30px' }}>
-                        //         <div className="container-center">
-                        //             <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
-                        //         </div>
-                        //         <div className="container-center">
-                        //             <p>
-                        //                 {individual.label}: (レベル {individual.score})
-                        //             </p>
-                        //         </div>
-                        //     </div>
-                        // </Link>
                     ))}
                 </Slider>
             </div>
