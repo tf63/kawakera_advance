@@ -288,6 +288,10 @@ img {
   margin: auto;
 }
 
+.result_inner div{
+  width: unset;
+}
+
 /* resutl page cssここまで */
 
 /* タブレット以下の画面幅でのcss */
@@ -413,6 +417,10 @@ button:disabled {
 .card.slider {
   padding-right: 0;
   padding-left: 0;
+}
+
+.slider img{
+  width: 25%;
 }
 
 .slick-prev, .slick-next {

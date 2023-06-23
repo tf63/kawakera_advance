@@ -142,11 +142,10 @@ const Detail = () => {
                     ))}
                 </div>
             </div>
-            <div className="card-green">
-                <Link className="link" to={'/'}>
-                    Home
-                </Link>
-            </div>
+
+            <Link className="link" to={'/'}>
+                <div className="card-green">Home</div>
+            </Link>
         </div>
     )
 }
