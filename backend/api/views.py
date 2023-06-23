@@ -23,15 +23,6 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 from ai import *
 
-# from .ai.segmentation import create_segmentation
-# from .ai.classifier import image_classification
-
-# from .ai.segmentation import create_segmentation
-# from .ai.chat import chat
-
-# def index(request):
-#     return render(request, "index.html")S
-
 
 class ImageAPIView(APIView):
     def post(self, request):
@@ -46,7 +37,7 @@ class ImageAPIView(APIView):
                 {
                     "message": "Image classification failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         print("score, label = ", score, label)
@@ -59,7 +50,7 @@ class ImageAPIView(APIView):
                 {
                     "message": "Segmentation failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         # 画像のリサイズ
@@ -77,7 +68,7 @@ class ImageAPIView(APIView):
                     {
                         "message": "JSON decode failed.",
                     },
-                    status=status.HTTP_200_OK,
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
 
             data_category.update(information)
@@ -94,8 +85,10 @@ class ImageAPIView(APIView):
         category = Category.objects.get(label=label)
         image_file = ContentFile(image_file, name=f"{label}" + ".png")
         data_indvidual = {"category": category.pk, "score": score, "image": image_file}
+        print(data_indvidual)
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
+        print("json ----------------------------------------")
         serializer_category = CategorySerializer(category)
         if serializer_individual.is_valid():
             serializer_individual.save()
@@ -154,6 +147,7 @@ class CategoryAPIView(APIView):
                             {
                                 "id": category.id,
                                 "label": category.label,
+                                "label_ja": category.label_ja,
                                 "image": serializer_individual.data["image"],
                             }
                         )
@@ -171,6 +165,12 @@ class CategoryAPIView(APIView):
                         .filter(id=latest_individual["category"])
                         .first()
                         .label
+                    )
+                    latest_individual["label_ja"] = (
+                        Category.objects.all()
+                        .filter(id=latest_individual["category"])
+                        .first()
+                        .label_ja
                     )
 
                 response_data["latest_individuals"] = serializer_individual.data

@@ -3,12 +3,6 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import devtanuki from '../../public/devtanuki.png'
-import devrabbit from '../../public/devrabbit.png'
-import devdog from '../../public/devdog.png'
-import devhamu from '../../public/devhamu.png'
-import devpenpen from '../../public/devpenpen.png'
-
 import { API_ENDPOINTS } from '../api'
 import ImageUploadForm from './ImageInput'
 import ImageSlider from './ImageSlider'
@@ -22,16 +16,16 @@ const GridComponent: React.FC<GridProps> = ({ categories }) => {
             <div className="grid-box">
                 {/* container-centerを2つならべて使ってるのは汚い気がする */}
                 {categories.map((category, index) => (
-                    <Link to={`/detail/${category.id}`} className="card square" key={index}>
+                    <Link to={`/detail/${category.id}`} className="card square link" key={index}>
                         <div className="container-center">
                             <img
                                 src={`${API_ENDPOINTS.BASE}${category.image}`}
                                 style={{ width: '180px' }}
-                                alt={category.label}
+                                alt={category.label_ja}
                             />
                         </div>
                         <div className="container-center">
-                            <p>{category.label}</p>
+                            <p>{category.label_ja}</p>
                         </div>
                     </Link>
                 ))}
@@ -43,8 +37,6 @@ const GridComponent: React.FC<GridProps> = ({ categories }) => {
 const Home = () => {
     const [categories, setCategories] = useState<Category[]>([])
     const [recentIndividuals, setRecentIndividuals] = useState<Individual[]>([])
-
-    // const test_slide_images = [devtanuki, devrabbit, devdog, devhamu, devpenpen]
 
     useEffect(() => {
         const fetchData = async () => {

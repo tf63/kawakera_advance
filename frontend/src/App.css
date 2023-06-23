@@ -19,6 +19,28 @@
   box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
+.board {
+  max-width: 500px;
+  padding: 2em;
+  margin: 30px 10px;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
+  color: #888888;
+  font-size: 1rem;
+  letter-spacing: .2rem;
+  text-align: left;
+  text-shadow: 1px 1px #eee;
+  outline: none;
+  /* cursor: pointer; */
+  transition: .2s ease-in-out;
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
+}
+
 .box {
   padding: 2em;
   margin: 30px 10px;
@@ -198,6 +220,14 @@ nav .link {
 
 .flex {
   display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.padding-top {
+  padding-top: 30px;
 }
 
 img {
@@ -478,4 +508,14 @@ button:disabled {
 
 .detail_box {
   margin-top: 100px;
+}
+
+.trivia-container {}
+
+.trivia-container h3 {
+  font-weight: 100;
+}
+
+.trivia-container div {
+  margin: 100px 200px;
 }

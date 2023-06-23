@@ -1,8 +1,6 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API_ENDPOINTS } from '../api'
-import { ImageAPI } from '../interfaces/interfaces'
-import axios from 'axios'
+
 const ImageUploadForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()

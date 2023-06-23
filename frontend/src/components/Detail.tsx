@@ -13,6 +13,7 @@ const Detail = () => {
     const [categoryDetail, setCategoryDetail] = useState<CategoryDetail>({
         id: 0,
         label: '',
+        label_ja: '',
         hp: 0,
         attack: 0,
         defense: 0,
@@ -74,9 +75,10 @@ const Detail = () => {
                 </div>
                 <div className="detail_info1">
                     <p>No.{categoryDetail.id}</p>
-                    <h2>{categoryDetail.label}</h2>
+                    <h2>{categoryDetail.label_ja}</h2>
 
-                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>クラス：{categoryDetail.label}</p>
+                    <p>分類：{categoryDetail.label_ja} でぶモン</p>
                     <p>タイプ: {categoryDetail.type}</p>
                 </div>
             </div>
@@ -93,7 +95,8 @@ const Detail = () => {
             </div> */}
             <div className="column2">
                 <div className="card detail_info2">
-                    <p>分類：{categoryDetail.label} でぶモン</p>
+                    <p>分類：{categoryDetail.label_ja} でぶモン</p>
+                    <p>クラス：{categoryDetail.label}</p>
                     <p>タイプ: {categoryDetail.type}</p>
 
                     <p>{categoryDetail.ecology}</p>
@@ -110,6 +113,10 @@ const Detail = () => {
                     })}
                 </div>
             </div>
+            <div className="toppage_midashi detail_box">
+                <p>まめちしき</p>
+                <div className="line"></div>
+            </div>
             <div className="card">
                 <p>{categoryDetail.trivia}</p>
             </div>
@@ -119,20 +126,20 @@ const Detail = () => {
             </div>
             <div>
                 <div className="container-center">
-                {individuals.map((individual, index) => (
-                    <div className="card square" key={index}>
-                        <div className="container-center">
-                            <img
-                                src={`${API_ENDPOINTS.BASE}${individual.image}`}
-                                style={{ width: '180px' }}
-                                alt={individual.score.toString()}
-                            />
+                    {individuals.map((individual, index) => (
+                        <div className="card square" key={index}>
+                            <div className="container-center">
+                                <img
+                                    src={`${API_ENDPOINTS.BASE}${individual.image}`}
+                                    style={{ width: '180px' }}
+                                    alt={individual.score.toString()}
+                                />
+                            </div>
+                            <div className="container-center">
+                                <p>Lv. {individual.score.toString()}</p>
+                            </div>
                         </div>
-                        <div className="container-center">
-                            <p>Lv. {individual.score.toString()}</p>
-                        </div>
-                    </div>
-                ))}
+                    ))}
                 </div>
             </div>
             <div className="card-green">
