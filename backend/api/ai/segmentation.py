@@ -111,5 +111,16 @@ if __name__ == "__main__":
     # segmentation
     status, output = create_segmentation(data)
 
+    image_size = 250
+    output.thumbnail((image_size, image_size))
+
+    w, h = output.size
+
+    new_image = Image.new("RGBA", (image_size, image_size), (0, 0, 0, 0))
+
+    left = (image_size - w) // 2
+    top = (image_size - h) // 2
+    new_image.paste(output, (left, top))
+
     # セグメンテーションimageを保存する
-    output.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
+    new_image.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
