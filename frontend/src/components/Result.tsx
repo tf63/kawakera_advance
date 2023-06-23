@@ -26,7 +26,7 @@ const Result = () => {
                     <div className="card">
                         <div className="flex">
                             <p>分類：</p>
-                            <p>{categoryDetail.label_ja} でぶモン</p>
+                            <p>{categoryDetail.label_ja} あにモン</p>
                         </div>
                         <div className="flex">
                             <p>クラス：</p>
