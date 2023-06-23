@@ -85,8 +85,10 @@ class ImageAPIView(APIView):
         category = Category.objects.get(label=label)
         image_file = ContentFile(image_file, name=f"{label}" + ".png")
         data_indvidual = {"category": category.pk, "score": score, "image": image_file}
+        print(data_indvidual)
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
+        print("json ----------------------------------------")
         serializer_category = CategorySerializer(category)
         if serializer_individual.is_valid():
             serializer_individual.save()
@@ -96,7 +98,7 @@ class ImageAPIView(APIView):
                     "category": serializer_category.data,
                     "individual": serializer_individual.data,
                 },
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                status=status.HTTP_200_OK,
             )
         else:
             return Response(
