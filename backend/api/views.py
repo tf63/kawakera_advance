@@ -14,7 +14,7 @@ from .serializers import CategorySerializer, IndividualSerializer, AnimalSeriali
 from django.core.files.base import ContentFile
 from django.db.models import Max
 
-from .utils import convert_to_file, resize_image
+from .utils import convert_to_file, resize_image, resize_alpha_image
 import base64
 import random
 
@@ -22,15 +22,6 @@ parent_dir = dirname(abspath(__file__))
 if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 from ai import *
-
-# from .ai.segmentation import create_segmentation
-# from .ai.classifier import image_classification
-
-# from .ai.segmentation import create_segmentation
-# from .ai.chat import chat
-
-# def index(request):
-#     return render(request, "index.html")S
 
 
 class ImageAPIView(APIView):
@@ -46,7 +37,7 @@ class ImageAPIView(APIView):
                 {
                     "message": "Image classification failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         print("score, label = ", score, label)
@@ -59,11 +50,12 @@ class ImageAPIView(APIView):
                 {
                     "message": "Segmentation failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         # 画像のリサイズ
-        image_file = resize_image(image_file, 250, 239)
+        image_file = resize_alpha_image(image_file, 250)
+
         image_file = image2binary(image_file)
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
@@ -77,7 +69,7 @@ class ImageAPIView(APIView):
                     {
                         "message": "JSON decode failed.",
                     },
-                    status=status.HTTP_200_OK,
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
 
             data_category.update(information)
@@ -94,8 +86,10 @@ class ImageAPIView(APIView):
         category = Category.objects.get(label=label)
         image_file = ContentFile(image_file, name=f"{label}" + ".png")
         data_indvidual = {"category": category.pk, "score": score, "image": image_file}
+        print(data_indvidual)
         serializer_individual = IndividualSerializer(data=data_indvidual)
 
+        print("json ----------------------------------------")
         serializer_category = CategorySerializer(category)
         if serializer_individual.is_valid():
             serializer_individual.save()
@@ -154,6 +148,7 @@ class CategoryAPIView(APIView):
                             {
                                 "id": category.id,
                                 "label": category.label,
+                                "label_ja": category.label_ja,
                                 "image": serializer_individual.data["image"],
                             }
                         )
@@ -172,6 +167,12 @@ class CategoryAPIView(APIView):
                         .first()
                         .label
                     )
+                    latest_individual["label_ja"] = (
+                        Category.objects.all()
+                        .filter(id=latest_individual["category"])
+                        .first()
+                        .label_ja
+                    )
 
                 response_data["latest_individuals"] = serializer_individual.data
 
@@ -187,16 +188,29 @@ class TriviaAPIView(APIView):
         response_data = {}
         ten_animals = []
         try:
-            # 保存されているカテゴリidの最大値
-            max_id = Category.objects.aggregate(Max("id"))["id__max"]
-            # 1からmax_idのうちからランダムに10個取ってくる
-            ten_ids = random.sample(range(1, max_id), 10)
+            # Categoryモデルからid一覧を取得
+            category_ids = Category.objects.values_list("id", flat=True)
+
+            # ランダムに抽出するカテゴリの個数
+            num_items = len(list(category_ids))
+            if num_items > 10:
+                num_items = 10
+
+            # ランダムに num_items 個抽出
+            random_ids = random.sample(list(category_ids), num_items)
 
             categories = Category.objects.all()
-            for id in ten_ids:
+            for id in random_ids:
                 label_trivia = {}
+                label_trivia["label_ja"] = categories.filter(id=id).first().label_ja
                 label_trivia["label"] = categories.filter(id=id).first().label
                 label_trivia["trivia"] = categories.filter(id=id).first().trivia
+                category = categories.filter(id=id).first()
+                top_individual = category.individual_set.order_by(
+                    "-score", "id"
+                ).first()
+                serializer_individual = IndividualSerializer(top_individual)
+                label_trivia["image"] = serializer_individual.data["image"]
                 ten_animals.append(label_trivia)
 
             response_data["trivia"] = ten_animals

@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
-
+import TriviaSlider from '../TriviaSlider'
+import { Trivia } from '../../types/types'
+import { TriviaAPI } from '../../interfaces/interfaces'
+import { API_ENDPOINTS } from '../../api'
+import axios from 'axios'
 interface ProgressBarProps {
     value: number
     width: number
@@ -26,13 +30,28 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ width, value }) => {
 }
 
 const TestSpace: React.FC = () => {
+    const [triviaList, setTriviaList] = useState<Trivia[]>([])
+
+    // トリビアの取得
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios(API_ENDPOINTS.TRIVIA)
+                const data: TriviaAPI = response.data
+                console.log(`data: ${data}`)
+                setTriviaList(data.trivia)
+            } catch (error) {
+                console.error('Failed to fetch trivia:', error)
+            }
+        }
+
+        fetchData()
+    }, [])
+
     return (
         <div>
-            <ProgressBar value={10} width={500} />
-            <ProgressBar value={30} width={500} />
-            <ProgressBar value={50} width={500} />
-            <ProgressBar value={100} width={500} />
-            <ProgressBar value={300} width={500} />
+            <TriviaSlider trivias={triviaList} />
+            <ProgressBar width={500} value={100} />
         </div>
     )
 }

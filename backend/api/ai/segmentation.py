@@ -27,6 +27,10 @@ def create_segmentation(data):
 
     # original imageの読み込み
     original_image = binary2image(data)
+    if original_image.mode != "RGBA":
+        original_image = original_image.convert("RGBA")
+        alpha_data = [(r, g, b, 255) for r, g, b, _ in original_image.getdata()]
+        original_image.putdata(alpha_data)
     # original_image.save("mediafiles/tests/animals/test_da3l.png")
 
     # 画像をnumpyに変換
@@ -74,9 +78,9 @@ def create_segmentation(data):
             segmented_image = original_array * mask
         else:
             segmented_image = original_array * mask[..., np.newaxis]
-            converted_mask = np.where(mask == 0, 239, 0).astype(np.uint8)
-            converted_mask = np.expand_dims(converted_mask, axis=2)
-            segmented_image += converted_mask
+            # converted_mask = np.where(mask == 0, 239, 0).astype(np.uint8)
+            # converted_mask = np.expand_dims(converted_mask, axis=2)
+            # segmented_image += converted_mask
 
         # 切り抜かれた領域をImageオブジェクトとして作成
         segmented_image = Image.fromarray(segmented_image.astype(np.uint8))
@@ -105,7 +109,18 @@ if __name__ == "__main__":
     # data = binary2np(data)
 
     # segmentation
-    output = create_segmentation(data)
+    status, output = create_segmentation(data)
+
+    image_size = 250
+    output.thumbnail((image_size, image_size))
+
+    w, h = output.size
+
+    new_image = Image.new("RGBA", (image_size, image_size), (0, 0, 0, 0))
+
+    left = (image_size - w) // 2
+    top = (image_size - h) // 2
+    new_image.paste(output, (left, top))
 
     # セグメンテーションimageを保存する
-    output.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")
+    new_image.save(f"mediafiles/tests/animals/testsegmentation_{animal}.png")

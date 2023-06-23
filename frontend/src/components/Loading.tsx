@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
 import { ImageAPI, TriviaAPI } from '../interfaces/interfaces'
 import { Trivia } from '../types/types'
 import axios from 'axios'
+import TriviaSlider from './TriviaSlider'
 
 const Loading = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const file = location.state?.file
+    const [dots, setDots] = useState(0)
 
-    const [loading, setLoading] = useState(true)
+    const [responseStatus, setResponseStatus] = useState(true)
 
     const [triviaList, setTriviaList] = useState<Trivia[]>([])
 
@@ -28,6 +30,14 @@ const Loading = () => {
         }
 
         fetchData()
+
+        const timer = setInterval(() => {
+            setDots((prevDots) => (prevDots + 1) % 4)
+        }, 500)
+
+        return () => {
+            clearInterval(timer)
+        }
     }, [])
 
     useEffect(() => {
@@ -49,12 +59,11 @@ const Loading = () => {
                     console.log(data)
 
                     navigate('/result', { state: { data } }) // 結果ページへの遷移
-
-                    setLoading(false)
                 } catch (error) {
                     // エラーハンドリング
-                    alert('エラー')
-                    navigate('/') // 結果ページへの遷移
+                    // alert('エラー')
+                    setResponseStatus(false)
+                    // navigate('/') // 結果ページへの遷移
                 }
             }
         }
@@ -66,23 +75,25 @@ const Loading = () => {
         console.log(triviaList)
     }, [triviaList])
 
-    if (triviaList.length < 5) {
-        return <h1>Loading...</h1>
+    if (triviaList.length < 1) {
+        return <h1 className="card">Loading...</h1>
     }
 
-    if (!loading) {
-        return <h1>Complete</h1>
+    if (!responseStatus) {
+        return (
+            <div>
+                <div className="text-center padding-top">画像処理に失敗しました</div>
+                <Link className="link" to={'/'}>
+                    <div className="card-green">Home</div>
+                </Link>
+            </div>
+        )
     }
 
     return (
         <div>
-            {triviaList.map((trivia, index) => {
-                return (
-                    <div className="card" key={index}>
-                        {trivia.trivia}
-                    </div>
-                )
-            })}
+            <p style={{ fontSize: '30px', textAlign: 'center' }}>Loading{'.'.repeat(dots)}</p>
+            <TriviaSlider trivias={triviaList} />
         </div>
     )
 }

@@ -19,6 +19,28 @@
   box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
 }
 
+.board {
+  max-width: 500px;
+  padding: 2em;
+  margin: 30px 10px;
+  background: #efefef;
+  border: none;
+  border-radius: .5rem;
+  color: #888888;
+  font-size: 1rem;
+  letter-spacing: .2rem;
+  text-align: left;
+  text-shadow: 1px 1px #eee;
+  outline: none;
+  /* cursor: pointer; */
+  transition: .2s ease-in-out;
+  /* box-shadow: -6px -6px 14px rgba(255, 255, 255, .7),
+    -6px -6px 10px rgba(255, 255, 255, .5),
+    6px 6px 8px rgba(255, 255, 255, .075),
+    6px 6px 10px rgba(0, 0, 0, .15); */
+  box-shadow: -4px -4px 10px #FFFFFF, 4px 4px 10px rgba(102, 102, 102, 0.3);
+}
+
 .box {
   padding: 2em;
   margin: 30px 10px;
@@ -200,6 +222,14 @@ nav .link {
   display: flex;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.padding-top {
+  padding-top: 30px;
+}
+
 img {
   max-width: 100%;
 }
@@ -256,6 +286,14 @@ img {
 .result_img {
   text-align: center;
   margin: auto;
+}
+
+.result_inner {
+  margin: auto;
+}
+
+.result_inner div {
+  width: unset;
 }
 
 /* resutl page cssここまで */
@@ -385,6 +423,10 @@ button:disabled {
   padding-left: 0;
 }
 
+.slider img {
+  width: 25%;
+}
+
 .slick-prev, .slick-next {
   z-index: 1;
 }
@@ -477,5 +519,35 @@ button:disabled {
 }
 
 .detail_box {
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 25px;
+}
+
+.trivia-container h3 {
+  font-weight: 100;
+}
+
+.trivia-container div {
+  margin: 100px 200px;
+}
+
+.loading_trivia {
+  width: 80%;
+  margin: auto;
+}
+
+.padding-bottom {
+  padding-bottom: 20px;
+}
+
+.explain-container h3 {
+  font-weight: 100;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.navbar {
+  padding-top: 20px;
 }

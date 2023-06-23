@@ -3,10 +3,10 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { Link } from 'react-router-dom'
-import { SliderProps } from '../interfaces/interfaces'
+import { ImageSliderProps } from '../interfaces/interfaces'
 import { API_ENDPOINTS } from '../api'
 
-const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({ individuals }) => {
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -26,14 +26,14 @@ const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
             <div className="card slider" style={{ width: '100%' }}>
                 <Slider {...sliderSettings}>
                     {individuals.map((individual, index) => (
-                        <Link to={`detail/${individual.id}`} key={index}>
+                        <Link to={`detail/${individual.category}`} className="link" key={index}>
                             <div key={index} style={{ paddingTop: '30px' }}>
                                 <div className="container-center">
                                     <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
                                 </div>
-                                <div className="container-center">
-                                    <p className="link">
-                                        {individual.label}: (レベル {individual.score})
+                                <div className="container-center padding-bottom">
+                                    <p>
+                                        Lv.{individual.score} {individual.label_ja}
                                     </p>
                                 </div>
                             </div>

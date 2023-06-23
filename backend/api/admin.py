@@ -6,6 +6,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "label",
+        "label_ja",
         "hp",
         "attack",
         "defense",

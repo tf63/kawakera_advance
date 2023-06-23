@@ -3,209 +3,304 @@
         "model": "api.category",
         "pk": 1,
         "fields": {
-            "label": "ねこ",
-            "trivia": "猫は素早く柔軟な身体を持ち、優れた視力と聴力を備えています。彼らは静かに近づき、驚くべき跳躍力を使って獲物に飛びかかることができます。さらに、猫の鋭い爪と歯は効果的な狩猟道具となります。",
-            "ecology": "猫は主に肉食性で、鳥や小型哺乳類などの生肉を食べ、人間の共存環境や野生の地域で生息し、世界中に数十億匹存在しています。",
-            "type": "ノーマル",
+            "label": "brown bear",
+            "label_ja": "ヒグマ",
+            "ecology": "ヒグマは、主に北海道及び本州中部以北に分布しています。肉食性であり、サケや昆虫を食べます。また、山岳地帯に生息していることが多く、夏季には低山地帯に下りることもあります。",
+            "trivia": "ヒグマは、主に冬眠する動物として知られています。体のグリコーゲンが体内でエネルギーとなり、冬眠中は体温も下がります。しかし、冬季以外でも昼行性のように行動することがあるため、注意が必要です。",
+            "type": "ノーマル,あく",
             "hp": 100,
-            "attack": 80,
-            "defense": 70,
-            "speed": 90,
+            "attack": 130,
+            "defense": 75,
             "magic_attack": 60,
-            "magic_defense": 75
+            "magic_defense": 70,
+            "speed": 40
         }
     },
     {
         "model": "api.category",
         "pk": 2,
         "fields": {
-            "label": "うさぎ",
-            "trivia": "うさぎは驚くほど速く走ることができます。最高時速は時に70km以上にも達し、素早く逃げるためにこの能力を利用します。",
-            "ecology": "うさぎは主に草食であり、野生では草や葉を食べ、穴や草原に生息しています。生息数は種によって異なります。",
-            "type": "ノーマル/くさ",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "Arabian camel", 
+            "label_ja": "アラビアラクダ", 
+            "ecology": "アラビア半島や北アフリカに生息する。砂漠地帯での生活に適応しており、乾燥地帯においても2週間以上水を飲まなくても生き延びることができる。草本や低木を食べ、夜行性であるため、夜間に活動することが多い。", 
+            "trivia": "アラビアラクダは、高さ3m以上になることがある。また、アラビアラクダの胃は、四つに分かれているため、消化が良く、草を食べた後、長時間まんべんなく栄養を吸収することができる。",
+            "type": "ノーマル",
+            "hp": 60, 
+            "attack": 40, 
+            "defense": 65, 
+            "magic_attack": 30, 
+            "magic_defense": 40, 
+            "speed": 55
         }
     },
     {
         "model": "api.category",
         "pk": 3,
         "fields": {
-            "label": "ポメラニアン",
-            "trivia": "ポメラニアンは非常に知識欲旺盛で、学習能力が高いです。トリックやコマンドを覚えるのが得意であり、サーカス犬としての訓練やドッグスポーツでも活躍することがあります。",
-            "ecology": "ポメラニアンはオリジナルの野生の祖先である大型のトナカイ犬から進化したと言われています。彼らは活発で元気な性格であり、非常に賢くて警戒心が強いことでも知られています。ポメラニアンは家庭犬として非常に人気があり、小さな体格にもかかわらず、元気に走り回ることができます。",
-            "type": "ノーマル",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
-        }
+            "label": "ostrich", 
+            "label_ja": "ダチョウ", 
+            "ecology": "ダチョウはサバンナに生息し、乾燥地帯に生息しています。草食性で、主に草、種子、昆虫などを食べます。", 
+            "trivia": "ダチョウは背の高い草原を早く走ることができ、時速約70kmで走ることもできます。また、ダチョウは強力な脚で蹴ることができ、大型の捕食動物から身を守ることができます。",
+            "type": "ノーマル,ひこう", 
+            "hp": 60, 
+            "attack": 90, 
+            "defense": 75,
+            "magic_attack": 45,
+            "magic_defense": 60, 
+            "speed": 70}
     },
     {
         "model": "api.category",
         "pk": 4,
         "fields": {
-            "label": "ハムスター",
-            "trivia": "ハムスターはほっぺたに食べ物をたくさん詰め込むことで知られています。頬袋と呼ばれる特殊な袋を使って、食べ物を貯蔵し、後でゆっくりと食べることができます。",
-            "ecology": "ハムスターは主に穀物や種子を食べ、草原や地下の巣穴に生息しています。生息数は種によって異なります。",
-            "type": "ノーマル",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "dingo", 
+            "label_ja": "ディンゴ", 
+            "ecology": "ディンゴはオーストラリア生まれの野生犬で、陸地に生息しています。肉食で、小型哺乳類や鳥類を主に捕食します。", 
+            "trivia": "ディンゴは、オーストラリアに住む先住民族アボリジニにとって、狩猟用、家畜用、ペット用に重宝されていた野生犬の一種です。",
+            "type": "あく", 
+            "hp": 60, 
+            "attack": 54,
+            "defense": 56, 
+            "magic_attack": 44, 
+            "magic_defense": 48, 
+            "speed": 68
         }
     },
     {
         "model": "api.category",
         "pk": 5,
         "fields": {
-            "label": "ペンギン",
-            "trivia": "ペンギンは陸上ではぎこちないですが、水中では優れた泳ぎ手です。一部の種類は水中で時速約36kmの速さで泳ぐことができ、驚異的な潜水能力を持っています。",
-            "ecology": "ペンギンは魚食であり、海洋に生息しています。生息数は種によって異なり、一部の種は絶滅の危機に瀕しています。",
-            "type": "みず/こおり",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
-
+            "label": "African elephant", 
+            "label_ja": "アフリカゾウ", 
+            "ecology": "アフリカゾウはアフリカに生息しています。日本では草食獣と思われますが、実際には鼻を使って木の皮、根、芽、果実等を食べます。", 
+            "trivia": "アフリカゾウのオスが長いきばを持つのに対して、メスは短いきばを持っています。また、アフリカゾウは大自然の中で、1日に約150kgもの草や木の葉を食べます。", 
+            "type": "じめん", 
+            "hp": 150, 
+            "attack": 120, 
+            "defense": 120, 
+            "magic_attack": 50,
+            "magic_defense": 60, 
+            "speed": 50
         }
     },
     {
         "model": "api.category",
         "pk": 6,
         "fields": {
-            "label": "ゴリラ",
-            "trivia": "ゴリラは非常に強力で、1回の握力で成人男性を引きちぎるほどの力を持っています。また、彼らは筋肉の発達した腕を使って、時には体重の10倍にもなる物を持ち上げることができます。",
-            "ecology": "ゴリラは主に植物を食べ、熱帯雨林や山岳地帯に生息しています。生息数は野生では減少傾向にあります。",
-            "type": "くさ/かくとう",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "kit fox", 
+            "label_ja": "キットキツネ", 
+            "ecology": "キットキツネは北米に生息する小型のキツネで、荒涼とした砂漠地帯や草原に生息します。肉食性で、昆虫、鳥、小型哺乳類などを食べます。", 
+            "trivia": "キットキツネは灰色地に白い斑点模様が入った毛皮を持つことが多く、大きな耳と尖った顔が特徴です。また、キットキツネは繁殖期には多くの穴を掘り、巧みにトンネルを繋げて、自分たちだけの巣穴を作ります。",
+            "type": "ノーマル", 
+            "hp": 50, 
+            "attack": 45, 
+            "defense": 40, 
+            "magic_attack": 35, 
+            "magic_defense": 40, 
+            "speed": 65
         }
     },
     {
         "model": "api.category",
         "pk": 7,
         "fields": {
-            "label": "あざらし",
-            "trivia": "あざらしは泳ぎが得意ですが、陸上でも驚くほど器用に動くことができます。彼らは前肢を使って地面をよちよちと進み、短い距離を素早く移動することができます。",
-            "ecology": "あざらしは主に魚や甲殻類を食べ、海洋や氷の上に生息しています。生息数は種によって異なりますが、一部の種は生息数が減少しています。",
-            "type": "みず",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "bee eater", 
+            "label_ja": "スイートピー", 
+            "ecology": "スイートピーはアフリカ、アジア、オーストラリア、ヨーロッパなど、暖かい地域に生息する鳥です。彼らは主に昆虫食で、ハチや蜂なども食べます。", 
+            "trivia": "スイートピーは、巣を地面に作り、その中に2〜7個の卵を産みます。そして、卵から孵るときに、巣を割って中から出る習性があります。", 
+            "type": "ひこう", 
+            "hp": 75, 
+            "attack": 85, 
+            "defense": 65, 
+            "magic_attack": 80, 
+            "magic_defense": 60, 
+            "speed": 115
         }
     },
     {
         "model": "api.category",
         "pk": 8,
         "fields": {
-            "label": "さる",
-            "trivia": "さるはツリークライマーであり、特にオランウータンは木の枝や蔓を使って、大きな距離を飛び移ることができます。彼らの腕は驚異的に柔軟で、円柱状の対象物にぶら下がることができます。",
-            "ecology": "さるは雑食であり、果物や昆虫、葉を食べ、森林や山岳地帯に広く分布しています。生息数は種によって異なります。",
-            "type": "ノーマル/かくとう",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "Samoyed", 
+            "label_ja": "サモエド", 
+            "ecology": "サモエドは、北極圏周辺地域に生息していました。多くの場合、犬ぞりに用いられ、狩りや警戒、そして娯楽のために飼われていました。食物は肉食が多く、魚と肉が主食です。", 
+            "trivia": "サモエドは、特に子供や家族を愛する優れた性格と知られています。また、サモエドは、非常に丈夫であり、犬の中でも最も長寿であることが報告されています。", 
+            "type": "こおり", 
+            "hp": 55, 
+            "attack": 50,
+            "defense": 55, 
+            "magic_attack": 75, 
+            "magic_defense": 65,
+            "speed": 50
         }
     },
     {
         "model": "api.category",
         "pk": 9,
         "fields": {
-            "label": "ハリネズミ",
-            "trivia": "ハリネズミは一般的に刺が特徴ですが、実は泳ぎも得意です。彼らは体を丸め、水中を泳ぐことができます。また、彼らの刺は温度変化に応じて立ち上がることがあります。",
-            "ecology": "ハリネズミは昆虫や果物を食べ、森林や草原に生息しています。生息数は種によって異なりますが、一部の種は生息数が減少しています。",
-            "type": "くさ/はがね",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "ox", 
+            "label_ja": "ウシ", 
+            "ecology": "ウシは世界中に広く分布し、草食生物としては最も多く飼育され、人々の生活に欠かせない家畜の一角です。草、葉、根、果実、穀物等を食べます。", 
+            "trivia": "ウシは約50もの鳴き声を持っており、意思疎通をします。また、呼吸は鼻呼吸で、舌を使って口内を清潔に保つことができます。", 
+            "type": "ノーマル", 
+            "hp": 88, 
+            "attack": 92, 
+            "defense": 75, 
+            "magic_attack": 40, 
+            "magic_defense": 50, 
+            "speed": 55
         }
     },
     {
         "model": "api.category",
         "pk": 10,
         "fields": {
-            "label": "カエル",
-            "trivia": "カエルは鳴き声で知られていますが、世界中のカエルの種類によって鳴き方が異なります。一部のカエルは鳴き声の周波数を調整することで、周囲の騒音に合わせて聞こえやすくする能力を持っています。",
-            "ecology": "カエルは昆虫や小さな動物を食べ、湖や河川、湿地帯など水辺に生息しています。生息数は種によって異なりますが、一部の種は絶滅の危機に瀕しています。",
-            "type": "みず/どく",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "giant panda", 
+            "label_ja": "ジャイアントパンダ", 
+            "ecology": "ジャイアントパンダは中国の四川省、陝西省、甘粛省に生息しています。食性は植物食で、竹の葉と茎、草等を食べます。", 
+            "trivia": "ジャイアントパンダはとても珍しい動物の一つです。毛は白黒に染まっており、可愛い顔となで声に心癒されることでしょう。", 
+            "type": "ノーマル,くさ", 
+            "hp": 90, 
+            "attack": 60, 
+            "defense": 70, 
+            "magic_attack": 50, 
+            "magic_defense": 80, 
+            "speed": 40
         }
     },
     {
         "model": "api.category",
         "pk": 11,
         "fields": {
-            "label": "やぎ",
-            "trivia": "やぎは垂直な壁や岩場でも驚くほど上手に登ることができます。彼らの蹄は滑り止めのような役割を果たし、岩や崖にしっかりと掴まることができます。",
-            "ecology": "やぎは草食であり、草原や山岳地帯に生息しています。生息数は野生では減少傾向にありますが、飼われている個体数は多いです。",
-            "type": "ノーマル/くさ",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "albatross", 
+            "label_ja": "アルバトロス", 
+            "ecology": "アルバトロスは太平洋やインド洋の南極海付近に分布しています。主に魚、イカ、プランクトンなどを食べ、海上を飛び回りながら生活します。", 
+            "trivia": "アルバトロスは、巣を作るために地面に穴を掘ることができません。そのため、2, 3年かけてひとつの巣を作る習性があります。また、巣立ち後も親鳥が子育てを続け、1年以上も一緒に過ごすことがあります。", 
+            "type": "ひこう", 
+            "hp": 90, 
+            "attack": 72, 
+            "defense": 82, 
+            "magic_attack": 75, 
+            "magic_defense": 83, 
+            "speed": 80
         }
     },
     {
         "model": "api.category",
         "pk": 12,
         "fields": {
-            "label": "ひつじ",
-            "trivia": "ひつじは非常に社交的な動物で、群れで行動することを好みます。彼らはお互いをなめあうことで社会的なつながりを築き、群れの中の結束を強めます。",
-            "ecology": "ひつじは草食であり、草原や山岳地帯に生息しています。生息数は種によって異なりますが、飼われている個体数は多いです。",
-            "type": "ノーマル",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "chickadee", 
+            "label_ja": "ハシブトガラス", 
+            "ecology": "ハシブトガラスは主に北アメリカに生息している。夏季は北側の森林に生息し、冬季はより暖かな南側の地域に移動します。種子、昆虫、果実を主に食べます。", 
+            "trivia": "ハシブトガラスは、危険を感じると擬態（ぎたい）行動を示し、枝の上で落ち葉を取り付け、自分が落ち葉のように見えるようにします。また、ハシブトガラスは非常に活発で、1日に数百もの音を出すことがあります。", 
+            "type": "とり", 
+            "hp": 55, 
+            "attack": 40, 
+            "defense": 50, 
+            "magic_attack": 40, 
+            "magic_defense": 50, 
+            "speed": 65
         }
     },
     {
         "model": "api.category",
         "pk": 13,
         "fields": {
-            "label": "キリン",
-            "trivia": "キリンは非常に長い首を持つ動物ですが、首の骨の数は他の動物と同じです。長い首を実現するために、キリンの骨は他の動物のように延びているのではなく、各骨自体が他の動物のより長いのです。",
-            "ecology": "キリンは主に葉を食べ、サバンナや森林に生息しています。生息数は野生では減少傾向にありますが、一部の保護地域では増加しています。",
-            "type": "ノーマル/くさ",
-            "hp": 120,
-            "attack": 70,
-            "defense": 85,
-            "speed": 80,
-            "magic_attack": 65,
-            "magic_defense": 80
+            "label": "tiger", 
+            "label_ja": "トラ", 
+            "ecology": "トラはアジアに生息しており、特にインドの国立公園やシベリアの森林に多く生息しています。肉食で、鹿や豚、シカ、クマ、サルなどを捕食します。", 
+            "trivia": "トラはとても優秀な泳ぎ手であり、しばしば河川や湖沼を泳いで移動します。また、トラの毛皮は非常に美しく、高価な毛皮製品に用いられます。", 
+            "type": "ノーマル,あく", 
+            "hp": 80, 
+            "attack": 120, 
+            "defense": 70, 
+            "magic_attack": 50, 
+            "magic_defense": 60, 
+            "speed": 100
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 14,
+        "fields": {
+            "label": "wallaby", 
+            "label_ja": "ワラビー", 
+            "ecology": "ワラビーは、主にオーストラリアに生息しています。フクロウやタカなどの天敵から身を守るため、夜行性の種類が多く、昼間は木陰や岩陰で休むことが多いです。草食であるため、幅広い種類の草や葉、花などを食べます。", 
+            "trivia": "ワラビーは、難破船に乗り込んでいたイギリス人の最初の食糧源として親しまれ、一部では美味な料理としても知られています。また、ワラビーはとても飛び跳ね上手で、全力疾走しながらジャンプすると10m以上飛び跳ねることもあります。", 
+            "type": "ノーマル", 
+            "hp": 70, 
+            "attack": 65, 
+            "defense": 60, 
+            "magic_attack": 40, 
+            "magic_defense": 60,
+            "speed": 95
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 15,
+        "fields": {
+            "label": "ice bear", 
+            "label_ja": "シロクマ", 
+            "ecology": "シロクマは北極圏に生息しており、海岸近くの海氷上で生活しています。主に肉食で、アザラシや魚を食べます。", 
+            "trivia": "シロクマは大型の食肉動物の中で最も陸上に適応しているとされ、長い距離を泳いで移動することもできます。また、長い足で雪上をスピード感を持って走り、腕力に優れているため、硬い氷の破壊も難なくこなします。", 
+            "type": "こおり", 
+            "hp": 115, 
+            "attack": 130, 
+            "defense": 80, 
+            "magic_attack": 60, 
+            "magic_defense": 70, 
+            "speed": 70
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 16,
+        "fields": {
+            "label": "zebra", 
+            "label_ja": "シマウマ", 
+            "ecology": "シマウマはアフリカに生息する草食動物で、野生で生息している場合草原や砂漠の乾燥した土地、種の存続に貢献する重要な動物です。主な食物は草であり、特に草原が多い地域に生息しています。", "trivia": "シマウマは夜行性であり、部分的に渡した体の上の白い帯模様が星座のカシオペア（アルファω、β、γ、δ星）に似ていることが知られています。", 
+            "type": "ノーマル", 
+            "hp": 75, 
+            "attack": 100, 
+            "defense": 60, 
+            "magic_attack": 40, 
+            "magic_defense": 70, 
+            "speed": 115
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 17,
+        "fields": {
+            "label": "beaver", 
+            "label_ja": "ビーバー", 
+            "ecology": "北アメリカ、ヨーロッパ、アジアなどに生息し、主に河川、湖沼、沼地、湿原等の水辺に生息している。主食は樹皮や葉、枝などで、木を切り倒すことができるため、しばしばダムを作っている。", 
+            "trivia": "ビーバーは、木々を切り倒すことによって、空間を生み出します。そのため、ビーバーによってつくられたダムが、多くの水生生物たちの住処となっています。また、ビーバーは耳栓（じほう）というものを持っていて、水に潜りながらも耳を守ることができます。", 
+            "type": "みず", 
+            "hp": 70, 
+            "attack": 100,
+            "defense": 70, 
+            "magic_attack": 35, 
+            "magic_defense": 75, 
+            "speed": 30
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 18,
+        "fields":{
+            "label": "otter", 
+            "label_ja": "カワウソ", 
+            "ecology": "カワウソは、主に淡水域に生息する、ネズミイルカ科に属する哺乳類である。 日本にはカワウソの一種であるカワウソ(ユーラシアカワウソ)が生息している。 彼らは主に淡水域の川や湖で、石の下に丸い巣を作って生息する。 彼らは小型魚やカニ、水生昆虫等をはじめ、ほかの哺乳類や鳥類も捕食することがある。", 
+            "trivia": "カワウソは特に日本で人気のある可愛らしい動物の一種です。また、乾かない水遊びが得意で、なんでも鉄球やゴムボールを投げてもらって、海綿体を伸ばしつつ遊びます。", 
+            "type": "みず", 
+            "hp": 60, 
+            "attack": 65, 
+            "defense": 55, 
+            "magic_attack": 45, 
+            "magic_defense": 55, 
+            "speed": 70
         }
     },
     {
@@ -213,116 +308,332 @@
         "pk": 1,
         "fields": {
             "category": 1,
-            "image": "tests/animals/devtanuki.png",
-            "score": 50
+            "image": "tests/animals/brown_bear_gmaJ8OK.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 2,
         "fields": {
-            "category": 2,
-            "image": "tests/animals/devrabbit.png",
-            "score": 80
+            "category": 1,
+            "image": "tests/animals/brown_bear_sy7JS9A.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 3,
         "fields": {
-            "category": 3,
-            "image": "tests/animals/devdog.png",
-            "score": 72
+            "category": 1,
+            "image": "tests/animals/brown_bear_TOYsFZl.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 4,
         "fields": {
-            "category": 4,
-            "image": "tests/animals/devhamu.png",
-            "score": 80
+            "category": 1,
+            "image": "tests/animals/brown_bear_WClqAmu.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 5,
         "fields": {
-            "category": 5,
-            "image": "tests/animals/devpenpen.png",
-            "score": 95
+            "category": 1,
+            "image": "tests/animals/brown_bear_wlrzLvN.png",
+            "score": 90
         }
     },
     {
         "model": "api.individual",
         "pk": 6,
         "fields": {
-            "category": 6,
-            "image": "tests/animals/gorila.png",
-            "score": 95
+            "category": 1,
+            "image": "tests/animals/brown_bear.png",
+            "score": 98
         }
     },
     {
         "model": "api.individual",
         "pk": 7,
         "fields": {
-            "category": 7,
-            "image": "tests/animals/azarashi.png",
-            "score": 95
+            "category": 2,
+            "image": "tests/animals/Arabian_camel.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 8,
         "fields": {
-            "category": 8,
-            "image": "tests/animals/saru.png",
-            "score": 95
+            "category": 2,
+            "image": "tests/animals/Arabian_camel_p4apRBh.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 9,
         "fields": {
-            "category": 9,
-            "image": "tests/animals/harinezumi.png",
-            "score": 95
+            "category": 2,
+            "image": "tests/animals/Arabian_camel_rwp9CoI.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 10,
         "fields": {
-            "category": 10,
-            "image": "tests/animals/frog.png",
-            "score": 95
+            "category": 2,
+            "image": "tests/animals/Arabian_camel_6gZ0d8u.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 11,
         "fields": {
-            "category": 11,
-            "image": "tests/animals/goat.png",
-            "score": 95
+            "category": 2,
+            "image": "tests/animals/Arabian_camel_mecjipq.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 12,
         "fields": {
-            "category": 12,
-            "image": "tests/animals/sheep.png",
-            "score": 95
+            "category": 3,
+            "image": "tests/animals/ostrich.png",
+            "score": 99
         }
     },
     {
         "model": "api.individual",
         "pk": 13,
         "fields": {
+            "category": 4,
+            "image": "tests/animals/dingo.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 14,
+        "fields": {
+            "category": 4,
+            "image": "tests/animals/dingo_EInmKim.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 15,
+        "fields": {
+            "category": 5,
+            "image": "tests/animals/African_elephant_3qaRWu8.png",
+            "score": 75
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 16,
+        "fields": {
+            "category": 5,
+            "image": "tests/animals/African_elephant.png",
+            "score": 55
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 17,
+        "fields": {
+            "category": 5,
+            "image": "tests/animals/African_elephant_d9z0cld.png",
+            "score": 52
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 18,
+        "fields": {
+            "category": 5,
+            "image": "tests/animals/African_elephant_vtUu5gL.png",
+            "score": 45
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 19,
+        "fields": {
+            "category": 6,
+            "image": "tests/animals/kit_fox.png",
+            "score": 69
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 20,
+        "fields": {
+            "category": 7,
+            "image": "tests/animals/bee_eater.png",
+            "score": 98
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 21,
+        "fields": {
+            "category": 8,
+            "image": "tests/animals/Samoyed.png",
+            "score": 57
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 22,
+        "fields": {
+            "category": 9,
+            "image": "tests/animals/ox_729zVav.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 23,
+        "fields": {
+            "category": 9,
+            "image": "tests/animals/ox.png",
+            "score": 83
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 24,
+        "fields": {
+            "category": 9,
+            "image": "tests/animals/ox_aj47IrQ.png",
+            "score": 69
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 25,
+        "fields": {
+            "category": 10,
+            "image": "tests/animals/giant_panda.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 26,
+        "fields": {
+            "category": 11,
+            "image": "tests/animals/albatross.png",
+            "score": 50
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 27,
+        "fields": {
+            "category": 12,
+            "image": "tests/animals/chickadee.png",
+            "score": 35
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 28,
+        "fields": {
             "category": 13,
-            "image": "tests/animals/giraf.png",
-            "score": 95
+            "image": "tests/animals/tiger.png",
+            "score": 92
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 29,
+        "fields": {
+            "category": 14,
+            "image": "tests/animals/wallaby.png",
+            "score": 81
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 30,
+        "fields": {
+            "category": 15,
+            "image": "tests/animals/ice_bear.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 31,
+        "fields": {
+            "category": 15,
+            "image": "tests/animals/ice_bear_Wfbcewc.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 32,
+        "fields": {
+            "category": 16,
+            "image": "tests/animals/zebra.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 33,
+        "fields": {
+            "category": 16,
+            "image": "tests/animals/zebra_Kxk5xxG.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 34,
+        "fields": {
+            "category": 16,
+            "image": "tests/animals/zebra_tsUj3U9.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 35,
+        "fields": {
+            "category": 16,
+            "image": "tests/animals/zebra_P9XKW3J.png",
+            "score": 99
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 36,
+        "fields": {
+            "category": 17,
+            "image": "tests/animals/beaver.png",
+            "score": 57
+        }
+    },
+    {
+        "model": "api.individual",
+        "pk": 37,
+        "fields": {
+            "category": 18,
+            "image": "tests/animals/otter.png",
+            "score": 96
         }
     }
 ]

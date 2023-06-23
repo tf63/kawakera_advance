@@ -1,8 +1,6 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API_ENDPOINTS } from '../api'
-import { ImageAPI } from '../interfaces/interfaces'
-import axios from 'axios'
+
 const ImageUploadForm = () => {
     const fileInputRef = useRef<HTMLInputElement>(null)
     const navigate = useNavigate()
@@ -23,7 +21,7 @@ const ImageUploadForm = () => {
     return (
         <div>
             <div className="card-green" onClick={handleButtonClick}>
-                投稿ボタン
+                投稿
             </div>
             <input
                 type="file"

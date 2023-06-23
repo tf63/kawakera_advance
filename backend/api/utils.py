@@ -88,3 +88,17 @@ def resize_image(img, size=512, padding_value=239):
         resized_img = padding
 
     return resized_img
+
+
+def resize_alpha_image(img, image_size=512):
+    img.thumbnail((image_size, image_size))
+
+    w, h = img.size
+
+    new_image = Image.new("RGBA", (image_size, image_size), (0, 0, 0, 0))
+
+    left = (image_size - w) // 2
+    top = (image_size - h) // 2
+    new_image.paste(img, (left, top))
+
+    return new_image
