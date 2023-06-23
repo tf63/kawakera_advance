@@ -197,6 +197,12 @@ class TriviaAPIView(APIView):
                 label_trivia = {}
                 label_trivia["label"] = categories.filter(id=id).first().label
                 label_trivia["trivia"] = categories.filter(id=id).first().trivia
+                category = categories.filter(id=id).first()
+                top_individual = category.individual_set.order_by(
+                    "-score", "id"
+                ).first()
+                serializer_individual = IndividualSerializer(top_individual)
+                label_trivia["image"] = serializer_individual.data["image"]
                 ten_animals.append(label_trivia)
 
             response_data["trivia"] = ten_animals
