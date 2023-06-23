@@ -26,13 +26,13 @@ const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
             <div className="card slider" style={{ width: '100%' }}>
                 <Slider {...sliderSettings}>
                     {individuals.map((individual, index) => (
-                        <Link to={`detail/${individual.id}`} key={index}>
+                        <Link to={`detail/${individual.id}`} key={index} className="link">
                             <div key={index} style={{ paddingTop: '30px' }}>
                                 <div className="container-center">
                                     <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
                                 </div>
                                 <div className="container-center">
-                                    <p className="link">
+                                    <p>
                                         {individual.label}: (レベル {individual.score})
                                     </p>
                                 </div>
