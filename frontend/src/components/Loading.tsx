@@ -10,6 +10,7 @@ const Loading = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const file = location.state?.file
+    const [dots, setDots] = useState(0)
 
     const [responseStatus, setResponseStatus] = useState(true)
 
@@ -29,6 +30,14 @@ const Loading = () => {
         }
 
         fetchData()
+
+        const timer = setInterval(() => {
+            setDots((prevDots) => (prevDots + 1) % 4)
+        }, 500)
+
+        return () => {
+            clearInterval(timer)
+        }
     }, [])
 
     useEffect(() => {
@@ -83,6 +92,7 @@ const Loading = () => {
 
     return (
         <div>
+            <p style={{ fontSize: '30px', textAlign: 'center' }}>Loading{'.'.repeat(dots)}</p>
             <TriviaSlider trivias={triviaList} />
         </div>
     )
