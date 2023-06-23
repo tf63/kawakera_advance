@@ -21,7 +21,7 @@ const Result = () => {
                 <div className="card">
                     <div className="card result_name">
                         <p>No.{categoryDetail.id}</p>
-                        <h2>{categoryDetail.label}</h2>
+                        <h2>{categoryDetail.label_ja}</h2>
                     </div>
                     <div className="card">
                         <div className="flex">
@@ -42,11 +42,10 @@ const Result = () => {
                     </div>
                 </div>
             </div>
-            <div className="link_to_home">
-                <Link className="link" to={'/'}>
-                    Homeに戻る
-                </Link>
-            </div>
+
+            <Link className="link" to={'/'}>
+                <div className="card-green">Home</div>
+            </Link>
         </div>
     )
 }

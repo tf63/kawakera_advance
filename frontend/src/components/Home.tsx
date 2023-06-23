@@ -21,11 +21,11 @@ const GridComponent: React.FC<GridProps> = ({ categories }) => {
                             <img
                                 src={`${API_ENDPOINTS.BASE}${category.image}`}
                                 style={{ width: '180px' }}
-                                alt={category.label}
+                                alt={category.label_ja}
                             />
                         </div>
                         <div className="container-center">
-                            <p>{category.label}</p>
+                            <p>{category.label_ja}</p>
                         </div>
                     </Link>
                 ))}

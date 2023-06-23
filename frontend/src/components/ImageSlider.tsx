@@ -33,7 +33,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ individuals }) => {
                                 </div>
                                 <div className="container-center">
                                     <p>
-                                        {individual.label}: (レベル {individual.score})
+                                        {individual.label_ja}: (レベル {individual.score})
                                     </p>
                                 </div>
                             </div>
