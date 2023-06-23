@@ -38,7 +38,7 @@ def chat_knowledge(animal_name):
         animal_name: string
 
     Returns:
-        dict: {"ecology":"", "trivia":"", "type": "",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""}
+        dict: {"label_ja":"", "ecology":"", "trivia":"", "type": "",  "hp":"", "attack":"", "defense":"", "magic_attack":"", "magic_defense:"", "speed":""}
     """
     system_setting = """\
         ### setting ###
@@ -79,6 +79,7 @@ def chat_knowledge(animal_name):
     except json.JSONDecodeError:
         json_ok = False
         output = {
+            "label_ja": "",
             "ecology": "",
             "trivia": "",
             "type": "",
