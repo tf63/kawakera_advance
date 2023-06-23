@@ -158,6 +158,12 @@ class CategoryAPIView(APIView):
                 )
                 latest_list = serializer_individual.data  # list
                 for latest_individual in latest_list:
+                    latest_individual["label"] = (
+                        Category.objects.all()
+                        .filter(id=latest_individual["category"])
+                        .first()
+                        .label
+                    )
                     latest_individual["label_ja"] = (
                         Category.objects.all()
                         .filter(id=latest_individual["category"])
