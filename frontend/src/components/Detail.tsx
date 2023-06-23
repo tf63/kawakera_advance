@@ -76,10 +76,10 @@ const Detail = () => {
                 <div className="detail_info1">
                     <p>No.{categoryDetail.id}</p>
                     <h2>{categoryDetail.label_ja}</h2>
-
-                    <p>クラス：{categoryDetail.label}</p>
+                    <p>レベル: {individuals[0].score}</p>
+                    {/* <p>クラス：{categoryDetail.label}</p>
                     <p>分類：{categoryDetail.label_ja} あにモン</p>
-                    <p>タイプ: {categoryDetail.type}</p>
+                    <p>タイプ: {categoryDetail.type}</p> */}
                 </div>
             </div>
             {/* <div className="card detail_feature">

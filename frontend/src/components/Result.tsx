@@ -14,6 +14,13 @@ const Result = () => {
             {/* <div className="result_complete">
                 <h1>分類完了!!</h1>
             </div> */}
+
+            <div className="container-center explain-container">
+                <h3 className="padding-top padding-bottom">
+                    <span className="bold"> レベル{individual.score} </span>の
+                    <span className="bold"> {categoryDetail.label_ja} </span>を捕まえた !!
+                </h3>
+            </div>
             <div className="column2 result card">
                 <div className="result_img">
                     <img src={`${API_ENDPOINTS.BASE}${individual.image}`}></img>
@@ -25,8 +32,8 @@ const Result = () => {
                     </div>
                     <div className="card">
                         <div className="flex">
-                            <p>分類：</p>
-                            <p>{categoryDetail.label_ja} あにモン</p>
+                            <p>レベル：</p>
+                            <p>{individual.score}</p>
                         </div>
                         <div className="flex">
                             <p>クラス：</p>
@@ -46,7 +53,7 @@ const Result = () => {
                 </div>
             </div>
 
-            <Link className="link" to={'/'}>
+            <Link className="link padding-top" to={'/'}>
                 <div className="card-green">Home</div>
             </Link>
         </div>

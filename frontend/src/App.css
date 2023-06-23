@@ -288,11 +288,11 @@ img {
   margin: auto;
 }
 
-.result_inner{
+.result_inner {
   margin: auto;
 }
 
-.result_inner div{
+.result_inner div {
   width: unset;
 }
 
@@ -423,7 +423,7 @@ button:disabled {
   padding-left: 0;
 }
 
-.slider img{
+.slider img {
   width: 25%;
 }
 
@@ -519,8 +519,8 @@ button:disabled {
 }
 
 .detail_box {
-  margin-top: 80px;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .trivia-container h3 {
@@ -531,7 +531,23 @@ button:disabled {
   margin: 100px 200px;
 }
 
-.loading_trivia{
+.loading_trivia {
   width: 80%;
   margin: auto;
+}
+
+.padding-bottom {
+  padding-bottom: 20px;
+}
+
+.explain-container h3 {
+  font-weight: 100;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.navbar {
+  padding-top: 20px;
 }

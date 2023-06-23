@@ -57,7 +57,7 @@ const Home = () => {
     return (
         <div className="wrapper home">
             <div className="container-center explain-container">
-                <div className="padding-top">みんなでつくる，あにモン図鑑</div>
+                <h3 className="padding-top">みんなでつくる，あにモン図鑑</h3>
             </div>
             <ImageUploadForm />
             <div className="toppage_midashi">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
     return (
-        <div className="container-center">
+        <div className="container-center navbar">
             <Link className="link" to={'/'}>
                 <h1>Animal GO</h1>
             </Link>
