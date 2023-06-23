@@ -5,6 +5,8 @@
 ![](https://img.shields.io/github/repo-size/tf63/kawakera_advance)
 ![](https://img.shields.io/github/languages/code-size/tf63/kawakera_advance)
 
+![サムネイル](docs/img/thumbnail_animalgo.png)
+
 ### やりたいこと
 
 ### 使いたい技術
