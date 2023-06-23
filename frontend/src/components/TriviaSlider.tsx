@@ -14,7 +14,7 @@ const TriviaSlider: React.FC<TriviaSliderProps> = ({ trivias }) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true, // スライドを自動再生
-        autoplaySpeed: 5000,
+        autoplaySpeed: 2000,
         arrows: true, // 「前」「次」のスライドを操作する矢印を非表示
         // cssEase: 'linear',
         pauseOnHover: true // 自動再生をマウスホバーで一時停止

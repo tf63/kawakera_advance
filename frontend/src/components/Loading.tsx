@@ -4,6 +4,7 @@ import { API_ENDPOINTS } from '../api'
 import { ImageAPI, TriviaAPI } from '../interfaces/interfaces'
 import { Trivia } from '../types/types'
 import axios from 'axios'
+import TriviaSlider from './TriviaSlider'
 
 const Loading = () => {
     const navigate = useNavigate()
@@ -83,13 +84,7 @@ const Loading = () => {
 
     return (
         <div>
-            {triviaList.map((trivia, index) => {
-                return (
-                    <div className="card" key={index}>
-                        {trivia.trivia}
-                    </div>
-                )
-            })}
+            <TriviaSlider trivias={triviaList} />
         </div>
     )
 }
