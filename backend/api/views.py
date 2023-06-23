@@ -201,6 +201,7 @@ class TriviaAPIView(APIView):
             categories = Category.objects.all()
             for id in random_ids:
                 label_trivia = {}
+                label_trivia["label_ja"] = categories.filter(id=id).first().label_ja
                 label_trivia["label"] = categories.filter(id=id).first().label
                 label_trivia["trivia"] = categories.filter(id=id).first().trivia
                 category = categories.filter(id=id).first()
