@@ -7,6 +7,15 @@
 
 ### やりたいこと
 
+### ロゴテスト
+<img src="backend/docs/img/../../../docs/img/logos/django.svg" width="30" height="30">
+<img src="backend/docs/img/../../../docs/img/logos/github.svg" width="30" height="30">
+<img src="backend/docs/img/../../../docs/img/logos/docker.svg" width="30" height="30">
+<img src="backend/docs/img/../../../docs/img/logos/huggingface.svg" width="30" height="30">
+<img src="backend/docs/img/../../../docs/img/logos/react.svg" width="30" height="30">
+<img src="backend/docs/img/../../../docs/img/logos/openai.svg" width="30" height="30">
+
+
 ### 使いたい技術
 - Docker, Github Actions
 - DRF + React(TypeScript), AWS
