@@ -118,6 +118,7 @@ const Detail = () => {
                 <div className="line"></div>
             </div>
             <div>
+                <div className="container-center">
                 {individuals.map((individual, index) => (
                     <div className="card square" key={index}>
                         <div className="container-center">
@@ -132,6 +133,7 @@ const Detail = () => {
                         </div>
                     </div>
                 ))}
+                </div>
             </div>
             <div className="card-green">
                 <Link className="link" to={'/'}>
