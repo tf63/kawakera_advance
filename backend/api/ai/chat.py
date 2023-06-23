@@ -54,19 +54,19 @@ def chat_knowledge(animal_name):
 
         Example 1
         user:cat
-        assistant:{"ecology":"猫は世界中に広く分布し、個人宅飼いや野良猫として生活しています。主に肉食で、小型哺乳類や鳥類を食べます。", "trivia":"猫は一日の14〜16時間を寝て過ごしています。また、猫は舐めることで毛づくろいをし、体を清潔に保ちます。", "type":"ノーマル", "hp":"82", "attack":"55", "defense":37", "magic_attack":"39", "magic_defense:"76", "speed":"95"}.
+        assistant:{"label_ja":"ネコ", "ecology":"ネコは世界中に広く分布し、個人宅飼いや野良ネコとして生活しています。主に肉食で、小型哺乳類や鳥類を食べます。", "trivia":"ネコは一日の14〜16時間を寝て過ごしています。また、ネコは舐めることで毛づくろいをし、体を清潔に保ちます。", "type":"ノーマル", "hp":"82", "attack":"55", "defense":37", "magic_attack":"39", "magic_defense:"76", "speed":"95"}.
 
         Example 2
         user:crocodile
-        assistant:{"ecology":"ワニは世界の熱帯地方に広く分布しており、河川や湖沼などの、淡水や汽水域に生息しています。幼体は昆虫、小魚等を食べて育ちます。成体は肉食で、サワガニやカメ、水鳥等を食べます。", "trivia":"ワニは魚を捕まえるときに、口を大きく開けて威嚇する行動をとります。この時の口の大きさは、実際の飲み込める大きさの3倍もあるとされています。また、ワニは空気を貯めることができるため、30分以上も水中に潜ることができます。", "type":"じめん,あく", "hp":"95", "attack":"125", "defense":"100", "magic_attack":"55", "magic_defense:"75", "speed":"45"}
+        assistant:{"label_ja":"ワニ", "ecology":"ワニは世界の熱帯地方に広く分布しており、河川や湖沼などの、淡水や汽水域に生息しています。幼体は昆虫、小魚等を食べて育ちます。成体は肉食で、サワガニやカメ、水鳥等を食べます。", "trivia":"ワニは魚を捕まえるときに、口を大きく開けて威嚇する行動をとります。この時の口の大きさは、実際の飲み込める大きさの3倍もあるとされています。また、ワニは空気を貯めることができるため、30分以上も水中に潜ることができます。", "type":"じめん,あく", "hp":"95", "attack":"125", "defense":"100", "magic_attack":"55", "magic_defense:"75", "speed":"45"}
 
         Example 3
         user:elephant
-        assistant:{"ecology":"象はアフリカ象、インド象に分かれ、アフリカやアジアに生息しています。日本では草食獣と思われますが、実際には鼻を使って木の皮、根、芽、果実等を食べます。", "trivia":"象の鼻は、とても力強く、木を引き抜いたり、川を渡りながら泳ぐことができます。象は非常に社交的で、親密な仲間とは、鼻を触れあわせたり、耳をたたいたり、尻尾を振ったりしてコミュニケーションをとります。", "type":"じめん", "hp":"150", "attack":"120", "defense":"120", "magic_attack":"50", "magic_defense:"60", "speed":"50"}
+        assistant:{"label_ja":"ゾウ", "ecology":"ゾウはアフリカゾウ、インドゾウに分かれ、アフリカやアジアに生息しています。日本では草食獣と思われますが、実際には鼻を使って木の皮、根、芽、果実等を食べます。", "trivia":"ゾウの鼻は、とても力強く、木を引き抜いたり、川を渡りながら泳ぐことができます。ゾウは非常に社交的で、親密な仲間とは、鼻を触れあわせたり、耳をたたいたり、尻尾を振ったりしてコミュニケーションをとります。", "type":"じめん", "hp":"150", "attack":"120", "defense":"120", "magic_attack":"50", "magic_defense:"60", "speed":"50"}
 
         Example 4
         user:lion
-        assistant:{"ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "magic_attack":"60", "magic_defense":"80", "speed":"120"}
+        assistant:{"label_ja":"ライオン", "ecology": "ライオンはアフリカ中部から南部、インドの一部に分布している。主に肉食であり、トナカイ、シマウマ、カバ、水牛等を狩っている。", "trivia":"ライオンの雄は、鬣毛と呼ばれるたてがみを持っています。鬣毛は仲間内での地位を誇示するためにも重要で、強く美しいものを持つ雄が群れをリードすることが多いです。", "type": "ノーマル,あく", "hp":"95", "attack":"150", "defense":"70", "magic_attack":"60", "magic_defense":"80", "speed":"120"}
     """
     chatgpt = Chatgpt(system_setting)
     chatgpt.input_message(animal_name)
@@ -91,7 +91,7 @@ def chat_knowledge(animal_name):
             "speed": 1,
         }
     items_int = ["hp", "attack", "defense", "magic_attack", "magic_defense", "speed"]
-    items_str = ["ecology", "trivia", "type"]
+    items_str = ["label_ja", "ecology", "trivia", "type"]
 
     for item in items_str:
         try:
