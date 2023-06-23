@@ -40,6 +40,7 @@ export type Status = {
 
 export type Trivia = {
     label: string
+    label_ja:string
     trivia: string
 }
 

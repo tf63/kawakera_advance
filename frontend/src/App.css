@@ -518,12 +518,15 @@ button:disabled {
   margin-top: 100px;
 }
 
-.trivia-container {}
-
 .trivia-container h3 {
   font-weight: 100;
 }
 
 .trivia-container div {
   margin: 100px 200px;
+}
+
+.loading_trivia{
+  width: 80%;
+  margin: auto;
 }
