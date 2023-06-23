@@ -288,6 +288,10 @@ img {
   margin: auto;
 }
 
+.result_inner{
+  margin: auto;
+}
+
 .result_inner div{
   width: unset;
 }
