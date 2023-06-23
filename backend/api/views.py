@@ -37,7 +37,7 @@ class ImageAPIView(APIView):
                 {
                     "message": "Image classification failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         print("score, label = ", score, label)
@@ -50,7 +50,7 @@ class ImageAPIView(APIView):
                 {
                     "message": "Segmentation failed.",
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
 
         # 画像のリサイズ
@@ -68,7 +68,7 @@ class ImageAPIView(APIView):
                     {
                         "message": "JSON decode failed.",
                     },
-                    status=status.HTTP_200_OK,
+                    status=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 )
 
             data_category.update(information)
@@ -96,7 +96,7 @@ class ImageAPIView(APIView):
                     "category": serializer_category.data,
                     "individual": serializer_individual.data,
                 },
-                status=status.HTTP_200_OK,
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
         else:
             return Response(

@@ -15,8 +15,12 @@ export interface GridProps {
     categories: Category[]
 }
 
-export interface SliderProps {
+export interface ImageSliderProps {
     individuals: Individual[]
+}
+
+export interface TriviaSliderProps {
+    trivias: Trivia[]
 }
 
 export interface ImageAPI {

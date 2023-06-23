@@ -32,7 +32,7 @@ const ImageSlider: React.FC<SliderProps> = ({ individuals }) => {
                                     <img src={`${API_ENDPOINTS.BASE}${individual.image}`} alt={`${individual.id}`} />
                                 </div>
                                 <div className="container-center">
-                                    <p className="link">
+                                    <p>
                                         {individual.label}: (レベル {individual.score})
                                     </p>
                                 </div>
