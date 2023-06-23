@@ -51,6 +51,7 @@ const TestSpace: React.FC = () => {
     return (
         <div>
             <TriviaSlider trivias={triviaList} />
+            <ProgressBar width={500} value={100} />
         </div>
     )
 }

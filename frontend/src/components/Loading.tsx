@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { API_ENDPOINTS } from '../api'
 import { ImageAPI, TriviaAPI } from '../interfaces/interfaces'
@@ -12,7 +12,6 @@ const Loading = () => {
     const file = location.state?.file
 
     const [responseStatus, setResponseStatus] = useState(true)
-    // const [loading, setLoading] = useState(true)
 
     const [triviaList, setTriviaList] = useState<Trivia[]>([])
 
