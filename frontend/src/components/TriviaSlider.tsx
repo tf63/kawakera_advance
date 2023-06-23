@@ -23,7 +23,7 @@ const TriviaSlider: React.FC<TriviaSliderProps> = ({ trivias }) => {
 
     return (
         <div className="container-center">
-            <div className="card slider" style={{ width: '100%' }}>
+            <div className="card slider" style={{ width: '80%' }}>
                 <Slider {...sliderSettings}>
                     {trivias.map((trivia, index) => (
                         <div className="container-center trivia-container" key={index}>
