@@ -56,6 +56,9 @@ const Home = () => {
 
     return (
         <div className="wrapper home">
+            <div className="container-center explain-container">
+                <div className="padding-top">みんなでつくる，あにモン図鑑</div>
+            </div>
             <ImageUploadForm />
             <div className="toppage_midashi">
                 <p>最近の投稿</p>
@@ -63,7 +66,7 @@ const Home = () => {
             </div>
             <ImageSlider individuals={recentIndividuals} />
             <div className="toppage_midashi">
-                <p>動物図鑑</p>
+                <p>あにモン図鑑</p>
                 <div className="line"> </div>
             </div>
             <GridComponent categories={categories} />

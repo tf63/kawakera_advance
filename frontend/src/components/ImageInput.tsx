@@ -21,7 +21,7 @@ const ImageUploadForm = () => {
     return (
         <div>
             <div className="card-green" onClick={handleButtonClick}>
-                投稿ボタン
+                投稿
             </div>
             <input
                 type="file"
