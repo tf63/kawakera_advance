@@ -25,6 +25,7 @@ from django.contrib.postgres.fields import ArrayField
 
 class Category(models.Model):
     label = models.CharField(max_length=100, default="")
+    label_ja = models.CharField(max_length=100, default="")
     hp = models.PositiveBigIntegerField()
     attack = models.PositiveBigIntegerField()
     defense = models.PositiveBigIntegerField()

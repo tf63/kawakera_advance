@@ -23,15 +23,6 @@ if parent_dir not in sys.path:
     sys.path.append(parent_dir)
 from ai import *
 
-# from .ai.segmentation import create_segmentation
-# from .ai.classifier import image_classification
-
-# from .ai.segmentation import create_segmentation
-# from .ai.chat import chat
-
-# def index(request):
-#     return render(request, "index.html")S
-
 
 class ImageAPIView(APIView):
     def post(self, request):
@@ -154,6 +145,7 @@ class CategoryAPIView(APIView):
                             {
                                 "id": category.id,
                                 "label": category.label,
+                                "label_ja": category.label_ja,
                                 "image": serializer_individual.data["image"],
                             }
                         )
@@ -171,6 +163,12 @@ class CategoryAPIView(APIView):
                         .filter(id=latest_individual["category"])
                         .first()
                         .label
+                    )
+                    latest_individual["label_ja"] = (
+                        Category.objects.all()
+                        .filter(id=latest_individual["category"])
+                        .first()
+                        .label_ja
                     )
 
                 response_data["latest_individuals"] = serializer_individual.data
