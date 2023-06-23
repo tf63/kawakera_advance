@@ -78,7 +78,7 @@ const Detail = () => {
                     <h2>{categoryDetail.label_ja}</h2>
 
                     <p>クラス：{categoryDetail.label}</p>
-                    <p>分類：{categoryDetail.label_ja} でぶモン</p>
+                    <p>分類：{categoryDetail.label_ja} あにモン</p>
                     <p>タイプ: {categoryDetail.type}</p>
                 </div>
             </div>
@@ -95,7 +95,7 @@ const Detail = () => {
             </div> */}
             <div className="column2">
                 <div className="card detail_info2">
-                    <p>分類：{categoryDetail.label_ja} でぶモン</p>
+                    <p>分類：{categoryDetail.label_ja} あにモン</p>
                     <p>クラス：{categoryDetail.label}</p>
                     <p>タイプ: {categoryDetail.type}</p>
 

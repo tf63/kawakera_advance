@@ -515,7 +515,8 @@ button:disabled {
 }
 
 .detail_box {
-  margin-top: 100px;
+  margin-top: 80px;
+  margin-bottom: 20px;
 }
 
 .trivia-container h3 {

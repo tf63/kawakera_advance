@@ -14,7 +14,7 @@ from .serializers import CategorySerializer, IndividualSerializer, AnimalSeriali
 from django.core.files.base import ContentFile
 from django.db.models import Max
 
-from .utils import convert_to_file, resize_image
+from .utils import convert_to_file, resize_image, resize_alpha_image
 import base64
 import random
 
@@ -54,7 +54,8 @@ class ImageAPIView(APIView):
             )
 
         # 画像のリサイズ
-        image_file = resize_image(image_file, 250, 239)
+        image_file = resize_alpha_image(image_file, 250)
+
         image_file = image2binary(image_file)
 
         # 動物名が既出の場合ステータス，生態を ChatGPTを使って取得しDBに保存
