@@ -37,3 +37,6 @@ class ImageAPIView(APIView):
 
 ### ImageAPIviewの変更
 - aiパッケージからモジュールをimportし使えるようにした
+
+### TriviaAPIViewの作成
+### category.jsonの作成
