@@ -39,7 +39,7 @@
 ---
 
 **Animal GO URL**
-[Animal GO](http://animalgo-advanc.com){:target="_blank"}
+[Animal GO](http://animalgo-advanc.com)
 
 **ホーム画面**
 ![](docs/img/animalgo-home.png)
@@ -56,4 +56,4 @@
 ![](docs/img/animalgo_trivia.png)
 
 **Canva**
-[スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton){:target="_blank"}
+[スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
