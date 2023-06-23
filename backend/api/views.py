@@ -187,16 +187,28 @@ class TriviaAPIView(APIView):
         response_data = {}
         ten_animals = []
         try:
-            # 保存されているカテゴリidの最大値
-            max_id = Category.objects.aggregate(Max("id"))["id__max"]
-            # 1からmax_idのうちからランダムに10個取ってくる
-            ten_ids = random.sample(range(1, max_id), 10)
+            # Categoryモデルからid一覧を取得
+            category_ids = Category.objects.values_list("id", flat=True)
+
+            # ランダムに抽出するカテゴリの個数
+            num_items = len(list(category_ids))
+            if num_items > 10:
+                num_items = 10
+
+            # ランダムに num_items 個抽出
+            random_ids = random.sample(list(category_ids), num_items)
 
             categories = Category.objects.all()
-            for id in ten_ids:
+            for id in random_ids:
                 label_trivia = {}
                 label_trivia["label"] = categories.filter(id=id).first().label
                 label_trivia["trivia"] = categories.filter(id=id).first().trivia
+                category = categories.filter(id=id).first()
+                top_individual = category.individual_set.order_by(
+                    "-score", "id"
+                ).first()
+                serializer_individual = IndividualSerializer(top_individual)
+                label_trivia["image"] = serializer_individual.data["image"]
                 ten_animals.append(label_trivia)
 
             response_data["trivia"] = ten_animals
