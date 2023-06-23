@@ -7,6 +7,13 @@
 
 ![サムネイル](docs/img/thumbnail_animalgo.png)
 
+**Animal GO URL**
+[Animal GO](http://animalgo-advance.com)
+
+**Canva**
+[スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+
 **Backend**
 
 <img src="backend/docs/img/../../../docs/img/logos/python.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/django.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/postgresql.svg" width="30" height="30">
@@ -37,10 +44,6 @@
 | /result | 生成結果 |
 
 ---
-
-**Animal GO URL**
-[Animal GO](http://animalgo-advanc.com)
-
 **ホーム画面**
 ![](docs/img/animalgo-home.png)
 ![](docs/img/animalgo_list.png)
@@ -54,6 +57,3 @@
 **詳細画面**
 ![](docs/img/animalgo_detail.png)
 ![](docs/img/animalgo_trivia.png)
-
-**Canva**
-[スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
