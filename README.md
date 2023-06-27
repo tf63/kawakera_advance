@@ -8,11 +8,12 @@
 ![サムネイル](docs/img/thumbnail_animalgo.png)
 
 **Animal GO URL**
-[Animal GO](http://animalgo-advance.com)
+~~http://animalgo-advance.com~~ (停止済み)
 
 **Canva**
 [スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
+---
 
 **Backend**
 
