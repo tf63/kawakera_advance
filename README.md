@@ -12,9 +12,8 @@
 
 **Canva**
 [スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
 **デモ動画**
-
-
 https://github.com/tf63/kawakera_advance/assets/98077712/650c0283-6c38-44da-a874-8f3184928f91
 
 
