@@ -8,10 +8,18 @@
 ![サムネイル](docs/img/thumbnail_animalgo.png)
 
 **Animal GO URL**
-~~http://animalgo-advance.com~~ (停止済み)
+
+~~http://animalgo-advance.com (AWS EC2へデプロイ，停止済み)~~
+
+https://animalgo-advance.vercel.app/ (vercelへデプロイ，readonly)
+
+<img src="docs/img/QR_118806.png">
 
 **Canva**
+
 [スライドページ](https://www.canva.com/design/DAFmniET5x0/J4Z1fpjKZrqM0rfMmCN9Yw/edit?utm_content=DAFmniET5x0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+
 
 **デモ動画**
 
