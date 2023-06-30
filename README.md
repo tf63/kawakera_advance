@@ -30,23 +30,19 @@ https://github.com/tf63/kawakera_advance/assets/98077712/650c0283-6c38-44da-a874
 
 **Backend**
 
-<img src="backend/docs/img/../../../docs/img/logos/python.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/django.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/postgresql.svg" width="30" height="30">
+<img src="https://skillicons.dev/icons?i=py,django,postgres,nginx" />
 
 **Frontend**
 
-<img src="backend/docs/img/../../../docs/img/logos/typescript.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/react.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/vite.svg" width="30" height="30">
-
-**API**
-
-<img src="backend/docs/img/../../../docs/img/logos/huggingface.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/openai.svg" width="30" height="30">
+<img src="https://skillicons.dev/icons?i=ts,react,vite" />
 
 **Development**
 
-<img src="backend/docs/img/../../../docs/img/logos/github.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/vscode.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/docker.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/docker-compose.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/aws.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/figma.svg" width="30" height="30"><img src="backend/docs/img/../../../docs/img/logos/miro.svg" width="30" height="30">
+<img src="https://skillicons.dev/icons?i=docker,githubactions,figma,aws" /> <img src="docs/img/logos/miro.svg" width="45px">
 
-<!-- ### 使いたい技術
-- Docker, Github Actions
-- DRF + React(TypeScript), AWS -->
+**API**
+
+<img src="docs/img/logos/huggingface.svg" width="45px"> <img src="docs/img/logos/openai.svg" width="45px">
 
 ---
 
