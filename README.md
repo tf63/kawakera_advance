@@ -1,7 +1,7 @@
 # Animal GO (Advance)
 
 ![](https://github.com/tf63/kawakera_advance/actions/workflows/django.yml/badge.svg)
-<img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=flat"><img src="https://img.shields.io/badge/-React-555.svg?logo=react&style=flat"><img src="https://img.shields.io/badge/-Docker-EEE.svg?logo=docker&style=flat"><img src="https://img.shields.io/badge/-Amazon%20AWS-232F3E.svg?logo=amazon-aws&style=flat">
+<img src="https://img.shields.io/badge/-Django-092E20.svg?logo=django&style=flat"><img src="https://img.shields.io/badge/-React-555.svg?logo=react&style=flat"><img src="https://img.shields.io/badge/-Docker-EEE.svg?logo=docker&style=flat">
 ![](https://img.shields.io/github/repo-size/tf63/kawakera_advance)
 ![](https://img.shields.io/github/languages/code-size/tf63/kawakera_advance)
 
@@ -38,7 +38,7 @@ https://github.com/tf63/kawakera_advance/assets/98077712/650c0283-6c38-44da-a874
 
 **Development**
 
-<img src="https://skillicons.dev/icons?i=docker,githubactions,figma,aws" /> <img src="docs/img/logos/miro.svg" width="45px">
+<img src="https://skillicons.dev/icons?i=docker,githubactions,figma,vercel" /> <img src="docs/img/logos/miro.svg" width="45px">
 
 **API**
 
